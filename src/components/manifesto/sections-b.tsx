@@ -195,7 +195,7 @@ export function WhyZoho() {
     { t: "Own Business Applications", d: "Real production workloads running on the same stack." },
   ];
   return (
-    <Section id="why-catalyst" kicker="Why Catalyst">
+    <Section id="why-catalyst">
       <Reveal>
         <h2 className="display max-w-3xl text-4xl md:text-6xl">Why Catalyst.</h2>
       </Reveal>
