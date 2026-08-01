@@ -277,7 +277,7 @@ export function Frankenstack() {
     <Section id="frankenstack" kicker="The problem">
       <Reveal>
         <h2 className="display max-w-3xl text-4xl md:text-7xl">
-          Welcome to the era of the Frankenstack.
+          The era of the Frankenstack.
         </h2>
       </Reveal>
       <div ref={ref} className="mt-16 flex flex-wrap items-center gap-x-3 gap-y-4">
