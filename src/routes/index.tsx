@@ -75,6 +75,8 @@ function Index() {
       <Rule />
       <Category />
       <Rule />
+      <WhatsNew />
+      <Rule />
       <TwoBuilders />
       <Rule />
       <TeachingAI />
