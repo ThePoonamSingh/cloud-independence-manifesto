@@ -58,12 +58,6 @@ const signals = [
     detail: "Pipelines, environments, glue code, upgrades, incidents. The tax nobody budgeted for.",
     source: "Stack Overflow Developer Survey, 2024",
   },
-  {
-    stat: "6×",
-    claim: "growth in the number of vendors in a typical modern application stack.",
-    detail: "Each integration adds surface area for failure, cost and security review.",
-    source: "CNCF Annual Survey, 2024",
-  },
 ];
 
 export function Signals() {
