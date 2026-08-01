@@ -1,63 +1,40 @@
 import { useEffect, useRef, useState } from "react";
 import { Reveal, Section, PullQuote, useReveal } from "./primitives";
 
-/* SECTION 1 — Why now */
+/* Platform eras — rendered as a compact strip inside Shift */
 const eras = [
-  { name: "Mainframes", years: "1960s", note: "Compute was scarce and centralized." },
-  { name: "Client Server", years: "1980s", note: "Software moved to the desk." },
-  { name: "Web", years: "1990s", note: "Distribution became free." },
-  { name: "Cloud", years: "2006", note: "Infrastructure became rented." },
-  { name: "Mobile", years: "2007", note: "Software became ambient." },
-  { name: "AI", years: "Now", note: "Software begins to write itself." },
+  { name: "Mainframes", years: "1960s" },
+  { name: "Client Server", years: "1980s" },
+  { name: "Web", years: "1990s" },
+  { name: "Cloud", years: "2006" },
+  { name: "Mobile", years: "2007" },
+  { name: "AI", years: "Now" },
 ];
 
-export function WhyNow() {
+function EraStrip() {
   const { ref, visible } = useReveal<HTMLDivElement>();
   return (
-    <Section id="why-now" kicker="Why now">
-      <Reveal>
-        <h2 className="display max-w-4xl text-4xl md:text-7xl">
-          Every platform shift changes how software gets built.
-          <span className="text-muted-foreground"> AI is creating the next one.</span>
-        </h2>
-      </Reveal>
-      <div ref={ref} className="mt-20 md:mt-28">
-        <div className="relative">
-          <div
-            className="absolute left-0 top-6 h-px bg-signal transition-[width] duration-[2000ms] ease-out"
-            style={{ width: visible ? "100%" : "0%" }}
-          />
-          <div className="grid grid-cols-2 gap-y-14 md:grid-cols-6 md:gap-y-0">
-            {eras.map((e, i) => (
-              <div key={e.name} className="relative pr-6">
-                <span
-                  className="block h-3 w-3 -translate-y-1 rounded-full border border-signal bg-background transition-opacity duration-700"
-                  style={{
-                    opacity: visible ? 1 : 0,
-                    transitionDelay: `${300 + i * 260}ms`,
-                    marginTop: "1.25rem",
-                  }}
-                />
-                <p
-                  className="mt-6 text-lg transition-all duration-700 md:text-xl"
-                  style={{
-                    opacity: visible ? 1 : 0,
-                    transform: visible ? "none" : "translateY(10px)",
-                    transitionDelay: `${420 + i * 260}ms`,
-                  }}
-                >
-                  {e.name}
-                </p>
-                <p className="kicker mt-2">{e.years}</p>
-                <p className="mt-3 max-w-[16rem] text-sm text-muted-foreground">{e.note}</p>
-              </div>
-            ))}
+    <div ref={ref} className="relative mt-4">
+      <div
+        className="absolute left-0 top-1.5 h-px bg-signal transition-[width] duration-[1600ms] ease-out"
+        style={{ width: visible ? "100%" : "0%" }}
+      />
+      <div className="grid grid-cols-3 gap-y-8 md:grid-cols-6">
+        {eras.map((e, i) => (
+          <div key={e.name} className="relative pr-4">
+            <span
+              className="block h-3 w-3 rounded-full border border-signal bg-background transition-opacity duration-500"
+              style={{ opacity: visible ? 1 : 0, transitionDelay: `${200 + i * 180}ms` }}
+            />
+            <p className="mt-4 text-sm md:text-base">{e.name}</p>
+            <p className="kicker mt-1">{e.years}</p>
           </div>
-        </div>
+        ))}
       </div>
-    </Section>
+    </div>
   );
 }
+
 
 /* SECTION 2 — Signals */
 const signals = [
@@ -158,6 +135,10 @@ export function Shift() {
         <h2 className="display max-w-4xl text-4xl md:text-7xl">
           AI changed software. Now software must change cloud.
         </h2>
+        <p className="mt-8 max-w-2xl text-muted-foreground">
+          Every platform shift changed how software gets built. AI is creating the next one.
+        </p>
+        <EraStrip />
       </Reveal>
       <div ref={ref} className="mt-16 grid gap-px border border-border bg-border md:grid-cols-3">
         {states.map((s, i) => (
@@ -462,6 +443,8 @@ export function Independence() {
           </div>
         </div>
       </Reveal>
+
+      <NeverTouchTags />
     </Section>
   );
 }
@@ -485,45 +468,40 @@ const neverAgain = [
   "On-call runbooks",
 ];
 
-export function NeverTouch() {
+function NeverTouchTags() {
   const { ref, visible } = useReveal<HTMLDivElement>();
   return (
-    <Section id="never-touch" kicker="The list you'll never open again">
-      <div className="grid gap-16 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.4fr)]">
-        <Reveal>
-          <h2 className="display text-4xl md:text-6xl">
-            You'll never touch <em>this</em> again.
-          </h2>
-          <p className="mt-8 max-w-md text-muted-foreground">
-            Every item here is real work that used to sit between your code and your users.
-            Catalyst does it. You don't. That's what Cloud Independence means, concretely.
-          </p>
-        </Reveal>
-        <div ref={ref} className="flex flex-wrap gap-3 lg:justify-end lg:content-start">
-          {neverAgain.map((item, i) => (
+    <div className="mt-20 grid gap-10 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.5fr)]">
+      <Reveal>
+        <p className="kicker">The list you'll never open again</p>
+        <h3 className="display mt-5 text-3xl md:text-4xl">
+          You'll never touch <em>this</em> again.
+        </h3>
+      </Reveal>
+      <div ref={ref} className="flex flex-wrap gap-3 lg:justify-end lg:content-start">
+        {neverAgain.map((item, i) => (
+          <span
+            key={item}
+            className="relative rounded-full border border-border bg-card px-5 py-2.5 font-mono text-sm text-muted-foreground transition-all duration-700"
+            style={{
+              opacity: visible ? 1 : 0,
+              transform: visible ? "none" : "translateY(8px)",
+              transitionDelay: `${i * 70}ms`,
+            }}
+          >
+            {item}
             <span
-              key={item}
-              className="relative rounded-full border border-border bg-card px-5 py-2.5 font-mono text-sm text-muted-foreground transition-all duration-700"
+              aria-hidden
+              className="absolute left-3 right-3 top-1/2 h-px bg-signal transition-transform duration-500 origin-left"
               style={{
-                opacity: visible ? 1 : 0,
-                transform: visible ? "none" : "translateY(8px)",
-                transitionDelay: `${i * 70}ms`,
+                transform: visible ? "scaleX(1)" : "scaleX(0)",
+                transitionDelay: `${400 + i * 70}ms`,
               }}
-            >
-              {item}
-              <span
-                aria-hidden
-                className="absolute left-3 right-3 top-1/2 h-px bg-signal transition-transform duration-500 origin-left"
-                style={{
-                  transform: visible ? "scaleX(1)" : "scaleX(0)",
-                  transitionDelay: `${400 + i * 70}ms`,
-                }}
-              />
-            </span>
-          ))}
-        </div>
+            />
+          </span>
+        ))}
       </div>
-    </Section>
+    </div>
   );
 }
 

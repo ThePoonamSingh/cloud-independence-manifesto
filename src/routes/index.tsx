@@ -3,13 +3,11 @@ import { Nav } from "@/components/manifesto/Nav";
 import { Hero } from "@/components/manifesto/Hero";
 import { Rule } from "@/components/manifesto/primitives";
 import {
-  WhyNow,
   Signals,
   Shift,
   NewCustomer,
   Frankenstack,
   Independence,
-  NeverTouch,
   Thesis,
 } from "@/components/manifesto/sections-a";
 import {
@@ -66,8 +64,6 @@ function Index() {
       <Nav />
       <Hero />
       <Rule />
-      <WhyNow />
-      <Rule />
       <Signals />
       <Rule />
       <Shift />
@@ -77,8 +73,6 @@ function Index() {
       <Frankenstack />
       <Rule />
       <Independence />
-      <Rule />
-      <NeverTouch />
       <Rule />
       <Thesis />
       <Rule />
