@@ -76,10 +76,10 @@ export function Hero() {
       <InfrastructureGraph />
       <div className="relative mx-auto w-full max-w-6xl px-6 pt-32 pb-24 md:px-10">
         <h1 className="display mt-8 text-[clamp(2.2rem,7vw,6.5rem)] leading-[0.92]">
-          Thebestinfrastructureistheinfrastructuredevelopersneverhavetothinkabout.
+          The best infrastructure is the infrastructure developers never have to think about.
         </h1>
         <p className="mt-8 max-w-2xl text-lg text-muted-foreground md:text-2xl">
-          Cloud Independence means building software, not operating infrastructure.
+          We believe in Cloud Independence as the next step in cloud computing. A future where developers describe what they want to build, and the platform handles the complexity of getting it into production.
         </p>
         <div className="mt-14 flex flex-wrap items-center gap-4">
           <a
