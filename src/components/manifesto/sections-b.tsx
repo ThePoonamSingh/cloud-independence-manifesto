@@ -33,14 +33,20 @@ export function TwoBuilders() {
   return (
     <Section id="two-builders" kicker="One system">
       <Reveal>
-        <h2 className="display max-w-3xl text-4xl md:text-7xl">
-          One system. Two kinds of builders.
+        <h2 className="display max-w-4xl text-4xl md:text-7xl">
+          One system. Developers and AI agents.
         </h2>
+      </Reveal>
+      <Reveal delay={150}>
+        <p className="mt-6 max-w-2xl text-lg text-muted-foreground">
+          The same platform serves two kinds of builders: humans who write intent, and agents who
+          turn intent into running systems.
+        </p>
       </Reveal>
       <div className="mt-20 grid gap-px border border-border bg-border md:grid-cols-2">
         {[
-          { t: "Developer", items: ["Intent", "IDE", "Console"] },
-          { t: "AI", items: ["Planning", "Agent Skills", "Execution"] },
+          { t: "Human developer", items: ["Intent", "IDE", "Console"] },
+          { t: "AI agent", items: ["Planning", "Agent Skills", "Execution"] },
         ].map((c) => (
           <Reveal key={c.t}>
             <div className="h-full bg-background p-8 md:p-12">
