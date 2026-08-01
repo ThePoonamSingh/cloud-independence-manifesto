@@ -19,25 +19,38 @@ function ThesisQuote({ children }: { children: string }) {
     return () => io.disconnect();
   }, []);
 
-  const words = children.trim().split(/\s+/);
+  const paragraphs = children.trim().split(/\n\n+/);
+  let wordIndex = 0;
   return (
     <blockquote
       ref={ref}
-      className="font-display font-light italic text-[clamp(1.15rem,2.2vw,1.85rem)] leading-[1.22] tracking-[-0.01em]"
+      className="font-display font-light italic text-[clamp(1.15rem,2.2vw,1.85rem)] leading-[1.26] tracking-[-0.01em]"
       aria-label={children}
       data-visible={visible}
     >
       <span className="thesis-quote-mark" data-visible={visible}>“</span>
-      {words.map((word, i) => (
-        <span
-          key={i}
-          className="thesis-word"
-          data-visible={visible}
-          style={{ transitionDelay: `${120 + i * 55}ms` }}
-        >
-          {word}
-        </span>
-      ))}
+      {paragraphs.map((paragraph, pIdx) => {
+        const words = paragraph.split(/\s+/);
+        const isLast = pIdx === paragraphs.length - 1;
+        return (
+          <span key={pIdx} className={pIdx > 0 ? "block mt-4" : undefined}>
+            {words.map((word) => {
+              const i = wordIndex++;
+              return (
+                <span
+                  key={i}
+                  className="thesis-word"
+                  data-visible={visible}
+                  style={{ transitionDelay: `${120 + i * 55}ms` }}
+                >
+                  {word}
+                </span>
+              );
+            })}
+            {!isLast && <br />}
+          </span>
+        );
+      })}
       <span className="thesis-quote-mark" data-visible={visible}>”</span>
     </blockquote>
   );
@@ -61,7 +74,9 @@ export function Vision() {
                   “
                 </span>
                 <ThesisQuote>
-                  Cloud Independence is when developers stop adapting to the cloud, and the cloud starts adapting to how software is built. Developers should build software. The platform should take care of everything else.
+                  Cloud Independence is when developers stop adapting to the cloud, and the cloud starts adapting to how software is built.
+
+                  Developers should build software. The platform should take care of everything else. That's the future we're building with Catalyst.
                 </ThesisQuote>
               </div>
             </Reveal>
@@ -83,6 +98,24 @@ export function Vision() {
                   </div>
                 </div>
               </figcaption>
+            </Reveal>
+
+            <Reveal delay={240}>
+              <p className="mt-8 max-w-2xl text-base leading-relaxed text-background/70 md:text-lg">
+                That is the standard Catalyst 3.0 is built for: infrastructure that gets out of the way so developers and AI agents can ship.
+              </p>
+            </Reveal>
+
+            <Reveal delay={320}>
+              <a
+                href="https://catalyst.zoho.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-6 inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-widest text-signal transition-colors hover:text-signal/80"
+              >
+                See how Catalyst 3.0 delivers it
+                <span aria-hidden="true">→</span>
+              </a>
             </Reveal>
           </div>
 
