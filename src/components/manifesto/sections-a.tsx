@@ -279,10 +279,18 @@ export function Frankenstack() {
   return (
     <Section id="patchwork-stack" kicker="The problem">
       <Reveal>
-        <h2 className="display max-w-3xl text-4xl md:text-7xl">
-          The era of the patchwork stack.
+        <h2 className="display max-w-4xl text-4xl md:text-7xl">
+          This is the stack developers ship on today.
         </h2>
       </Reveal>
+      <Reveal delay={100}>
+        <p className="mt-6 max-w-2xl text-lg text-muted-foreground md:text-xl">
+          Not a future risk. Not an edge case. Every feature already travels through a dozen
+          vendors, a dozen dashboards, and a dozen bills before it reaches a user — and someone
+          on the team has to hold all of it in their head.
+        </p>
+      </Reveal>
+
 
       <div
         ref={ref}
