@@ -238,70 +238,142 @@ export function Frankenstack() {
         ref={ref}
         className="mt-16 grid gap-px border border-border bg-border lg:grid-cols-[1.4fr_0.6fr]"
       >
-        <div className="relative flex min-h-[28rem] items-center justify-center overflow-hidden bg-background md:min-h-[32rem] lg:min-h-[40rem]">
+        <div className="relative flex min-h-[26rem] items-center justify-center overflow-hidden bg-background p-4 md:min-h-[32rem] md:p-8 lg:min-h-[40rem]">
           <div
             className="absolute inset-0 opacity-60"
             style={{
               background:
-                "radial-gradient(ellipse 60% 80% at 50% 50%, color-mix(in oklab, var(--color-cold) 10%, transparent), transparent 70%)",
+                "radial-gradient(ellipse 70% 80% at 50% 50%, color-mix(in oklab, var(--color-cold) 10%, transparent), transparent 70%)",
             }}
           />
 
           <svg
-            className="pointer-events-none absolute inset-0 h-full w-full"
-            viewBox="0 0 800 340"
+            className="relative h-full w-full"
+            viewBox="0 0 788 500"
             preserveAspectRatio="xMidYMid meet"
             fill="none"
           >
-            {webPaths.map((p, i) => (
+            <defs>
+              <pattern id="maze-grid" width="44" height="44" patternUnits="userSpaceOnUse">
+                <path d="M 44 0 L 0 0 0 44" fill="none" stroke="var(--color-border)" strokeWidth="0.5" />
+              </pattern>
+            </defs>
+            <rect width="788" height="500" fill="url(#maze-grid)" opacity="0.35" />
+
+            {/* dead ends / retries */}
+            {deadEnds.map((d, i) => (
               <path
                 key={i}
-                d={p.d}
+                d={d}
                 stroke="var(--color-signal)"
-                strokeWidth={p.width}
-                strokeDasharray={p.dash}
-                className="opacity-0 transition-opacity duration-700"
+                strokeWidth="1"
+                strokeDasharray="3 7"
                 style={{
-                  opacity: visible ? 0.6 : 0,
-                  animation: visible ? `line-pulse ${p.duration} linear infinite` : "none",
-                  animationDelay: visible ? `${0.3 + i * 0.25}s` : "0s",
-                  filter: visible ? "drop-shadow(0 0 4px color-mix(in oklab, var(--color-signal) 50%, transparent))" : "none",
+                  opacity: visible ? 0.35 : 0,
+                  transition: "opacity 900ms ease",
+                  transitionDelay: `${600 + i * 120}ms`,
+                  animation: visible ? `line-pulse ${5 + i}s linear infinite` : "none",
                 }}
               />
             ))}
+            {deadEnds.map((d, i) => {
+              const parts = d.split(" ");
+              const ex = Number(parts[parts.length - 1]);
+              const ey = Number(parts[3]);
+              return (
+                <g key={`x${i}`} style={{ opacity: visible ? 0.5 : 0, transition: "opacity 900ms ease", transitionDelay: `${900 + i * 120}ms` }}>
+                  <path
+                    d={`M ${ex - 4},${ey - 4} L ${ex + 4},${ey + 4} M ${ex + 4},${ey - 4} L ${ex - 4},${ey + 4}`}
+                    stroke="var(--color-signal)"
+                    strokeWidth="1.2"
+                  />
+                </g>
+              );
+            })}
+
+            {/* the route */}
+            <path
+              d={MAZE_PATH}
+              stroke="var(--color-border)"
+              strokeWidth="1.5"
+              style={{
+                strokeDasharray: MAZE_LEN,
+                strokeDashoffset: visible ? 0 : MAZE_LEN,
+                transition: "stroke-dashoffset 3.4s cubic-bezier(0.4,0,0.2,1)",
+              }}
+            />
+
+            {/* travelling request */}
+            {visible && (
+              <path
+                d={MAZE_PATH}
+                stroke="var(--color-signal)"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeDasharray={`70 ${MAZE_LEN}`}
+                style={{
+                  filter: "drop-shadow(0 0 6px color-mix(in oklab, var(--color-signal) 70%, transparent))",
+                  animation: `maze-trace 9s linear 1.2s infinite`,
+                  ["--maze-len" as string]: `${MAZE_LEN + 70}`,
+                }}
+              />
+            )}
+
+            {/* nodes */}
+            {mazeNodes.map((n, i) => {
+              const w = Math.max(52, n.name.length * 7.4 + 18);
+              const endpoint = n.name === "request" || n.name === "user";
+              return (
+                <g
+                  key={n.name}
+                  style={{
+                    opacity: visible ? 1 : 0,
+                    transition: "opacity 600ms ease",
+                    transitionDelay: `${i * 70}ms`,
+                  }}
+                >
+                  <rect
+                    x={n.x - w / 2}
+                    y={n.y - 13}
+                    width={w}
+                    height={26}
+                    fill="var(--color-background)"
+                    stroke={n.stress ? "color-mix(in oklab, var(--color-signal) 55%, transparent)" : "var(--color-border)"}
+                    strokeWidth="1"
+                    style={
+                      n.stress
+                        ? { filter: "drop-shadow(0 0 10px color-mix(in oklab, var(--color-signal) 25%, transparent))" }
+                        : undefined
+                    }
+                  />
+                  <text
+                    x={n.x}
+                    y={n.y + 4}
+                    textAnchor="middle"
+                    className="font-mono"
+                    fontSize="11"
+                    fill={
+                      endpoint
+                        ? "var(--color-foreground)"
+                        : n.stress
+                          ? "color-mix(in oklab, var(--color-signal) 85%, white)"
+                          : "var(--color-muted-foreground)"
+                    }
+                    letterSpacing="0.04em"
+                  >
+                    {n.name}
+                  </text>
+                </g>
+              );
+            })}
           </svg>
 
-          <div className="tag-container relative h-full w-full scale-[0.74] sm:scale-[0.88] md:scale-100">
-            {vendors.map((v, i) => (
-              <span
-                key={v.name}
-                className={`absolute inline-block whitespace-nowrap border bg-card px-2 py-1 font-mono text-xs transition-all duration-700 hover:-translate-y-1 hover:border-signal/60 md:px-3 md:py-1.5 md:text-sm ${
-                  v.stress
-                    ? "border-signal/40 text-foreground shadow-[0_0_18px_color-mix(in_oklab,var(--color-signal)_20%,transparent)]"
-                    : "border-border text-muted-foreground"
-                }`}
-                style={{
-                  top: v.top,
-                  left: v.left,
-                  opacity: visible ? 1 : 0,
-                  transform: visible ? undefined : "translateY(12px)",
-                  transitionDelay: `${i * 60}ms`,
-                  ["--drift-x" as string]: `${v.driftX}px`,
-                  ["--drift-y" as string]: `${v.driftY}px`,
-                  ["--rot-start" as string]: `${v.rotStart}deg`,
-                  ["--rot-end" as string]: `${v.rotEnd}deg`,
-                  animation: visible
-                    ? `tag-drift ${v.stress ? 10 : 12}s ease-in-out ${v.delay}s infinite${
-                        v.stress ? ", stress-jitter 0.2s ease-in-out infinite" : ""
-                      }`
-                    : "none",
-                }}
-              >
-                {v.name}
-              </span>
-            ))}
+          <div className="pointer-events-none absolute bottom-5 left-5 right-5 flex items-end justify-between font-mono text-[10px] uppercase tracking-[0.25em] text-muted-foreground md:text-[11px]">
+            <span>one feature</span>
+            <span className="text-signal">20 hops · 5 dead ends</span>
           </div>
         </div>
+
 
         <div className="grid gap-px bg-border">
           {painCards.map((item, i) => (
