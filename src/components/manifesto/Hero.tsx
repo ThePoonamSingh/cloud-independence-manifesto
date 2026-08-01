@@ -121,8 +121,11 @@ export function Hero() {
         </h1>
 
         {/* Body hierarchy */}
-        <p className="lede mt-12 text-base text-balance text-muted-foreground opacity-0 animate-[fade-up_1s_ease-out_0.9s_forwards] md:text-lg">
-          We believe in Cloud Independence as the next step in cloud computing. A future where developers describe what they want to build, and the platform handles the complexity of getting it into production.
+        <p className="lede mt-12 max-w-3xl text-base text-balance text-muted-foreground opacity-0 animate-[fade-up_1s_ease-out_0.9s_forwards] md:text-lg">
+          First, developers owned the servers. Then they rented them. Now, they shouldn't have to think about them at all.
+          <span className="mt-4 block text-foreground">
+            Cloud Independence is the next era of cloud computing, a future where developers describe what they want to build, and the platform takes care of everything else.
+          </span>
         </p>
       </div>
     </header>
