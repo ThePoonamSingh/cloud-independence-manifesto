@@ -39,7 +39,7 @@
   --color-brand-blue: var(--brand-blue);
   --color-cool-soft: var(--cool-soft);
   --font-display: "Instrument Serif", Georgia, serif;
-  --font-sans: "Work Sans", system-ui, sans-serif;
+  --font-sans: "Zoho Puvi", "Work Sans", system-ui, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, monospace;
 }
 
