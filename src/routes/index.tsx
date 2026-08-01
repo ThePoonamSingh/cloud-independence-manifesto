@@ -18,7 +18,7 @@ import {
 import { Vision } from "@/components/manifesto/sections-c";
 import { Declaration, Closing } from "@/components/manifesto/sections-d";
 
-const TITLE = "The Cloud Independence Manifesto — Catalyst 3.0";
+const TITLE = "Catalyst 3.0 — Cloud Independence";
 const DESCRIPTION =
   "A movement for developers who build software, not infrastructure — and the case for the Agent-Ready Cloud, a new category of cloud designed for developers and AI agents alike.";
 
@@ -46,7 +46,7 @@ export const Route = createFileRoute("/")({
         children: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "Article",
-          headline: "The Cloud Independence Manifesto",
+          headline: "Catalyst 3.0 — Cloud Independence",
           description: DESCRIPTION,
           about: ["Cloud Independence", "Agent-Ready Cloud"],
           articleSection: "Technology",

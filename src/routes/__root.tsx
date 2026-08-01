@@ -77,7 +77,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "The Cloud Independence Manifesto" },
+      { title: "Catalyst 3.0 — Cloud Independence" },
       {
         name: "description",
         content: "Build software. Not infrastructure. A manifesto by Catalyst 3.0.",
@@ -85,8 +85,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:site_name", content: "Catalyst 3.0" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { property: "og:title", content: "The Cloud Independence Manifesto" },
-      { name: "twitter:title", content: "The Cloud Independence Manifesto" },
+      { property: "og:title", content: "Catalyst 3.0 — Cloud Independence" },
+      { name: "twitter:title", content: "Catalyst 3.0 — Cloud Independence" },
       { property: "og:description", content: "Build software. Not infrastructure. A manifesto by Catalyst 3.0." },
       { name: "twitter:description", content: "Build software. Not infrastructure. A manifesto by Catalyst 3.0." },
       { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/8539029a-8534-4b5d-85c8-dd7f255869aa/id-preview-e80c969f--c85c68f4-d52f-42ba-8ba1-48f42fffa81a.lovable.app-1785563292515.png" },
