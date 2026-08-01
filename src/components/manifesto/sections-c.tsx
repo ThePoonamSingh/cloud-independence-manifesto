@@ -1,6 +1,27 @@
 import { useState } from "react";
 import { Reveal, Section } from "./primitives";
 
+/* SECTION 13 — Vision */
+export function Vision() {
+  return (
+    <Section id="vision" kicker="Vision">
+      <Reveal>
+        <blockquote className="display max-w-4xl text-[clamp(2rem,6vw,4.5rem)] leading-[1.05]">
+          “The best infrastructure is the infrastructure developers never have to think about.”
+        </blockquote>
+      </Reveal>
+      <Reveal delay={120}>
+        <figcaption className="mt-8 flex items-center gap-4">
+          <span className="h-px w-12 bg-signal" />
+          <span className="kicker">
+            Mani Vembu, Chief Executive Officer, Zoho
+          </span>
+        </figcaption>
+      </Reveal>
+    </Section>
+  );
+}
+
 /* SECTION 14 — Journalist FAQ */
 const faqs = [
   {
