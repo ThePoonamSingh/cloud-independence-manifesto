@@ -256,44 +256,55 @@ export function Frankenstack() {
 
           <svg
             className="relative h-full w-full"
-            viewBox="0 0 788 500"
+            viewBox="0 0 800 500"
             preserveAspectRatio="xMidYMid meet"
             fill="none"
           >
             <defs>
-              <pattern id="maze-grid" width="44" height="44" patternUnits="userSpaceOnUse">
-                <path d="M 44 0 L 0 0 0 44" fill="none" stroke="var(--color-border)" strokeWidth="0.5" />
+              <pattern id="maze-grid" width="50" height="50" patternUnits="userSpaceOnUse">
+                <path d="M 50 0 L 0 0 0 50" fill="none" stroke="var(--color-border)" strokeWidth="0.5" />
               </pattern>
             </defs>
-            <rect width="788" height="500" fill="url(#maze-grid)" opacity="0.35" />
+            <rect width="800" height="500" fill="url(#maze-grid)" opacity="0.3" />
 
-            {/* dead ends / retries */}
-            {deadEnds.map((d, i) => (
-              <path
-                key={i}
-                d={d}
-                stroke="var(--color-signal)"
-                strokeWidth="1"
-                strokeDasharray="3 7"
-                style={{
-                  opacity: visible ? 0.35 : 0,
-                  transition: "opacity 900ms ease",
-                  transitionDelay: `${600 + i * 120}ms`,
-                  animation: visible ? `line-pulse ${5 + i}s linear infinite` : "none",
-                }}
-              />
-            ))}
-            {deadEnds.map((d, i) => {
-              const parts = d.split(" ");
+            {/* dead ends: retries, tickets, quota walls */}
+            {deadEnds.map((b, i) => {
+              const parts = b.d.split(" ");
               const ex = Number(parts[parts.length - 1]);
               const ey = Number(parts[3]);
               return (
-                <g key={`x${i}`} style={{ opacity: visible ? 0.5 : 0, transition: "opacity 900ms ease", transitionDelay: `${900 + i * 120}ms` }}>
+                <g
+                  key={b.label}
+                  style={{
+                    opacity: visible ? 1 : 0,
+                    transition: "opacity 900ms ease",
+                    transitionDelay: `${900 + i * 120}ms`,
+                  }}
+                >
+                  <path
+                    d={b.d}
+                    stroke="var(--color-signal)"
+                    strokeWidth="1"
+                    strokeDasharray="3 6"
+                    opacity="0.45"
+                    style={{ animation: visible ? `line-pulse ${5 + i}s linear infinite` : "none" }}
+                  />
                   <path
                     d={`M ${ex - 4},${ey - 4} L ${ex + 4},${ey + 4} M ${ex + 4},${ey - 4} L ${ex - 4},${ey + 4}`}
                     stroke="var(--color-signal)"
-                    strokeWidth="1.2"
+                    strokeWidth="1.3"
+                    opacity="0.75"
                   />
+                  <text
+                    x={ex + 10}
+                    y={ey + 3.5}
+                    className="font-mono"
+                    fontSize="9.5"
+                    fill="color-mix(in oklab, var(--color-signal) 70%, white)"
+                    opacity="0.8"
+                  >
+                    {b.label}
+                  </text>
                 </g>
               );
             })}
@@ -310,7 +321,7 @@ export function Frankenstack() {
               }}
             />
 
-            {/* travelling request */}
+            {/* the feature travelling through every system */}
             {visible && (
               <path
                 d={MAZE_PATH}
@@ -320,19 +331,18 @@ export function Frankenstack() {
                 strokeDasharray={`70 ${MAZE_LEN}`}
                 style={{
                   filter: "drop-shadow(0 0 6px color-mix(in oklab, var(--color-signal) 70%, transparent))",
-                  animation: `maze-trace 9s linear 1.2s infinite`,
+                  animation: `maze-trace 11s linear 1.2s infinite`,
                   ["--maze-len" as string]: `${MAZE_LEN + 70}`,
                 }}
               />
             )}
 
-            {/* nodes */}
+            {/* task → vendor nodes */}
             {mazeNodes.map((n, i) => {
-              const w = Math.max(52, n.name.length * 7.4 + 18);
-              const endpoint = n.name === "request" || n.name === "user";
+              const w = Math.max(112, Math.max(n.task.length, n.vendor.length) * 6.6 + 26);
               return (
                 <g
-                  key={n.name}
+                  key={n.vendor + n.task}
                   style={{
                     opacity: visible ? 1 : 0,
                     transition: "opacity 600ms ease",
@@ -341,44 +351,58 @@ export function Frankenstack() {
                 >
                   <rect
                     x={n.x - w / 2}
-                    y={n.y - 13}
+                    y={n.y - 21}
                     width={w}
-                    height={26}
+                    height={42}
                     fill="var(--color-background)"
-                    stroke={n.stress ? "color-mix(in oklab, var(--color-signal) 55%, transparent)" : "var(--color-border)"}
+                    stroke={
+                      n.stress
+                        ? "color-mix(in oklab, var(--color-signal) 55%, transparent)"
+                        : "var(--color-border)"
+                    }
                     strokeWidth="1"
                     style={
                       n.stress
-                        ? { filter: "drop-shadow(0 0 10px color-mix(in oklab, var(--color-signal) 25%, transparent))" }
+                        ? { filter: "drop-shadow(0 0 12px color-mix(in oklab, var(--color-signal) 22%, transparent))" }
                         : undefined
                     }
                   />
                   <text
                     x={n.x}
-                    y={n.y + 4}
+                    y={n.y - 5}
                     textAnchor="middle"
                     className="font-mono"
-                    fontSize="11"
-                    fill={
-                      endpoint
-                        ? "var(--color-foreground)"
-                        : n.stress
-                          ? "color-mix(in oklab, var(--color-signal) 85%, white)"
-                          : "var(--color-muted-foreground)"
-                    }
-                    letterSpacing="0.04em"
+                    fontSize="9"
+                    letterSpacing="0.12em"
+                    fill="var(--color-muted-foreground)"
+                    opacity="0.75"
                   >
-                    {n.name}
+                    {n.task.toUpperCase()}
+                  </text>
+                  <text
+                    x={n.x}
+                    y={n.y + 12}
+                    textAnchor="middle"
+                    className="font-mono"
+                    fontSize="12"
+                    fill={
+                      n.stress
+                        ? "color-mix(in oklab, var(--color-signal) 85%, white)"
+                        : "var(--color-foreground)"
+                    }
+                  >
+                    {n.vendor}
                   </text>
                 </g>
               );
             })}
           </svg>
 
-          <div className="pointer-events-none absolute bottom-5 left-5 right-5 flex items-end justify-between font-mono text-[10px] uppercase tracking-[0.25em] text-muted-foreground md:text-[11px]">
-            <span>one feature</span>
-            <span className="text-signal">20 hops · 5 dead ends</span>
+          <div className="pointer-events-none absolute bottom-4 left-5 right-5 flex flex-wrap items-end justify-between gap-2 font-mono text-[10px] uppercase tracking-[0.25em] text-muted-foreground md:text-[11px]">
+            <span>ship one feature</span>
+            <span className="text-signal">20 systems · 20 dashboards · 20 bills</span>
           </div>
+
         </div>
 
 
