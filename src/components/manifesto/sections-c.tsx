@@ -74,10 +74,11 @@ export function Vision() {
                   “
                 </span>
                 <ThesisQuote>
-                  Cloud Independence is when developers stop adapting to the cloud, and the cloud starts adapting to how software is built.
+                  Cloud Independence is when developers stop adapting to the cloud, and the cloud starts adapting to how software is built. Developers should build software. The platform should take care of everything else.
 
-                  Developers should build software. The platform should take care of everything else. That's the future we're building with Catalyst.
+                  That's the future Catalyst is built for.
                 </ThesisQuote>
+
               </div>
             </Reveal>
 
