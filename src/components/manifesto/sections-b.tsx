@@ -41,21 +41,43 @@ export function Category() {
         />
       </div>
 
-      {/* Kicker with pulse */}
+      {/* Unmissable announcement block */}
       <Reveal>
-        <div className="relative z-10 mb-10 md:mb-16">
-          <span className="kicker inline-flex items-center gap-2 rounded-full border border-border/60 bg-background/40 px-3 py-1.5 backdrop-blur-md">
-            <span className="relative flex h-2 w-2">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-signal opacity-75" />
-              <span className="relative inline-flex h-2 w-2 rounded-full bg-signal" />
+        <div className="relative z-10">
+          <div
+            className="h-px w-full"
+            style={{
+              background:
+                "linear-gradient(90deg, transparent, var(--signal) 20%, var(--cool) 80%, transparent)",
+              filter: "drop-shadow(0 0 10px color-mix(in oklab, var(--signal) 60%, transparent))",
+            }}
+          />
+          <div className="mt-6 flex flex-wrap items-center gap-4 md:mt-8 md:gap-6">
+            <span
+              className="relative inline-flex items-center gap-3 overflow-hidden px-4 py-2.5 md:px-5 md:py-3"
+              style={{
+                background: "linear-gradient(100deg, var(--signal) 0%, var(--cool) 100%)",
+                boxShadow: "0 0 60px color-mix(in oklab, var(--signal) 35%, transparent)",
+              }}
+            >
+              <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/35 to-transparent" style={{ animation: "shimmer-sweep 3.2s ease-in-out infinite" }} />
+              <span className="relative flex h-2 w-2">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-background opacity-80" />
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-background" />
+              </span>
+              <span className="relative font-mono text-xs font-semibold uppercase tracking-[0.32em] text-background md:text-sm">
+                Introducing Catalyst 3.0
+              </span>
             </span>
-            Introducing Catalyst 3.0
-          </span>
+            <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-muted-foreground md:text-xs">
+              A new category of cloud
+            </span>
+          </div>
         </div>
       </Reveal>
 
       <Reveal delay={100}>
-        <h2 className="display relative z-10 text-[clamp(3rem,10vw,9rem)] leading-[0.95]">
+        <h2 className="display relative z-10 mt-10 text-[clamp(3.25rem,11vw,10rem)] leading-[0.92] md:mt-14">
           The agent-ready, full-stack{" "}
           <span
             className="block"
@@ -70,6 +92,7 @@ export function Category() {
           </span>
         </h2>
       </Reveal>
+
       <Reveal delay={200}>
         <p className="lede relative z-10 mt-16 text-xl text-muted-foreground md:mt-24 md:text-3xl">
           A serverless cloud platform designed for both developers and AI agents, where infrastructure,
