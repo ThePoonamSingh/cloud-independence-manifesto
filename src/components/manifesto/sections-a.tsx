@@ -116,10 +116,10 @@ export function Shift() {
     <Section id="shift" kicker="The new authorship">
       <Reveal>
         <h2 className="display max-w-4xl text-4xl md:text-7xl">
-          AI changed software. Now software must change cloud.
+          Every platform shift changed how software gets built. AI is creating the next one.
         </h2>
         <p className="mt-8 max-w-2xl text-muted-foreground">
-          Every platform shift changed how software gets built. AI is creating the next one.
+          The compiler moved up a level. The next platform must move infrastructure out of the way.
         </p>
         <EraStrip />
       </Reveal>
