@@ -87,7 +87,9 @@ export function Declaration() {
       <Reveal>
         <h2 className="display max-w-3xl text-4xl md:text-6xl">I declare Cloud Independence.</h2>
         <p className="mt-6 max-w-xl text-muted-foreground">
-          Choose what you are done maintaining. We'll generate a card built for LinkedIn.
+          From infrastructure glue to vendor lock-in, from alert fatigue to AI-unreadable
+          architecture — select every burden you are done carrying. We'll generate a card
+          built for LinkedIn.
         </p>
       </Reveal>
 
