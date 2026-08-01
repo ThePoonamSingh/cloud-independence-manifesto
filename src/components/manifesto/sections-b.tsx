@@ -218,8 +218,7 @@ export function Catalyst() {
 
       <div className="mt-24 border-t border-border pt-16">
         <Reveal>
-          <p className="kicker text-signal">— What's new in Catalyst 3.0</p>
-          <h3 className="display mt-6 text-3xl md:text-5xl">Built in, not bolted on.</h3>
+          <h3 className="display text-3xl md:text-5xl">What's new in Catalyst 3.0</h3>
           <p className="mt-6 max-w-xl text-muted-foreground">
             New capabilities make it easier to build, connect, deploy, and operate intelligent
             applications — without adding a single extra system to manage.
