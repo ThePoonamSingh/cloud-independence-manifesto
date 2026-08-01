@@ -294,12 +294,16 @@ export function Declaration() {
             placeholder="Your name (optional)"
             className="mt-6 w-full max-w-sm border border-border bg-transparent px-4 py-3 text-sm outline-none placeholder:text-muted-foreground focus:border-signal"
           />
+          <p className="mt-4 font-mono text-xs text-muted-foreground">
+            {selected.length} selected{selected.length > 10 ? " · first 10 appear on the card" : ""}
+          </p>
           <div className="mt-6 flex flex-wrap gap-3">
             <button
               onClick={generate}
-              className="border border-foreground bg-foreground px-6 py-3 text-sm font-medium text-background transition-colors hover:bg-transparent hover:text-foreground"
+              disabled={busy}
+              className="border border-foreground bg-foreground px-6 py-3 text-sm font-medium text-background transition-colors hover:bg-transparent hover:text-foreground disabled:opacity-60"
             >
-              Sign my declaration
+              {busy ? "Signing…" : preview ? "Update my declaration" : "Sign my declaration"}
             </button>
             {preview && (
               <a
@@ -307,10 +311,11 @@ export function Declaration() {
                 download="i-declare-cloud-independence.png"
                 className="border border-border px-6 py-3 text-sm transition-colors hover:border-signal hover:text-signal"
               >
-                Download for LinkedIn
+                Download for LinkedIn (1200×627)
               </a>
             )}
           </div>
+
         </Reveal>
 
         <Reveal delay={120}>
