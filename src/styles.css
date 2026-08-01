@@ -99,6 +99,12 @@
 }
 
 @layer base {
+  html,
+  body {
+    overflow-x: hidden;
+    max-width: 100%;
+  }
+
   @font-face {
     font-family: "Zoho Puvi";
     src: url("/__l5e/assets-v1/54850261-8ba6-4f2b-b64b-d1b0296a5d23/ZohoPuvi-Regular.ttf") format("truetype");

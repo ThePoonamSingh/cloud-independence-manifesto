@@ -58,7 +58,7 @@ export function Section({
   return (
     <section
       id={id}
-      className={`relative mx-auto w-full max-w-6xl px-6 py-28 md:px-10 md:py-40 ${className}`}
+      className={`relative mx-auto w-full max-w-6xl px-5 py-20 sm:px-6 sm:py-28 md:px-10 md:py-40 ${className}`}
     >
       {kicker && (
         <Reveal>
