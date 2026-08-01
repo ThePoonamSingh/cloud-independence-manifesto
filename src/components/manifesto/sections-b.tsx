@@ -162,10 +162,84 @@ export function TeachingAI() {
   );
 }
 
-/* SECTION 11 — Catalyst 3.0 */
+/* SECTION 11 — What's new in Catalyst 3.0 */
+const pillars = [
+  {
+    kicker: "AI-Native Developer Experience",
+    headline: "Built for developers and AI agents together",
+    body: "Agent Skills, MCP support, AI-assisted workflows and IDE integrations mean Catalyst is understood by AI agents and used by developers inside the tools they already use.",
+    accent: "cool",
+  },
+  {
+    kicker: "Integrated Full-Stack Cloud",
+    headline: "One platform, not a patchwork of services",
+    body: "Compute, backend, authentication, storage, AI, deployment, integrations and operations are delivered as a single integrated system.",
+    accent: "signal",
+  },
+  {
+    kicker: "Serverless Foundation",
+    headline: "Deploy code, not infrastructure",
+    body: "No provisioning, capacity planning or server management. The platform automatically scales and operates the underlying infrastructure.",
+    accent: "cool",
+  },
+  {
+    kicker: "Open Ecosystem",
+    headline: "Open-source SDKs, CLI and Slyte framework",
+    body: "Open tooling gives developers transparency and gives AI agents a predictable interface for building, deploying and operating applications.",
+    accent: "signal",
+  },
+];
+
+export function WhatsNew() {
+  return (
+    <Section id="whats-new" className="gradient-section">
+      <Reveal>
+        <span className="kicker">What's new in Catalyst 3.0</span>
+        <h2 className="display mt-10 max-w-3xl text-4xl md:text-7xl">
+          Four pillars for the AI era.
+        </h2>
+        <p className="mt-6 max-w-2xl text-muted-foreground">
+          Catalyst 3.0 introduces an Agent-Ready Full-Stack Cloud — combining AI-native developer
+          experience, an integrated platform, serverless infrastructure and an open ecosystem.
+        </p>
+      </Reveal>
+      <div className="mt-20 grid gap-px border border-border bg-border md:grid-cols-2">
+        {pillars.map((p, i) => (
+          <Reveal key={p.kicker} delay={i * 80}>
+            <div className="group relative h-full bg-background p-8 md:p-10">
+              <span
+                className={`absolute left-0 top-0 h-px w-0 transition-[width] duration-700 group-hover:w-full ${
+                  p.accent === "cool" ? "bg-cool" : "bg-signal"
+                }`}
+              />
+              <p className={`kicker ${p.accent === "cool" ? "text-cool" : "text-signal"}`}>
+                {p.kicker}
+              </p>
+              <p className="display mt-5 text-xl md:text-2xl">{p.headline}</p>
+              <p className="mt-4 text-sm text-muted-foreground">{p.body}</p>
+            </div>
+          </Reveal>
+        ))}
+      </div>
+      <Reveal>
+        <a
+          href="https://catalyst.zoho.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-12 inline-flex items-center gap-3 border border-border px-5 py-3 text-sm text-muted-foreground transition-colors hover:border-foreground hover:text-foreground"
+        >
+          Visit catalyst.zoho.com
+          <span className="text-xs">↗</span>
+        </a>
+      </Reveal>
+    </Section>
+  );
+}
+
+/* SECTION 12 — Catalyst 3.0 deep dive */
 const workflow = ["Idea", "Prompt", "Build", "Deploy", "Scale", "Observe", "Operate"];
 
-const whatsNew = [
+const capabilities = [
   {
     t: "MCP support",
     h: "Connect to any AI model or tool, on an open standard",
@@ -228,14 +302,14 @@ export function Catalyst() {
 
       <div className="mt-24 border-t border-border pt-16">
         <Reveal>
-          <h3 className="display text-3xl md:text-5xl">What's new in Catalyst 3.0</h3>
+          <h3 className="display text-3xl md:text-5xl">Capabilities</h3>
           <p className="mt-6 max-w-xl text-muted-foreground">
             New capabilities make it easier to build, connect, deploy, and operate intelligent
             applications — without adding a single extra system to manage.
           </p>
         </Reveal>
         <div className="mt-12 grid gap-px border border-border bg-border md:grid-cols-2">
-          {whatsNew.map((c, i) => (
+          {capabilities.map((c, i) => (
             <Reveal key={c.t} delay={i * 80}>
               <div className="h-full bg-background p-8 md:p-10">
                 <p className="kicker text-signal">{c.t}</p>
