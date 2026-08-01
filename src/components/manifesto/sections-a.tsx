@@ -53,22 +53,10 @@ const signals = [
     source: "Gartner Public Cloud Forecast, 2025",
   },
   {
-    stat: "90%",
-    claim: "of enterprises will adopt a hybrid or multi-vendor posture.",
-    detail: "Multi-vendor is now the default state — and the default source of operational debt.",
-    source: "Gartner Cloud Strategy Outlook, 2025",
-  },
-  {
     stat: "65%",
     claim: "of developer time is spent on work that is not the product.",
     detail: "Pipelines, environments, glue code, upgrades, incidents. The tax nobody budgeted for.",
     source: "Stack Overflow Developer Survey, 2024",
-  },
-  {
-    stat: "6×",
-    claim: "growth in the number of vendors in a typical modern application stack.",
-    detail: "Each integration adds surface area for failure, cost and security review.",
-    source: "CNCF Annual Survey, 2024",
   },
 ];
 
@@ -76,7 +64,7 @@ export function Signals() {
   return (
     <Section id="signals" kicker="The ground has already moved">
       <Reveal>
-        <h2 className="display max-w-3xl text-4xl md:text-6xl">Five independent signals.</h2>
+        <h2 className="display max-w-3xl text-4xl md:text-6xl">Three independent signals.</h2>
       </Reveal>
       <div className="mt-16 grid gap-px border border-border bg-border md:grid-cols-3">
         {signals.map((s, i) => (
