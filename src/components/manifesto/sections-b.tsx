@@ -346,51 +346,6 @@ export function WhatsNew() {
   );
 }
 
-/* SECTION 12 — Catalyst 3.0 deep dive */
-const workflow = ["Idea", "Prompt", "Build", "Deploy", "Scale", "Observe", "Operate"];
-
-
-export function Catalyst() {
-  const { ref, visible } = useReveal<HTMLDivElement>();
-  return (
-    <Section id="catalyst" kicker="Catalyst 3.0" className="gradient-section">
-      <Reveal>
-        <h2 className="display max-w-3xl text-4xl md:text-7xl">
-          Everything from prompt to production.
-        </h2>
-        <p className="mt-6 max-w-xl text-muted-foreground">
-          No service sprawl. No infrastructure assembly. No stitching together six different vendors.
-        </p>
-        <a
-          href="https://catalyst.zoho.com/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="mt-8 inline-flex items-center gap-3 border border-border px-5 py-3 text-sm text-muted-foreground transition-colors hover:border-foreground hover:text-foreground"
-        >
-          Visit catalyst.zoho.com
-          <span className="text-xs">↗</span>
-        </a>
-      </Reveal>
-      <div ref={ref} className="mt-20 grid grid-cols-1 gap-px border border-border bg-border sm:grid-cols-2 lg:grid-cols-7">
-        {workflow.map((w, i) => (
-          <div
-            key={w}
-            className="bg-background p-6 transition-all duration-700 lg:p-5"
-            style={{
-              opacity: visible ? 1 : 0,
-              transform: visible ? "none" : "translateY(12px)",
-              transitionDelay: `${i * 120}ms`,
-            }}
-          >
-            <p className="font-mono text-xs text-signal">{String(i + 1).padStart(2, "0")}</p>
-            <p className="mt-6 text-lg">{w}</p>
-          </div>
-        ))}
-      </div>
-
-    </Section>
-  );
-}
 
 
 /* SECTION 12 — Why Zoho */
