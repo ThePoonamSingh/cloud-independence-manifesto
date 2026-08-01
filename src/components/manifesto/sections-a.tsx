@@ -485,45 +485,40 @@ const neverAgain = [
   "On-call runbooks",
 ];
 
-export function NeverTouch() {
+function NeverTouchTags() {
   const { ref, visible } = useReveal<HTMLDivElement>();
   return (
-    <Section id="never-touch" kicker="The list you'll never open again">
-      <div className="grid gap-16 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.4fr)]">
-        <Reveal>
-          <h2 className="display text-4xl md:text-6xl">
-            You'll never touch <em>this</em> again.
-          </h2>
-          <p className="mt-8 max-w-md text-muted-foreground">
-            Every item here is real work that used to sit between your code and your users.
-            Catalyst does it. You don't. That's what Cloud Independence means, concretely.
-          </p>
-        </Reveal>
-        <div ref={ref} className="flex flex-wrap gap-3 lg:justify-end lg:content-start">
-          {neverAgain.map((item, i) => (
+    <div className="mt-20 grid gap-10 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.5fr)]">
+      <Reveal>
+        <p className="kicker">The list you'll never open again</p>
+        <h3 className="display mt-5 text-3xl md:text-4xl">
+          You'll never touch <em>this</em> again.
+        </h3>
+      </Reveal>
+      <div ref={ref} className="flex flex-wrap gap-3 lg:justify-end lg:content-start">
+        {neverAgain.map((item, i) => (
+          <span
+            key={item}
+            className="relative rounded-full border border-border bg-card px-5 py-2.5 font-mono text-sm text-muted-foreground transition-all duration-700"
+            style={{
+              opacity: visible ? 1 : 0,
+              transform: visible ? "none" : "translateY(8px)",
+              transitionDelay: `${i * 70}ms`,
+            }}
+          >
+            {item}
             <span
-              key={item}
-              className="relative rounded-full border border-border bg-card px-5 py-2.5 font-mono text-sm text-muted-foreground transition-all duration-700"
+              aria-hidden
+              className="absolute left-3 right-3 top-1/2 h-px bg-signal transition-transform duration-500 origin-left"
               style={{
-                opacity: visible ? 1 : 0,
-                transform: visible ? "none" : "translateY(8px)",
-                transitionDelay: `${i * 70}ms`,
+                transform: visible ? "scaleX(1)" : "scaleX(0)",
+                transitionDelay: `${400 + i * 70}ms`,
               }}
-            >
-              {item}
-              <span
-                aria-hidden
-                className="absolute left-3 right-3 top-1/2 h-px bg-signal transition-transform duration-500 origin-left"
-                style={{
-                  transform: visible ? "scaleX(1)" : "scaleX(0)",
-                  transitionDelay: `${400 + i * 70}ms`,
-                }}
-              />
-            </span>
-          ))}
-        </div>
+            />
+          </span>
+        ))}
       </div>
-    </Section>
+    </div>
   );
 }
 
