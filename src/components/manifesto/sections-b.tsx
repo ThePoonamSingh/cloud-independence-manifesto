@@ -81,9 +81,6 @@ export function TwoBuilders() {
           </div>
         </div>
       </Reveal>
-      <Reveal>
-        <p className="display mt-16 text-3xl md:text-5xl">One platform. One architecture.</p>
-      </Reveal>
     </Section>
   );
 }
