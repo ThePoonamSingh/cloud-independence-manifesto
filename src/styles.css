@@ -211,7 +211,7 @@
 @utility section-stage {
   --enter: 1;
   --exit: 0;
-  opacity: calc(0.35 + 0.65 * var(--enter) - 0.35 * var(--exit));
+  opacity: calc(0.55 + 0.45 * var(--enter) - 0.3 * var(--exit));
   transform: translate3d(
       0,
       calc((1 - var(--enter)) * 26px - var(--exit) * 18px),
