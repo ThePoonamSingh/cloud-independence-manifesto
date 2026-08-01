@@ -34,14 +34,22 @@ export function TwoBuilders() {
     <Section id="two-builders">
       <Reveal>
         <h2 className="display max-w-4xl text-4xl md:text-7xl">
-          One platform for developers and AI agents.
+          One platform for the human, the agent, and the software they build together.
         </h2>
       </Reveal>
       <Reveal delay={150}>
-        <p className="mt-6 max-w-2xl text-lg text-muted-foreground">
-          The same serverless platform serves two kinds of builders: humans who write intent, and
-          agents who turn intent into running systems.
-        </p>
+        <div className="mt-6 max-w-2xl space-y-4 text-lg text-muted-foreground">
+          <p>
+            The same serverless platform serves two kinds of builders: humans who write intent, and
+            agents who turn intent into running systems.
+          </p>
+          <p>
+            Instead of developers and AI using separate toolchains, Catalyst exposes one unified
+            surface — SDKs, CLI, MCP and a serverless runtime — that both can understand and
+            operate. The human brings intent, the agent brings execution, and the platform handles
+            the infrastructure for both.
+          </p>
+        </div>
       </Reveal>
       <div className="mt-20 grid gap-px border border-border bg-border md:grid-cols-2">
         {[
