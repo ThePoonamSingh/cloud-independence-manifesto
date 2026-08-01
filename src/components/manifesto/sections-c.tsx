@@ -5,53 +5,55 @@ import maniVembuAsset from "@/assets/mani-vembu-lineart.png.asset.json";
 /* SECTION 13 — Vision */
 export function Vision() {
   return (
-    <Section id="vision" kicker="Vision">
-      <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
-        <div>
-          <Reveal>
-            <blockquote className="display text-[clamp(2rem,5vw,4rem)] leading-[1.05]">
-              “The best infrastructure is the infrastructure developers never have to think about.”
-            </blockquote>
-          </Reveal>
-          <Reveal delay={120}>
-            <figcaption className="mt-8 flex items-center gap-4">
-              <span className="h-px w-12 bg-signal" />
-              <span className="kicker">
-                Mani Vembu, Chief Executive Officer, Zoho
-              </span>
-            </figcaption>
-          </Reveal>
-          <Reveal delay={240}>
-            <p className="mt-10 max-w-xl text-lg leading-relaxed text-muted-foreground md:text-xl">
-              That is the standard Catalyst 3.0 was built to meet. One platform that
-              takes the infrastructure problem off the developer’s plate — and off
-              the AI’s too.
-            </p>
-          </Reveal>
-          <Reveal delay={360}>
-            <a
-              href="#catalyst"
-              className="group mt-8 inline-flex items-center gap-3 border border-signal bg-signal-soft px-6 py-3 text-sm font-medium text-foreground transition-colors hover:bg-signal hover:text-background"
-            >
-              <span>See how Catalyst 3.0 delivers it</span>
-              <span className="transition-transform group-hover:translate-x-1">→</span>
-            </a>
+    <div className="bg-foreground text-background [&_.kicker]:text-background/60">
+      <Section id="vision" kicker="Vision">
+        <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
+          <div>
+            <Reveal>
+              <blockquote className="display text-[clamp(2rem,5vw,4rem)] leading-[1.05]">
+                “The best infrastructure is the infrastructure developers never have to think about.”
+              </blockquote>
+            </Reveal>
+            <Reveal delay={120}>
+              <figcaption className="mt-8 flex items-center gap-4">
+                <span className="h-px w-12 bg-signal" />
+                <span className="kicker">
+                  Mani Vembu, Chief Executive Officer, Zoho
+                </span>
+              </figcaption>
+            </Reveal>
+            <Reveal delay={240}>
+              <p className="mt-10 max-w-xl text-lg leading-relaxed text-background/70 md:text-xl">
+                That is the standard Catalyst 3.0 was built to meet. One platform that
+                takes the infrastructure problem off the developer’s plate — and off
+                the AI’s too.
+              </p>
+            </Reveal>
+            <Reveal delay={360}>
+              <a
+                href="#catalyst"
+                className="group mt-8 inline-flex items-center gap-3 border border-background/25 px-6 py-3 text-sm font-medium text-background transition-colors hover:bg-background hover:text-foreground"
+              >
+                <span>See how Catalyst 3.0 delivers it</span>
+                <span className="transition-transform group-hover:translate-x-1">→</span>
+              </a>
+            </Reveal>
+          </div>
+          <Reveal delay={180}>
+            <figure className="relative overflow-hidden">
+              <img
+                src={maniVembuAsset.url}
+                alt="Line-art portrait illustration of Mani Vembu"
+                width={1024}
+                height={1024}
+                loading="lazy"
+                className="w-full mix-blend-multiply"
+              />
+            </figure>
           </Reveal>
         </div>
-        <Reveal delay={180}>
-          <figure className="relative overflow-hidden border border-border bg-muted/30">
-            <img
-              src={maniVembuAsset.url}
-              alt="Line-art portrait illustration of Mani Vembu"
-              width={1024}
-              height={1024}
-              loading="lazy"
-              className="w-full opacity-90 invert"
-            />
-          </figure>
-        </Reveal>
-      </div>
-    </Section>
+      </Section>
+    </div>
   );
 }
 
