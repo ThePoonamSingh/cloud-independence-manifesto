@@ -7,10 +7,8 @@
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 
 export default defineConfig({
-  // Fully client-side rendered: no server runtime, static output in dist/.
-  nitro: false,
   tanstackStart: {
-    spa: { enabled: true },
-    prerender: { enabled: false },
+    // Redirect TanStack Start's bundled server entry to src/server.ts (our error wrapper).
+    server: { entry: "server" },
   },
 });
