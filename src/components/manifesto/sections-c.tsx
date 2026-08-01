@@ -19,21 +19,20 @@ function ThesisQuote({ children }: { children: string }) {
     return () => io.disconnect();
   }, []);
 
-  const paragraphs = children.trim().split(/\n\n+/);
+  const paragraphs = children.trim().split(/\s*\n\s*\n\s*/);
   let wordIndex = 0;
   return (
     <blockquote
       ref={ref}
-      className="font-display font-light italic text-[clamp(1.15rem,2.2vw,1.85rem)] leading-[1.26] tracking-[-0.01em]"
+      className="thesis-quote"
       aria-label={children}
       data-visible={visible}
     >
-      <span className="thesis-quote-mark" data-visible={visible}>“</span>
       {paragraphs.map((paragraph, pIdx) => {
         const words = paragraph.split(/\s+/);
-        const isLast = pIdx === paragraphs.length - 1;
+        const isLastParagraph = pIdx === paragraphs.length - 1;
         return (
-          <span key={pIdx} className={pIdx > 0 ? "block mt-4" : undefined}>
+          <span key={pIdx} className={pIdx > 0 ? "block mt-5 md:mt-7" : undefined}>
             {words.map((word) => {
               const i = wordIndex++;
               return (
@@ -41,17 +40,16 @@ function ThesisQuote({ children }: { children: string }) {
                   key={i}
                   className="thesis-word"
                   data-visible={visible}
-                  style={{ transitionDelay: `${120 + i * 55}ms` }}
+                  style={{ transitionDelay: `${80 + i * 35}ms` }}
                 >
                   {word}
                 </span>
               );
             })}
-            {!isLast && <br />}
+            {!isLastParagraph && <br />}
           </span>
         );
       })}
-      <span className="thesis-quote-mark" data-visible={visible}>”</span>
     </blockquote>
   );
 }
@@ -73,9 +71,9 @@ export function Vision() {
                 >
                   “
                 </span>
-                <ThesisQuote>
-                  Cloud Independence is when developers stop adapting to the cloud, and the cloud starts adapting to how software is built. Developers should build software. The platform should take care of everything else.
-                </ThesisQuote>
+                <ThesisQuote>{`Cloud Independence is when developers stop adapting to the cloud, and the cloud starts adapting to how software is built.
+
+Developers should build software. The platform should take care of everything else.`}</ThesisQuote>
 
               </div>
             </Reveal>
