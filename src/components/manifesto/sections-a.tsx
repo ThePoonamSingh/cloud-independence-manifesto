@@ -39,13 +39,6 @@ function EraStrip() {
 /* SECTION 2 — Signals */
 const signals = [
   {
-    stat: "78%",
-    claim: "of organizations report using AI in at least one business function.",
-    detail:
-      "Adoption crossed from experiment to default in under 24 months — faster than cloud, faster than mobile.",
-    source: "McKinsey, The State of AI, 2025",
-  },
-  {
     stat: "41%",
     claim: "of new code in AI-assisted repositories is machine-generated.",
     detail:
@@ -83,7 +76,7 @@ export function Signals() {
   return (
     <Section id="signals" kicker="The ground has already moved">
       <Reveal>
-        <h2 className="display max-w-3xl text-4xl md:text-6xl">Six independent signals.</h2>
+        <h2 className="display max-w-3xl text-4xl md:text-6xl">Five independent signals.</h2>
       </Reveal>
       <div className="mt-16 grid gap-px border border-border bg-border md:grid-cols-3">
         {signals.map((s, i) => (
