@@ -289,6 +289,13 @@ export function Frankenstack() {
         className="relative mt-16 flex h-72 items-center justify-center overflow-hidden md:h-80"
       >
         <div
+          className="absolute inset-0"
+          style={{
+            background:
+              "radial-gradient(ellipse 60% 80% at 50% 50%, color-mix(in oklab, var(--color-cold) 12%, transparent), transparent 70%)",
+          }}
+        />
+        <div
           className="absolute inset-0 border border-border/50"
           style={{
             maskImage: "radial-gradient(circle, white, transparent 70%)",
