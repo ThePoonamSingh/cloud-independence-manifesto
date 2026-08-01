@@ -8,6 +8,18 @@ const options = [
   "Vendor sprawl",
   "Manual deployments",
   "Infrastructure glue",
+  "Proprietary cloud APIs",
+  "Egress pricing surprises",
+  "IAM role roulette",
+  "YAML archaeology",
+  "Works on my machine",
+  "15-minute deploy cycles",
+  "Alert fatigue",
+  "Console tab overload",
+  "AI-unreadable architecture",
+  "Tribal knowledge as docs",
+  "Least-privilege drift",
+  "Staging that costs like prod",
 ];
 
 function drawDeclaration(selected: string[], name: string) {
@@ -75,7 +87,9 @@ export function Declaration() {
       <Reveal>
         <h2 className="display max-w-3xl text-4xl md:text-6xl">I declare Cloud Independence.</h2>
         <p className="mt-6 max-w-xl text-muted-foreground">
-          Choose what you are done maintaining. We'll generate a card built for LinkedIn.
+          From infrastructure glue to vendor lock-in, from alert fatigue to AI-unreadable
+          architecture — select every burden you are done carrying. We'll generate a card
+          built for LinkedIn.
         </p>
       </Reveal>
 
