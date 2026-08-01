@@ -206,34 +206,3 @@ export function Declaration() {
   );
 }
 
-export function Closing() {
-  return (
-    <section className="relative">
-      <div className="mx-auto max-w-6xl px-6 py-32 md:px-10 md:py-48">
-        <Reveal>
-          <h2 className="display text-[clamp(2.75rem,9vw,8rem)]">This is only the beginning.</h2>
-        </Reveal>
-        <div className="mt-16 max-w-2xl space-y-6 text-lg text-muted-foreground md:text-xl">
-          <Reveal delay={100}>
-            <p>Every major computing shift required new infrastructure.</p>
-          </Reveal>
-          <Reveal delay={200}>
-            <p>The last decade made developers productive.</p>
-          </Reveal>
-          <Reveal delay={300}>
-            <p>The next decade will make AI productive.</p>
-          </Reveal>
-          <Reveal delay={400}>
-            <p className="text-foreground">Catalyst is building the cloud for that future.</p>
-          </Reveal>
-        </div>
-      </div>
-      <div className="h-[45vh] bg-gradient-to-b from-transparent to-black" />
-      <footer className="border-t border-border bg-black">
-        <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-6 py-10 md:px-10">
-          <p className="kicker">Catalyst 3.0</p>
-        </div>
-      </footer>
-    </section>
-  );
-}
