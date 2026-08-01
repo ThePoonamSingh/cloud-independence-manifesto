@@ -65,7 +65,7 @@ export function Signals() {
     <Section id="signals">
       <Reveal>
         <h2 className="display max-w-4xl text-4xl md:text-6xl">
-          Cloud independence is already happening.
+          The old contract between developers and infrastructure is breaking.
         </h2>
       </Reveal>
       <div className="mt-16 grid gap-px border border-border bg-border md:grid-cols-3">
