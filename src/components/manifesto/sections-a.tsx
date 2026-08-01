@@ -162,33 +162,46 @@ export function Shift() {
 }
 
 /* SECTION 5 — Patchwork Stack */
-const vendors = [
-  { name: "AWS", top: "10%", left: "12%", driftX: -10, driftY: 5, rotStart: -2, rotEnd: 1, delay: 0, stress: false },
-  { name: "Azure", top: "14%", left: "28%", driftX: 8, driftY: 10, rotStart: 3, rotEnd: -2, delay: 0.4, stress: false },
-  { name: "GCP", top: "8%", left: "44%", driftX: -6, driftY: -4, rotStart: -1, rotEnd: 2, delay: 0.8, stress: false },
-  { name: "Datadog", top: "5%", left: "62%", driftX: 5, driftY: -8, rotStart: 1, rotEnd: -1, delay: 1.2, stress: true },
-  { name: "Snowflake", top: "12%", left: "78%", driftX: 12, driftY: -5, rotStart: 2, rotEnd: -3, delay: 0.2, stress: false },
-  { name: "PagerDuty", top: "34%", left: "6%", driftX: -5, driftY: -5, rotStart: -4, rotEnd: 2, delay: 0.6, stress: false },
-  { name: "Vercel", top: "30%", left: "22%", driftX: -8, driftY: 15, rotStart: -1, rotEnd: 3, delay: 1.0, stress: false },
-  { name: "MongoDB", top: "38%", left: "38%", driftX: 0, driftY: 12, rotStart: -1, rotEnd: 1, delay: 0.3, stress: false },
-  { name: "Auth0", top: "32%", left: "54%", driftX: 5, driftY: 5, rotStart: -3, rotEnd: 1, delay: 1.4, stress: true },
-  { name: "Stripe", top: "36%", left: "72%", driftX: -15, driftY: 5, rotStart: -2, rotEnd: 2, delay: 0.5, stress: false },
-  { name: "Supabase", top: "42%", left: "86%", driftX: 10, driftY: -10, rotStart: 5, rotEnd: -2, delay: 0.9, stress: false },
-  { name: "Cloudflare", top: "58%", left: "16%", driftX: -8, driftY: 15, rotStart: -1, rotEnd: 3, delay: 0.7, stress: false },
-  { name: "GitHub", top: "56%", left: "34%", driftX: 10, driftY: -10, rotStart: 5, rotEnd: -2, delay: 1.1, stress: false },
-  { name: "OpenAI", top: "62%", left: "50%", driftX: 5, driftY: 5, rotStart: -3, rotEnd: 1, delay: 0.1, stress: false },
-  { name: "Pinecone", top: "58%", left: "68%", driftX: -20, driftY: -10, rotStart: 2, rotEnd: -4, delay: 1.3, stress: false },
-  { name: "Terraform", top: "66%", left: "82%", driftX: 12, driftY: -5, rotStart: 2, rotEnd: -3, delay: 0.45, stress: false },
-  { name: "Kafka", top: "76%", left: "42%", driftX: -2, driftY: 2, rotStart: 0, rotEnd: 0, delay: 1.5, stress: true },
-  { name: "…", top: "80%", left: "64%", driftX: 8, driftY: 6, rotStart: -2, rotEnd: 2, delay: 1.6, stress: false },
+const C0 = 86, C1 = 240, C2 = 394, C3 = 548, C4 = 702;
+const R0 = 70, R1 = 190, R2 = 310, R3 = 430;
+
+/* Snake routing: one request dragged left→right→left through every vendor */
+const mazeNodes: { name: string; x: number; y: number; stress?: boolean }[] = [
+  { name: "request", x: C0, y: R0 },
+  { name: "Cloudflare", x: C1, y: R0 },
+  { name: "Auth0", x: C2, y: R0, stress: true },
+  { name: "AWS", x: C3, y: R0 },
+  { name: "Datadog", x: C4, y: R0, stress: true },
+  { name: "Vercel", x: C4, y: R1 },
+  { name: "Stripe", x: C3, y: R1 },
+  { name: "MongoDB", x: C2, y: R1 },
+  { name: "Kafka", x: C1, y: R1, stress: true },
+  { name: "PagerDuty", x: C0, y: R1 },
+  { name: "GitHub", x: C0, y: R2 },
+  { name: "Terraform", x: C1, y: R2 },
+  { name: "OpenAI", x: C2, y: R2 },
+  { name: "Pinecone", x: C3, y: R2 },
+  { name: "Snowflake", x: C4, y: R2 },
+  { name: "Azure", x: C4, y: R3 },
+  { name: "Supabase", x: C3, y: R3 },
+  { name: "GCP", x: C2, y: R3 },
+  { name: "…", x: C1, y: R3 },
+  { name: "user", x: C0, y: R3 },
 ];
 
-const webPaths = [
-  { d: "M 80,120 Q 220,40 400,120 T 720,100", width: 1.5, dash: "6 10", duration: "4s" },
-  { d: "M 60,260 Q 240,340 420,240 T 760,300", width: 1, dash: "3 8", duration: "6s" },
-  { d: "M 120,60 C 260,160 460,260 660,160", width: 0.5, dash: "4 6", duration: "5s" },
-  { d: "M 280,40 L 420,180 L 560,320", width: 0.5, dash: "2 6", duration: "7s" },
+const MAZE_PATH = `M ${C0},${R0} H ${C4} V ${R1} H ${C0} V ${R2} H ${C4} V ${R3} H ${C0}`;
+const MAZE_LEN = (C4 - C0) * 4 + (R3 - R0);
+
+/* Dead ends and retries branching off the main route */
+const deadEnds = [
+  `M ${C1},${R0} V ${R0 + 46} H ${C1 + 58}`,
+  `M ${C3},${R1} V ${R1 - 44} H ${C3 - 64}`,
+  `M ${C2},${R2} V ${R2 + 42} H ${C2 + 70}`,
+  `M ${C4},${R2} V ${R2 - 40} H ${C4 - 52}`,
+  `M ${C1},${R3} V ${R3 - 48} H ${C1 - 40}`,
 ];
+
+
 
 export function Frankenstack() {
   const { ref, visible } = useReveal<HTMLDivElement>();
@@ -225,70 +238,142 @@ export function Frankenstack() {
         ref={ref}
         className="mt-16 grid gap-px border border-border bg-border lg:grid-cols-[1.4fr_0.6fr]"
       >
-        <div className="relative flex min-h-[28rem] items-center justify-center overflow-hidden bg-background md:min-h-[32rem] lg:min-h-[40rem]">
+        <div className="relative flex min-h-[26rem] items-center justify-center overflow-hidden bg-background p-4 md:min-h-[32rem] md:p-8 lg:min-h-[40rem]">
           <div
             className="absolute inset-0 opacity-60"
             style={{
               background:
-                "radial-gradient(ellipse 60% 80% at 50% 50%, color-mix(in oklab, var(--color-cold) 10%, transparent), transparent 70%)",
+                "radial-gradient(ellipse 70% 80% at 50% 50%, color-mix(in oklab, var(--color-cold) 10%, transparent), transparent 70%)",
             }}
           />
 
           <svg
-            className="pointer-events-none absolute inset-0 h-full w-full"
-            viewBox="0 0 800 340"
+            className="relative h-full w-full"
+            viewBox="0 0 788 500"
             preserveAspectRatio="xMidYMid meet"
             fill="none"
           >
-            {webPaths.map((p, i) => (
+            <defs>
+              <pattern id="maze-grid" width="44" height="44" patternUnits="userSpaceOnUse">
+                <path d="M 44 0 L 0 0 0 44" fill="none" stroke="var(--color-border)" strokeWidth="0.5" />
+              </pattern>
+            </defs>
+            <rect width="788" height="500" fill="url(#maze-grid)" opacity="0.35" />
+
+            {/* dead ends / retries */}
+            {deadEnds.map((d, i) => (
               <path
                 key={i}
-                d={p.d}
+                d={d}
                 stroke="var(--color-signal)"
-                strokeWidth={p.width}
-                strokeDasharray={p.dash}
-                className="opacity-0 transition-opacity duration-700"
+                strokeWidth="1"
+                strokeDasharray="3 7"
                 style={{
-                  opacity: visible ? 0.6 : 0,
-                  animation: visible ? `line-pulse ${p.duration} linear infinite` : "none",
-                  animationDelay: visible ? `${0.3 + i * 0.25}s` : "0s",
-                  filter: visible ? "drop-shadow(0 0 4px color-mix(in oklab, var(--color-signal) 50%, transparent))" : "none",
+                  opacity: visible ? 0.35 : 0,
+                  transition: "opacity 900ms ease",
+                  transitionDelay: `${600 + i * 120}ms`,
+                  animation: visible ? `line-pulse ${5 + i}s linear infinite` : "none",
                 }}
               />
             ))}
+            {deadEnds.map((d, i) => {
+              const parts = d.split(" ");
+              const ex = Number(parts[parts.length - 1]);
+              const ey = Number(parts[3]);
+              return (
+                <g key={`x${i}`} style={{ opacity: visible ? 0.5 : 0, transition: "opacity 900ms ease", transitionDelay: `${900 + i * 120}ms` }}>
+                  <path
+                    d={`M ${ex - 4},${ey - 4} L ${ex + 4},${ey + 4} M ${ex + 4},${ey - 4} L ${ex - 4},${ey + 4}`}
+                    stroke="var(--color-signal)"
+                    strokeWidth="1.2"
+                  />
+                </g>
+              );
+            })}
+
+            {/* the route */}
+            <path
+              d={MAZE_PATH}
+              stroke="var(--color-border)"
+              strokeWidth="1.5"
+              style={{
+                strokeDasharray: MAZE_LEN,
+                strokeDashoffset: visible ? 0 : MAZE_LEN,
+                transition: "stroke-dashoffset 3.4s cubic-bezier(0.4,0,0.2,1)",
+              }}
+            />
+
+            {/* travelling request */}
+            {visible && (
+              <path
+                d={MAZE_PATH}
+                stroke="var(--color-signal)"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeDasharray={`70 ${MAZE_LEN}`}
+                style={{
+                  filter: "drop-shadow(0 0 6px color-mix(in oklab, var(--color-signal) 70%, transparent))",
+                  animation: `maze-trace 9s linear 1.2s infinite`,
+                  ["--maze-len" as string]: `${MAZE_LEN + 70}`,
+                }}
+              />
+            )}
+
+            {/* nodes */}
+            {mazeNodes.map((n, i) => {
+              const w = Math.max(52, n.name.length * 7.4 + 18);
+              const endpoint = n.name === "request" || n.name === "user";
+              return (
+                <g
+                  key={n.name}
+                  style={{
+                    opacity: visible ? 1 : 0,
+                    transition: "opacity 600ms ease",
+                    transitionDelay: `${i * 70}ms`,
+                  }}
+                >
+                  <rect
+                    x={n.x - w / 2}
+                    y={n.y - 13}
+                    width={w}
+                    height={26}
+                    fill="var(--color-background)"
+                    stroke={n.stress ? "color-mix(in oklab, var(--color-signal) 55%, transparent)" : "var(--color-border)"}
+                    strokeWidth="1"
+                    style={
+                      n.stress
+                        ? { filter: "drop-shadow(0 0 10px color-mix(in oklab, var(--color-signal) 25%, transparent))" }
+                        : undefined
+                    }
+                  />
+                  <text
+                    x={n.x}
+                    y={n.y + 4}
+                    textAnchor="middle"
+                    className="font-mono"
+                    fontSize="11"
+                    fill={
+                      endpoint
+                        ? "var(--color-foreground)"
+                        : n.stress
+                          ? "color-mix(in oklab, var(--color-signal) 85%, white)"
+                          : "var(--color-muted-foreground)"
+                    }
+                    letterSpacing="0.04em"
+                  >
+                    {n.name}
+                  </text>
+                </g>
+              );
+            })}
           </svg>
 
-          <div className="tag-container relative h-full w-full scale-[0.74] sm:scale-[0.88] md:scale-100">
-            {vendors.map((v, i) => (
-              <span
-                key={v.name}
-                className={`absolute inline-block whitespace-nowrap border bg-card px-2 py-1 font-mono text-xs transition-all duration-700 hover:-translate-y-1 hover:border-signal/60 md:px-3 md:py-1.5 md:text-sm ${
-                  v.stress
-                    ? "border-signal/40 text-foreground shadow-[0_0_18px_color-mix(in_oklab,var(--color-signal)_20%,transparent)]"
-                    : "border-border text-muted-foreground"
-                }`}
-                style={{
-                  top: v.top,
-                  left: v.left,
-                  opacity: visible ? 1 : 0,
-                  transform: visible ? undefined : "translateY(12px)",
-                  transitionDelay: `${i * 60}ms`,
-                  ["--drift-x" as string]: `${v.driftX}px`,
-                  ["--drift-y" as string]: `${v.driftY}px`,
-                  ["--rot-start" as string]: `${v.rotStart}deg`,
-                  ["--rot-end" as string]: `${v.rotEnd}deg`,
-                  animation: visible
-                    ? `tag-drift ${v.stress ? 10 : 12}s ease-in-out ${v.delay}s infinite${
-                        v.stress ? ", stress-jitter 0.2s ease-in-out infinite" : ""
-                      }`
-                    : "none",
-                }}
-              >
-                {v.name}
-              </span>
-            ))}
+          <div className="pointer-events-none absolute bottom-5 left-5 right-5 flex items-end justify-between font-mono text-[10px] uppercase tracking-[0.25em] text-muted-foreground md:text-[11px]">
+            <span>one feature</span>
+            <span className="text-signal">20 hops · 5 dead ends</span>
           </div>
         </div>
+
 
         <div className="grid gap-px bg-border">
           {painCards.map((item, i) => (
