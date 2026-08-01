@@ -25,17 +25,6 @@ export function Nav() {
         <a href="#top" className="kicker text-foreground">
           Catalyst 3.0
         </a>
-        <div className="hidden items-center gap-8 lg:flex">
-          {links.map((l) => (
-            <a
-              key={l.href}
-              href={l.href}
-              className="text-sm text-muted-foreground transition-colors hover:text-foreground"
-            >
-              {l.label}
-            </a>
-          ))}
-        </div>
       </div>
       <div className="h-px w-full bg-transparent">
         <div
