@@ -49,14 +49,14 @@ export function Category() {
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-signal opacity-75" />
               <span className="relative inline-flex h-2 w-2 rounded-full bg-signal" />
             </span>
-            Introducing a new category
+            Introducing Catalyst 3.0
           </span>
         </div>
       </Reveal>
 
       <Reveal delay={100}>
         <h2 className="display relative z-10 text-[clamp(3rem,10vw,9rem)] leading-[0.95]">
-          Agent-Ready{" "}
+          The agent-ready, full-stack{" "}
           <span
             className="block"
             style={{
@@ -66,7 +66,7 @@ export function Category() {
               filter: "drop-shadow(0 0 28px color-mix(in oklab, var(--cool) 35%, transparent))",
             }}
           >
-            Cloud
+            cloud
           </span>
         </h2>
       </Reveal>
