@@ -40,7 +40,7 @@ function ThesisQuote({ children }: { children: string }) {
                   key={i}
                   className="thesis-word"
                   data-visible={visible}
-                  style={{ transitionDelay: `${120 + i * 42}ms` }}
+                  style={{ transitionDelay: `${80 + i * 35}ms` }}
                 >
                   {word}
                 </span>
@@ -50,14 +50,6 @@ function ThesisQuote({ children }: { children: string }) {
           </span>
         );
       })}
-      {/* Closing quote mark — positioned at end of text block */}
-      <span
-        className="thesis-close-quote"
-        data-visible={visible}
-        aria-hidden="true"
-      >
-        ”
-      </span>
     </blockquote>
   );
 }
