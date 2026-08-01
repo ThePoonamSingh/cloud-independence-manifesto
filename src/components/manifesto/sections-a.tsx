@@ -381,8 +381,7 @@ export function Independence() {
     <Section id="independence" kicker="The movement">
       <Reveal>
         <p className="text-lg text-muted-foreground md:text-2xl">
-          Cloud Independence does <span className="text-foreground">not</span> mean using a
-          different flag on your infrastructure.
+          Cloud Independence means freedom from infrastructure.
         </p>
       </Reveal>
 
