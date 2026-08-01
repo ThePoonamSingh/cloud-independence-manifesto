@@ -60,9 +60,10 @@ export function Category() {
           <span
             className="block"
             style={{
-              background: "linear-gradient(90deg, var(--foreground) 0%, var(--cool) 50%, var(--signal) 100%)",
+              background: "linear-gradient(100deg, var(--cool) 0%, var(--signal) 100%)",
               WebkitBackgroundClip: "text",
               WebkitTextFillColor: "transparent",
+              filter: "drop-shadow(0 0 28px color-mix(in oklab, var(--cool) 35%, transparent))",
             }}
           >
             Cloud
