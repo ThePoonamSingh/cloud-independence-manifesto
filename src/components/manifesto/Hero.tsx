@@ -106,23 +106,20 @@ export function Hero() {
 
         {/* Main headline */}
         <h1 className="max-w-5xl text-[clamp(2.5rem,8.5vw,7rem)] font-black leading-[0.86] tracking-[-0.045em] text-foreground opacity-0 animate-[fade-up_1.1s_ease-out_0.5s_forwards]">
-          The best infrastructure is the infrastructure{" "}
-          <span className="inline-block">
-            developers{" "}
-            <span className="relative inline-block font-serif italic font-normal text-transparent bg-clip-text bg-gradient-to-br from-foreground via-foreground to-foreground/55">
-              never have to think about.
-              <span
-                className="pointer-events-none absolute -inset-x-2 -inset-y-1 -z-10 rounded-full opacity-40 blur-2xl"
-                style={{ background: "linear-gradient(90deg, var(--signal-soft), var(--cool-soft))" }}
-                aria-hidden="true"
-              />
-            </span>
+          Now the cloud is becoming{" "}
+          <span className="relative inline-block font-serif italic font-normal text-transparent bg-clip-text bg-gradient-to-br from-foreground via-foreground to-foreground/55">
+            invisible.
+            <span
+              className="pointer-events-none absolute -inset-x-4 -inset-y-2 -z-10 rounded-full opacity-40 blur-2xl"
+              style={{ background: "linear-gradient(90deg, var(--signal-soft), var(--cool-soft))" }}
+              aria-hidden="true"
+            />
           </span>
         </h1>
 
         {/* Body hierarchy */}
-        <p className="lede mt-12 text-base text-balance text-muted-foreground opacity-0 animate-[fade-up_1s_ease-out_0.9s_forwards] md:text-lg">
-          We believe in Cloud Independence as the next step in cloud computing. A future where developers describe what they want to build, and the platform handles the complexity of getting it into production.
+        <p className="lede mt-12 max-w-3xl text-base text-balance text-muted-foreground opacity-0 animate-[fade-up_1s_ease-out_0.9s_forwards] md:text-lg">
+          First, developers owned the servers. Then they rented them. Now the cloud is becoming invisible—so humans and agents can build without becoming infrastructure experts. A new generation of software is being built unrestricted by servers, regions, and vendor lock-in. Catalyst 3.0 is the cloud that makes it possible.
         </p>
       </div>
     </header>
