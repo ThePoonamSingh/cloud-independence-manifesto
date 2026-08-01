@@ -79,7 +79,7 @@ function Index() {
       <Rule />
       <TeachingAI />
       <Rule />
-      <Declaration />
+      <StartBuilding />
     </main>
   );
 }
