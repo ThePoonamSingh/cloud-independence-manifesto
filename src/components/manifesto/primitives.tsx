@@ -44,13 +44,11 @@ export function Reveal({
 
 export function Section({
   id,
-  index,
   kicker,
   children,
   className = "",
 }: {
   id: string;
-  index?: string;
   kicker?: string;
   children: ReactNode;
   className?: string;
@@ -60,11 +58,10 @@ export function Section({
       id={id}
       className={`relative mx-auto w-full max-w-6xl px-6 py-28 md:px-10 md:py-40 ${className}`}
     >
-      {(kicker || index) && (
+      {kicker && (
         <Reveal>
-          <div className="mb-10 flex items-baseline gap-4 md:mb-16">
-            {index && <span className="kicker text-signal">{index}</span>}
-            {kicker && <span className="kicker">{kicker}</span>}
+          <div className="mb-10 md:mb-16">
+            <span className="kicker">{kicker}</span>
           </div>
         </Reveal>
       )}

@@ -14,7 +14,7 @@ const eras = [
 export function WhyNow() {
   const { ref, visible } = useReveal<HTMLDivElement>();
   return (
-    <Section id="why-now" index="01" kicker="Why now">
+    <Section id="why-now" kicker="Why now">
       <Reveal>
         <h2 className="display max-w-4xl text-4xl md:text-7xl">
           Every platform shift changes how software gets built.
@@ -104,7 +104,7 @@ const signals = [
 
 export function Signals() {
   return (
-    <Section id="signals" index="02" kicker="The ground has already moved">
+    <Section id="signals" kicker="The ground has already moved">
       <Reveal>
         <h2 className="display max-w-3xl text-4xl md:text-6xl">Six independent signals.</h2>
         <p className="mt-6 max-w-xl text-muted-foreground">
@@ -156,7 +156,7 @@ export function Shift() {
   }, [visible]);
 
   return (
-    <Section id="shift" index="03" kicker="The new authorship">
+    <Section id="shift" kicker="The new authorship">
       <Reveal>
         <h2 className="display max-w-4xl text-4xl md:text-7xl">
           AI changed software. Now software must change cloud.
@@ -223,7 +223,7 @@ function Chain({ items, dim = false }: { items: string[]; dim?: boolean }) {
 
 export function NewCustomer() {
   return (
-    <Section id="new-customer" index="04" kicker="The cloud has a new customer">
+    <Section id="new-customer" kicker="The cloud has a new customer">
       <Reveal>
         <h2 className="display max-w-4xl text-4xl md:text-6xl">
           Today's cloud was designed for humans. Tomorrow's cloud must be understandable by
@@ -274,7 +274,7 @@ const vendors = [
 export function Frankenstack() {
   const { ref, visible } = useReveal<HTMLDivElement>();
   return (
-    <Section id="frankenstack" index="05" kicker="The problem">
+    <Section id="frankenstack" kicker="The problem">
       <Reveal>
         <h2 className="display max-w-3xl text-4xl md:text-7xl">
           Welcome to the era of the Frankenstack.
@@ -319,7 +319,7 @@ export function Independence() {
     "Freedom for AI to build safely.",
   ];
   return (
-    <Section id="independence" index="06" kicker="The movement">
+    <Section id="independence" kicker="The movement">
       <Reveal>
         <p className="text-lg text-muted-foreground md:text-2xl">
           Cloud Independence does <span className="text-foreground">not</span> mean using a
@@ -342,7 +342,7 @@ export function Thesis() {
   const traits = ["Machine-readable", "Discoverable", "Agent-friendly", "Composable"];
   const ref = useRef<HTMLDivElement>(null);
   return (
-    <Section id="thesis" index="07" kicker="The thesis">
+    <Section id="thesis" kicker="The thesis">
       <Reveal>
         <PullQuote text="Infrastructure has become knowledge." />
       </Reveal>
