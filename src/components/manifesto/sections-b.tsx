@@ -29,73 +29,101 @@ export function Category() {
 }
 
 /* SECTION 9 — One system, two builders */
+const sharedInterfaces = ["MCP", "Agent Skills", "REST", "SDK"];
+const platformCapabilities = [
+  "Frontend",
+  "Backend",
+  "Database",
+  "Storage",
+  "AI",
+  "Serverless",
+  "DevOps",
+  "Observability",
+];
+
 export function TwoBuilders() {
   return (
     <Section id="two-builders">
-      <Reveal>
-        <h2 className="kicker max-w-4xl text-lg leading-relaxed md:text-2xl">
-          One platform for the human, the agent, and the software they build together.
-        </h2>
-      </Reveal>
-      <Reveal delay={150}>
-        <p className="mt-6 max-w-2xl text-lg text-muted-foreground">
-          The same serverless platform serves two kinds of builders: humans who write intent, and
-          agents who turn intent into running systems.
-        </p>
-      </Reveal>
-
-      <div className="mt-20 flex flex-col items-stretch gap-6 md:flex-row md:items-center">
-        {/* Human */}
-        <Reveal className="flex-1">
-          <div className="relative h-full overflow-hidden rounded-2xl border border-border bg-gradient-to-br from-background to-muted/40 p-8 md:p-12">
-            <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-signal/50 to-transparent" />
-            <span className="kicker">Human</span>
-            <p className="mt-6 font-sans text-4xl font-medium md:text-5xl">Developer</p>
-            <p className="mt-4 text-lg text-muted-foreground">
-              Judgment. Taste. Direction.
+      <div className="grid gap-16 lg:grid-cols-[1fr_1.15fr] lg:items-center lg:gap-20">
+        {/* Left: argument */}
+        <div>
+          <Reveal>
+            <span className="kicker">One platform, two builders</span>
+          </Reveal>
+          <Reveal delay={120}>
+            <h2 className="display mt-6 text-3xl leading-[1.05] md:text-5xl">
+              The same surface for the human and the agent.
+            </h2>
+          </Reveal>
+          <Reveal delay={220}>
+            <p className="mt-8 text-lg leading-relaxed text-muted-foreground md:text-xl">
+              Developers and AI agents use the same platform through the same interfaces, with the
+              same permissions and the same audit trail. Not a separate AI sandbox bolted onto a human
+              product.
             </p>
-          </div>
-        </Reveal>
+          </Reveal>
+          <Reveal delay={320}>
+            <a
+              href="https://catalystagentstack.onslate.in/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-8 inline-flex items-center gap-3 border border-border px-5 py-3 text-sm text-muted-foreground transition-colors hover:border-foreground hover:text-foreground"
+            >
+              See the Catalyst Agent Stack
+              <span className="text-xs">↗</span>
+            </a>
+          </Reveal>
+        </div>
 
-        {/* One Cloud */}
-        <Reveal delay={120} className="shrink-0">
-          <div className="flex flex-col items-center justify-center gap-4 px-4">
-            <div className="grid h-14 w-14 place-items-center rounded-full border border-border bg-background">
-              <span className="text-2xl text-foreground">+</span>
+        {/* Right: architecture diagram */}
+        <Reveal delay={200}>
+          <div className="relative overflow-hidden rounded-2xl border border-border bg-gradient-to-br from-card/60 to-background p-6 md:p-8">
+            <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-cool/40 via-signal/40 to-transparent" />
+
+            {/* Shared interfaces */}
+            <div>
+              <p className="kicker">Shared interfaces</p>
+              <div className="mt-4 grid grid-cols-2 gap-3 md:grid-cols-4">
+                {sharedInterfaces.map((item, i) => (
+                  <div
+                    key={item}
+                    className="group relative overflow-hidden rounded-lg bg-gradient-to-r from-cool to-signal px-4 py-3 text-center"
+                    style={{ animationDelay: `${i * 120}ms` }}
+                  >
+                    <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
+                    <span className="relative text-sm font-medium text-white">{item}</span>
+                  </div>
+                ))}
+              </div>
             </div>
-            <span className="kicker text-center">One Cloud</span>
-          </div>
-        </Reveal>
 
-        {/* Machine */}
-        <Reveal delay={200} className="flex-1">
-          <div className="relative h-full overflow-hidden rounded-2xl bg-gradient-to-r from-cool to-signal p-8 md:p-12">
-            <div className="absolute inset-0 bg-gradient-to-br from-foreground/5 to-transparent" />
-            <div className="relative">
-              <span className="kicker text-foreground/80">Machine</span>
-              <p className="mt-6 font-sans text-4xl font-medium text-foreground md:text-5xl">
-                AI Agent
-              </p>
-              <p className="mt-4 text-lg text-foreground/80">
-                Planning. Skills. Execution.
-              </p>
+            {/* Connector */}
+            <div className="my-6 flex items-center justify-center gap-4">
+              <div className="h-px flex-1 bg-gradient-to-r from-transparent via-border to-transparent" />
+              <div className="grid h-8 w-8 place-items-center rounded-full border border-border bg-background">
+                <span className="text-xs text-muted-foreground">+</span>
+              </div>
+              <div className="h-px flex-1 bg-gradient-to-r from-transparent via-border to-transparent" />
+            </div>
+
+            {/* Catalyst platform */}
+            <div>
+              <p className="kicker">Catalyst platform</p>
+              <div className="mt-4 flex flex-wrap gap-2">
+                {platformCapabilities.map((item, i) => (
+                  <span
+                    key={item}
+                    className="rounded-lg border border-border bg-background px-4 py-2 text-sm text-muted-foreground transition-colors duration-300 hover:border-foreground hover:text-foreground"
+                    style={{ animationDelay: `${i * 80}ms` }}
+                  >
+                    {item}
+                  </span>
+                ))}
+              </div>
             </div>
           </div>
         </Reveal>
       </div>
-
-      <Reveal>
-        <div className="mt-12 border border-border p-8 md:p-12">
-          <p className="kicker">Shared interfaces</p>
-          <div className="mt-6 flex flex-wrap gap-3">
-            {["MCP", "REST", "SDK", "Agent Skills"].map((s) => (
-              <span key={s} className="border border-border px-5 py-2 font-mono text-sm">
-                {s}
-              </span>
-            ))}
-          </div>
-        </div>
-      </Reveal>
     </Section>
   );
 }
