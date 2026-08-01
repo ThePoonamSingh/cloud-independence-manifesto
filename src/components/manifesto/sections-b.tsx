@@ -21,7 +21,7 @@ export function Category() {
           href="https://catalystagentstack.onslate.in/"
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-8 inline-flex items-center gap-3 border border-signal/40 bg-signal-soft px-5 py-3 text-sm font-medium text-foreground transition-colors hover:bg-signal hover:text-background"
+          className="mt-8 inline-flex items-center gap-3 border border-signal/40 bg-signal-soft px-5 py-3 text-sm font-medium text-foreground transition-colors hover:bg-signal hover:text-foreground"
         >
           See the Catalyst Agent Stack
           <span className="text-xs">↗</span>
@@ -121,7 +121,7 @@ export function TeachingAI() {
           href="https://catalystagentstack.onslate.in/"
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-6 inline-flex items-center gap-3 text-sm text-muted-foreground transition-colors hover:text-signal"
+          className="mt-6 inline-flex items-center gap-3 text-sm text-muted-foreground transition-colors hover:text-cool"
         >
           Explore the Catalyst Agent Stack
           <span className="text-xs">↗</span>
@@ -136,7 +136,7 @@ export function TeachingAI() {
                 onClick={() => setActive(i)}
                 className={`relative -ml-px block w-full border-l py-4 pl-6 text-left transition-colors duration-300 ${
                   active === i
-                    ? "border-signal text-foreground"
+                    ? "border-cool text-foreground"
                     : "border-transparent text-muted-foreground hover:text-foreground"
                 }`}
               >
@@ -149,7 +149,7 @@ export function TeachingAI() {
           ))}
         </ol>
         <div className="border border-border p-8 md:p-12">
-          <p className="kicker text-signal">Step {String(active + 1).padStart(2, "0")}</p>
+          <p className="kicker text-cool">Step {String(active + 1).padStart(2, "0")}</p>
           <p className="display mt-6 text-3xl md:text-5xl">{flow[active]?.t}</p>
           <p className="mt-6 text-muted-foreground">{flow[active]?.d}</p>
         </div>
