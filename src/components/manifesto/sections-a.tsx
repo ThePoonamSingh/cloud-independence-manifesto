@@ -259,9 +259,9 @@ export function Frankenstack() {
       </Reveal>
       <Reveal delay={100}>
         <p className="mt-6 max-w-2xl text-lg text-muted-foreground md:text-xl">
-          Not a future risk. Not an edge case. Every feature already travels through a dozen
-          vendors, a dozen dashboards, and a dozen bills before it reaches a user — and someone
-          on the team has to hold all of it in their head.
+          Every feature already travels through a dozen vendors, a dozen dashboards, and a dozen
+          bills before it reaches a user — and someone on the team has to hold all of it in their
+          head.
         </p>
       </Reveal>
 
