@@ -72,7 +72,7 @@ function InfrastructureGraph() {
 
 export function Hero() {
   return (
-    <header className="relative flex min-h-screen items-center overflow-hidden veil">
+    <header className="gradient-hero relative flex min-h-screen items-center overflow-hidden">
       <InfrastructureGraph />
       <div className="relative mx-auto w-full max-w-6xl px-6 pt-32 pb-24 md:px-10">
         <p className="kicker">The Cloud Independence Manifesto</p>
