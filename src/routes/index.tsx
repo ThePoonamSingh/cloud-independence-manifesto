@@ -5,10 +5,8 @@ import { Rule } from "@/components/manifesto/primitives";
 import {
   Signals,
   Shift,
-  NewCustomer,
   Frankenstack,
   Independence,
-  Thesis,
 } from "@/components/manifesto/sections-a";
 import {
   Category,
@@ -17,7 +15,7 @@ import {
   Catalyst,
   WhyZoho,
 } from "@/components/manifesto/sections-b";
-import { Vision, FAQ, Manifesto } from "@/components/manifesto/sections-c";
+import { Vision, FAQ } from "@/components/manifesto/sections-c";
 import { Declaration, Closing } from "@/components/manifesto/sections-d";
 
 const TITLE = "The Cloud Independence Manifesto — Catalyst 3.0";
@@ -68,13 +66,9 @@ function Index() {
       <Rule />
       <Shift />
       <Rule />
-      <NewCustomer />
-      <Rule />
       <Frankenstack />
       <Rule />
       <Independence />
-      <Rule />
-      <Thesis />
       <Rule />
       <Category />
       <Rule />
@@ -89,7 +83,6 @@ function Index() {
       <Vision />
       <Rule />
       <FAQ />
-      <Manifesto />
       <Declaration />
       <Closing />
     </main>
