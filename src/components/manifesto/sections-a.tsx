@@ -162,44 +162,51 @@ export function Shift() {
 }
 
 /* SECTION 5 — Patchwork Stack */
-const C0 = 86, C1 = 240, C2 = 394, C3 = 548, C4 = 702;
-const R0 = 70, R1 = 190, R2 = 310, R3 = 430;
+const C0 = 108, C1 = 305, C2 = 502, C3 = 692;
+const R0 = 54, R1 = 152, R2 = 250, R3 = 348, R4 = 446;
 
-/* Snake routing: one request dragged left→right→left through every vendor */
-const mazeNodes: { name: string; x: number; y: number; stress?: boolean }[] = [
-  { name: "request", x: C0, y: R0 },
-  { name: "Cloudflare", x: C1, y: R0 },
-  { name: "Auth0", x: C2, y: R0, stress: true },
-  { name: "AWS", x: C3, y: R0 },
-  { name: "Datadog", x: C4, y: R0, stress: true },
-  { name: "Vercel", x: C4, y: R1 },
-  { name: "Stripe", x: C3, y: R1 },
-  { name: "MongoDB", x: C2, y: R1 },
-  { name: "Kafka", x: C1, y: R1, stress: true },
-  { name: "PagerDuty", x: C0, y: R1 },
-  { name: "GitHub", x: C0, y: R2 },
-  { name: "Terraform", x: C1, y: R2 },
-  { name: "OpenAI", x: C2, y: R2 },
-  { name: "Pinecone", x: C3, y: R2 },
-  { name: "Snowflake", x: C4, y: R2 },
-  { name: "Azure", x: C4, y: R3 },
-  { name: "Supabase", x: C3, y: R3 },
-  { name: "GCP", x: C2, y: R3 },
-  { name: "…", x: C1, y: R3 },
-  { name: "user", x: C0, y: R3 },
+/* What actually happens when one feature ships: task → the vendor that owns it */
+const mazeNodes: {
+  task: string;
+  vendor: string;
+  x: number;
+  y: number;
+  stress?: boolean;
+}[] = [
+  { task: "write code", vendor: "local", x: C0, y: R0 },
+  { task: "commit + review", vendor: "GitHub", x: C1, y: R0 },
+  { task: "run CI", vendor: "Actions", x: C2, y: R0 },
+  { task: "build image", vendor: "Docker", x: C3, y: R0 },
+  { task: "push artifact", vendor: "Registry", x: C3, y: R1 },
+  { task: "provision infra", vendor: "Terraform", x: C2, y: R1, stress: true },
+  { task: "store secrets", vendor: "Vault", x: C1, y: R1, stress: true },
+  { task: "wire IAM roles", vendor: "AWS", x: C0, y: R1, stress: true },
+  { task: "deploy", vendor: "Vercel", x: C0, y: R2 },
+  { task: "route + DNS", vendor: "Cloudflare", x: C1, y: R2 },
+  { task: "sign users in", vendor: "Auth0", x: C2, y: R2 },
+  { task: "persist data", vendor: "MongoDB", x: C3, y: R2 },
+  { task: "cache reads", vendor: "Redis", x: C3, y: R3 },
+  { task: "queue jobs", vendor: "Kafka", x: C2, y: R3 },
+  { task: "take payment", vendor: "Stripe", x: C1, y: R3 },
+  { task: "call the model", vendor: "OpenAI", x: C0, y: R3 },
+  { task: "store embeddings", vendor: "Pinecone", x: C0, y: R4 },
+  { task: "ship logs", vendor: "Datadog", x: C1, y: R4 },
+  { task: "page on-call", vendor: "PagerDuty", x: C2, y: R4, stress: true },
+  { task: "report usage", vendor: "Snowflake", x: C3, y: R4 },
 ];
 
-const MAZE_PATH = `M ${C0},${R0} H ${C4} V ${R1} H ${C0} V ${R2} H ${C4} V ${R3} H ${C0}`;
-const MAZE_LEN = (C4 - C0) * 4 + (R3 - R0);
+const MAZE_PATH = `M ${C0},${R0} H ${C3} V ${R1} H ${C0} V ${R2} H ${C3} V ${R3} H ${C0} V ${R4} H ${C3}`;
+const MAZE_LEN = (C3 - C0) * 5 + (R4 - R0);
 
-/* Dead ends and retries branching off the main route */
-const deadEnds = [
-  `M ${C1},${R0} V ${R0 + 46} H ${C1 + 58}`,
-  `M ${C3},${R1} V ${R1 - 44} H ${C3 - 64}`,
-  `M ${C2},${R2} V ${R2 + 42} H ${C2 + 70}`,
-  `M ${C4},${R2} V ${R2 - 40} H ${C4 - 52}`,
-  `M ${C1},${R3} V ${R3 - 48} H ${C1 - 40}`,
+/* Dead ends: the retries, tickets, and quota walls between hops */
+const deadEnds: { d: string; label: string }[] = [
+  { d: `M ${C1},${R0} V ${R0 + 44} H ${C1 + 62}`, label: "flaky test" },
+  { d: `M ${C2},${R1} V ${R1 - 40} H ${C2 - 66}`, label: "state drift" },
+  { d: `M ${C0},${R2} V ${R2 + 40} H ${C0 + 62}`, label: "perms ticket" },
+  { d: `M ${C3},${R2} V ${R2 - 38} H ${C3 - 62}`, label: "rate limit" },
+  { d: `M ${C1},${R4} V ${R4 - 42} H ${C1 - 58}`, label: "alert noise" },
 ];
+
 
 
 
