@@ -264,12 +264,19 @@
 }
 
 @utility thesis-close-quote {
-  display: inline;
-  margin-left: 0.05em;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  transform: translate(30%, 10%);
   font-family: var(--font-serif);
-  font-size: 1.1em;
-  line-height: 0.9;
-  opacity: 0.55;
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  line-height: 0.85;
+  opacity: 0;
+  transition: opacity 800ms cubic-bezier(0.16, 1, 0.3, 1) 200ms;
+
+  &[data-visible="true"] {
+    opacity: 0.35;
+  }
 }
 
 @utility handwritten-quote {
