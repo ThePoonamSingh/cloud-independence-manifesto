@@ -279,7 +279,7 @@ export function WhyZoho() {
         {[
           { k: "Since 1996", d: "Privately held, no outside funding — decisions made on decade horizons, not funding cycles." },
           { k: "Own data centres", d: "Compute, network and runtime operated in-house across multiple regions." },
-          { k: "100M+ users served", d: "Zoho's own business applications run on the same infrastructure Catalyst exposes to developers." },
+          { k: "150M+ users served", d: "Zoho's own business applications run on the same infrastructure Catalyst exposes to developers." },
         ].map((f) => (
           <Reveal key={f.k}>
             <div className="h-full bg-background p-8">
