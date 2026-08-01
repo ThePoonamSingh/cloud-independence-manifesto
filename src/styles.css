@@ -33,6 +33,10 @@
   --color-signal-soft: var(--signal-soft);
   --color-pain: var(--pain);
   --color-cold: var(--cold);
+  --color-brand: var(--brand);
+  --color-brand-soft: var(--brand-soft);
+  --color-cool: var(--cool);
+  --color-cool-soft: var(--cool-soft);
   --font-display: "Instrument Serif", Georgia, serif;
   --font-sans: "Work Sans", system-ui, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, monospace;
@@ -40,7 +44,7 @@
 
 :root {
   --radius: 0.25rem;
-  --background: oklch(0.145 0.008 260);
+  --background: oklch(0.145 0.01 262);
   --foreground: oklch(0.97 0.004 260);
   --card: oklch(0.19 0.009 260);
   --card-foreground: oklch(0.97 0.004 260);
@@ -56,18 +60,22 @@
   --accent-foreground: oklch(0.97 0.004 260);
   --destructive: oklch(0.6 0.2 25);
   --destructive-foreground: oklch(0.98 0 0);
-  --border: oklch(0.28 0.01 260);
+  --border: oklch(0.28 0.014 262);
   --input: oklch(0.28 0.01 260);
   --ring: oklch(0.55 0.02 260);
-  --signal: oklch(0.78 0.16 78);
-  --signal-soft: oklch(0.78 0.16 78 / 12%);
-  --pain: #e32427;
-  --cold: #216cb4;
-  --gradient-veil: radial-gradient(
-    ellipse 80% 60% at 50% 0%,
-    oklch(0.78 0.16 78 / 12%),
-    transparent 70%
-  );
+  /* Brand — red #e32427, blue #216cb4 */
+  --brand: oklch(0.573 0.222 27.6);
+  --brand-soft: oklch(0.573 0.222 27.6 / 12%);
+  --cool: oklch(0.526 0.145 251);
+  --cool-soft: oklch(0.526 0.145 251 / 14%);
+  /* Signal = brand red, lifted for legibility on dark */
+  --signal: oklch(0.66 0.205 27.6);
+  --signal-soft: oklch(0.66 0.205 27.6 / 12%);
+  --pain: var(--brand);
+  --cold: var(--cool);
+  --gradient-veil:
+    radial-gradient(ellipse 70% 55% at 25% 0%, oklch(0.66 0.205 27.6 / 13%), transparent 70%),
+    radial-gradient(ellipse 70% 60% at 85% 10%, oklch(0.526 0.145 251 / 14%), transparent 72%);
   --gradient-rule: linear-gradient(
     90deg,
     transparent,
@@ -95,7 +103,7 @@
 
   ::selection {
     background: var(--signal);
-    color: oklch(0.145 0.008 260);
+    color: oklch(0.98 0 0);
   }
 }
 
@@ -234,4 +242,12 @@
   100% {
     stroke-dashoffset: 0;
   }
+}
+
+@utility cool-veil {
+  background-image: radial-gradient(
+    ellipse 65% 60% at 50% 0%,
+    var(--cool-soft),
+    transparent 72%
+  );
 }
