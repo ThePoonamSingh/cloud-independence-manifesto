@@ -190,7 +190,7 @@ export function Catalyst() {
           Everything from prompt to production.
         </h2>
         <p className="mt-6 max-w-xl text-muted-foreground">
-          Not a feature list. One continuous workflow, owned end to end.
+          No service sprawl. No infrastructure assembly. No stitching together six different vendors.
         </p>
         <a
           href="https://catalyst.zoho.com/"
