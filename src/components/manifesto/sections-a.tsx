@@ -333,9 +333,102 @@ export function Independence() {
           </Reveal>
         ))}
       </div>
+
+      <div className="mt-24 border-t border-border pt-16">
+        <Reveal>
+          <p className="kicker">Freedom from infrastructure</p>
+          <h3 className="display mt-6 max-w-4xl text-3xl md:text-5xl">
+            The freedom to build and ship applications without having to think about the
+            infrastructure underneath them.
+          </h3>
+        </Reveal>
+        <div className="mt-12 grid gap-px border border-border bg-border md:grid-cols-2">
+          <Reveal>
+            <div className="h-full bg-background p-8 md:p-10">
+              <p className="kicker">Not vendor switching</p>
+              <p className="mt-5 text-base text-muted-foreground">
+                It is not about moving from one cloud provider to another. That just trades one
+                vendor for another — and keeps the same infrastructure burden on your shoulders.
+              </p>
+            </div>
+          </Reveal>
+          <Reveal delay={120}>
+            <div className="h-full bg-signal-soft p-8 md:p-10">
+              <p className="kicker text-signal">It is freedom from infrastructure</p>
+              <p className="mt-5 text-base text-muted-foreground">
+                You write the application. The platform absorbs the servers, config, security,
+                deploys, and operations. Your ideas ship instead of sitting in configuration
+                queues.
+              </p>
+            </div>
+          </Reveal>
+        </div>
+      </div>
     </Section>
   );
 }
+
+/* SECTION 6b — The list you'll never open again */
+const neverAgain = [
+  "Dockerfiles",
+  "Kubernetes manifests",
+  "Terraform modules",
+  "IAM policies",
+  "VPCs & subnets",
+  "Load balancers",
+  "TLS certificates",
+  "Autoscaling groups",
+  "Helm charts",
+  "CI/CD YAML",
+  "Secret rotation",
+  "Log pipelines",
+  "Bastion hosts",
+  "Cluster upgrades",
+  "On-call runbooks",
+];
+
+export function NeverTouch() {
+  const { ref, visible } = useReveal<HTMLDivElement>();
+  return (
+    <Section id="never-touch" kicker="The list you'll never open again">
+      <div className="grid gap-16 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.4fr)]">
+        <Reveal>
+          <h2 className="display text-4xl md:text-6xl">
+            You'll never touch <em>this</em> again.
+          </h2>
+          <p className="mt-8 max-w-md text-muted-foreground">
+            Every item here is real work that used to sit between your code and your users.
+            Catalyst does it. You don't. That's what Cloud Independence means, concretely.
+          </p>
+        </Reveal>
+        <div ref={ref} className="flex flex-wrap gap-3 lg:justify-end lg:content-start">
+          {neverAgain.map((item, i) => (
+            <span
+              key={item}
+              className="relative rounded-full border border-border bg-card px-5 py-2.5 font-mono text-sm text-muted-foreground transition-all duration-700"
+              style={{
+                opacity: visible ? 1 : 0,
+                transform: visible ? "none" : "translateY(8px)",
+                transitionDelay: `${i * 70}ms`,
+              }}
+            >
+              {item}
+              <span
+                aria-hidden
+                className="absolute left-3 right-3 top-1/2 h-px bg-signal transition-transform duration-500 origin-left"
+                style={{
+                  transform: visible ? "scaleX(1)" : "scaleX(0)",
+                  transitionDelay: `${400 + i * 70}ms`,
+                }}
+              />
+            </span>
+          ))}
+        </div>
+      </div>
+    </Section>
+  );
+}
+
 
 /* SECTION 7 — Thesis */
 export function Thesis() {
