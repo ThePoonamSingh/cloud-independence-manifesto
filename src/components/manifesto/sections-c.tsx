@@ -6,7 +6,7 @@ import maniVembuAsset from "@/assets/mani-vembu-lineart.png.asset.json";
 export function Vision() {
   return (
     <div className="bg-foreground text-background [&_.kicker]:text-background/60">
-      <Section id="vision" kicker="Vision">
+      <Section id="vision" kicker="Vision: Cloud Independence">
         <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
           <div>
             <Reveal>
