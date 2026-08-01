@@ -460,7 +460,7 @@ export function Frankenstack() {
             })}
           </svg>
 
-          {activeHop === null ? (
+          {hop === null || activeHop === null ? (
             <div className="pointer-events-none absolute bottom-4 left-5 right-5 flex flex-wrap items-end justify-between gap-2 font-mono text-[10px] uppercase tracking-[0.25em] text-muted-foreground md:text-[11px]">
               <span>click any hop · ship one feature</span>
               <span className="text-signal">20 systems · 20 dashboards · 20 bills</span>
@@ -471,14 +471,14 @@ export function Frankenstack() {
                 <div className="max-w-2xl">
                   <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-signal">
                     hop {String(activeHop + 1).padStart(2, "0")} ·{" "}
-                    {mazeNodes[activeHop].task} · {mazeNodes[activeHop].vendor}
+                    {hop.task} · {hop.vendor}
                   </p>
                   <p className="prose-body mt-3 text-sm text-foreground md:text-base">
-                    {mazeNodes[activeHop].does}
+                    {hop.does}
                   </p>
                   <p className="prose-body mt-2 text-sm text-muted-foreground">
                     <span className="text-pain">Why it matters — </span>
-                    {mazeNodes[activeHop].why}
+                    {hop.why}
                   </p>
                 </div>
                 <div className="flex shrink-0 items-center gap-1">
