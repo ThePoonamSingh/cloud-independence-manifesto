@@ -64,6 +64,8 @@ function Index() {
       <Nav />
       <Hero />
       <Rule />
+      <Vision />
+      <Rule />
       <Signals />
       <Rule />
       <Shift />
@@ -81,8 +83,6 @@ function Index() {
       <TwoBuilders />
       <Rule />
       <TeachingAI />
-      <Rule />
-      <Vision />
       <Rule />
       <Catalyst />
       <Rule />
