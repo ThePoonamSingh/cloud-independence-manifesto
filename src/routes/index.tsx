@@ -68,6 +68,8 @@ function Index() {
       <Rule />
       <Frankenstack />
       <Rule />
+      <Vision />
+      <Rule />
       <Independence />
       <Rule />
       <Category />
@@ -79,8 +81,6 @@ function Index() {
       <Catalyst />
       <Rule />
       <WhyZoho />
-      <Rule />
-      <Vision />
       <Rule />
       <FAQ />
       <Declaration />
