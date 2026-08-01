@@ -225,6 +225,28 @@
   }
 }
 
+@utility handwritten-quote {
+  font-family: var(--font-handwritten);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: inherit;
+
+  .thesis-word {
+    margin-right: 0.18em;
+    text-shadow:
+      0 0 0 currentColor,
+      0.5px 0 0 oklch(0.85 0.004 260 / 0.25);
+  }
+
+  .thesis-quote-mark {
+    font-family: var(--font-handwritten);
+    font-size: 1.35em;
+    line-height: 0.7;
+    vertical-align: baseline;
+    opacity: 0.55;
+  }
+}
+
 @keyframes drift {
   from {
     stroke-dashoffset: 260;
