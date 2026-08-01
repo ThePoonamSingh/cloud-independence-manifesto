@@ -45,11 +45,13 @@ export function Reveal({
 export function Section({
   id,
   kicker,
+  kickerClassName = "",
   children,
   className = "",
 }: {
   id: string;
   kicker?: string;
+  kickerClassName?: string;
   children: ReactNode;
   className?: string;
 }) {
@@ -61,7 +63,7 @@ export function Section({
       {kicker && (
         <Reveal>
           <div className="mb-10 md:mb-16">
-            <span className="kicker">{kicker}</span>
+            <span className={`kicker ${kickerClassName}`}>{kicker}</span>
           </div>
         </Reveal>
       )}
