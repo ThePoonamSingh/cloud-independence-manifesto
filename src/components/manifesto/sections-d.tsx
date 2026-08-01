@@ -139,12 +139,14 @@ function drawDeclaration(selected: string[], name: string) {
   ctx.font = `400 17px ${DISPLAY}`;
   ctx.fillText("Infrastructure burdens I am done carrying:", L, 194);
 
-  // Burden chips — two columns
-  const items = (selected.length ? selected : ["Infrastructure complexity"]).slice(0, 10);
+  // Burden chips — two columns, vertically filling the card
+  const items = (selected.length ? selected : ["Infrastructure complexity"]).slice(0, 12);
   const rows = Math.ceil(items.length / 2);
   const colW = (R - L - 24) / 2;
-  const rowH = 38;
-  const top = 222;
+  const top = 224;
+  const available = H - 148 - top;
+  const rowH = Math.max(34, Math.min(56, available / rows));
+  const chipH = rowH - 10;
 
   items.forEach((s, i) => {
     const col = Math.floor(i / rows);
@@ -153,35 +155,43 @@ function drawDeclaration(selected: string[], name: string) {
     const y = top + row * rowH;
     const accent = col === 0 ? RED : BLUE;
 
-    roundRect(ctx, x, y, colW, rowH - 8, 4);
-    ctx.fillStyle = "rgba(255,255,255,0.045)";
+    roundRect(ctx, x, y, colW, chipH, 4);
+    ctx.fillStyle = "rgba(255,255,255,0.05)";
     ctx.fill();
     ctx.strokeStyle = "rgba(255,255,255,0.09)";
     ctx.lineWidth = 1;
     ctx.stroke();
 
     ctx.fillStyle = accent;
-    ctx.fillRect(x, y, 3, rowH - 8);
+    ctx.fillRect(x, y, 3, chipH);
 
     // check mark
+    const mid = y + chipH / 2;
     ctx.strokeStyle = accent;
     ctx.lineWidth = 2;
     ctx.lineCap = "round";
     ctx.beginPath();
-    ctx.moveTo(x + 18, y + 15);
-    ctx.lineTo(x + 22, y + 19);
-    ctx.lineTo(x + 30, y + 10);
+    ctx.moveTo(x + 18, mid);
+    ctx.lineTo(x + 22, mid + 4);
+    ctx.lineTo(x + 30, mid - 5);
     ctx.stroke();
 
-    let size = 17;
+    let size = Math.min(20, Math.round(chipH * 0.44));
     ctx.font = `400 ${size}px ${DISPLAY}`;
     while (size > 11 && ctx.measureText(s).width > colW - 56) {
       size -= 1;
       ctx.font = `400 ${size}px ${DISPLAY}`;
     }
-    ctx.fillStyle = "rgba(255,255,255,0.90)";
-    ctx.fillText(s, x + 42, y + 20);
+    ctx.fillStyle = "rgba(255,255,255,0.92)";
+    ctx.fillText(s, x + 42, mid + size * 0.35);
   });
+
+  if (selected.length > 12) {
+    ctx.fillStyle = "rgba(255,255,255,0.42)";
+    ctx.font = `400 14px ${DISPLAY}`;
+    ctx.fillText(`+ ${selected.length - 12} more`, L, top + rows * rowH + 12);
+  }
+
 
   if (selected.length > 10) {
     ctx.fillStyle = "rgba(255,255,255,0.42)";
