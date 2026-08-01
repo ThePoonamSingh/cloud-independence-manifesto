@@ -161,11 +161,3 @@ export function FAQ() {
 }
 
 /* SECTION 15 — Manifesto */
-const lines = [
-  "Software should outlive infrastructure.",
-  "Infrastructure should disappear.",
-  "Developers should create.",
-  "AI should operate safely.",
-  "Cloud should understand machines.",
-  "Build software. Not infrastructure.",
-];

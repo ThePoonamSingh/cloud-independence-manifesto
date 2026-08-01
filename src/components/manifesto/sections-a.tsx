@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { Reveal, Section, PullQuote, useReveal } from "./primitives";
+import { Reveal, Section, useReveal } from "./primitives";
 
 /* Platform eras — rendered as a compact strip inside Shift */
 const eras = [
