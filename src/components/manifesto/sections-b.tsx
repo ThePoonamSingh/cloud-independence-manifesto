@@ -304,6 +304,11 @@ export function WhatsNew() {
           How we built the cloud for the AI era.
         </h2>
         <p className="mt-6 max-w-2xl text-muted-foreground">
+          Because Zoho builds every layer of the application stack—from cloud infrastructure to
+          developer tools and business applications—Catalyst is designed as one integrated system
+          that helps developers and AI move from prompt to production without managing infrastructure.
+        </p>
+        <p className="mt-4 max-w-2xl text-muted-foreground">
           Catalyst 3.0 introduces an Agent-Ready Full-Stack Cloud — combining AI-native developer
           experience, an integrated platform, serverless infrastructure and an open ecosystem.
         </p>
