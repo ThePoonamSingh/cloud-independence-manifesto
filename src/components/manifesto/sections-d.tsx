@@ -133,9 +133,9 @@ export function Declaration() {
       <Reveal>
         <h2 className="display max-w-3xl text-4xl md:text-6xl">I declare Cloud Independence.</h2>
         <p className="mt-6 max-w-xl text-muted-foreground">
-          Independence is not granted by a vendor. It is declared by the people who build.
-          Choose the burdens you refuse to carry into the next decade of software, sign your
-          name, and take the declaration with you.
+          Cloud Independence means declaring your own freedom from infrastructure. Choose the
+          burdens you refuse to carry into the next decade of software, sign your name, and take
+          the declaration with you.
         </p>
       </Reveal>
 
