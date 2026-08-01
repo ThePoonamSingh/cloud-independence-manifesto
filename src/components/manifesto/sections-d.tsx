@@ -71,7 +71,7 @@ export function Declaration() {
   const generate = () => setPreview(drawDeclaration(selected, name.trim()));
 
   return (
-    <Section id="declaration" index="16" kicker="The declaration">
+    <Section id="declaration" kicker="The declaration">
       <Reveal>
         <h2 className="display max-w-3xl text-4xl md:text-6xl">I declare Cloud Independence.</h2>
         <p className="mt-6 max-w-xl text-muted-foreground">

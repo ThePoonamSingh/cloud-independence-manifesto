@@ -18,7 +18,7 @@ const kit = [
 
 export function MediaCenter() {
   return (
-    <Section id="media" index="13" kicker="Media centre">
+    <Section id="media" kicker="Media centre">
       <Reveal>
         <h2 className="display max-w-3xl text-4xl md:text-6xl">
           Everything a newsroom needs, without an email.
@@ -90,7 +90,7 @@ const faqs = [
 export function FAQ() {
   const [open, setOpen] = useState<number | null>(0);
   return (
-    <Section id="faq" index="14" kicker="Questions journalists ask">
+    <Section id="faq" kicker="Questions journalists ask">
       <Reveal>
         <h2 className="display max-w-3xl text-4xl md:text-6xl">On the record.</h2>
       </Reveal>
@@ -136,7 +136,7 @@ export function Manifesto() {
   return (
     <section id="manifesto" className="relative border-y border-border veil">
       <div className="mx-auto max-w-6xl px-6 py-24 md:px-10 md:py-32">
-        <p className="kicker text-signal">15 · The Manifesto</p>
+        <p className="kicker text-signal">The Manifesto</p>
       </div>
       {lines.map((l, i) => (
         <div
