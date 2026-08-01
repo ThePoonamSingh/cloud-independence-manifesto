@@ -1,63 +1,40 @@
 import { useEffect, useRef, useState } from "react";
 import { Reveal, Section, PullQuote, useReveal } from "./primitives";
 
-/* SECTION 1 — Why now */
+/* Platform eras — rendered as a compact strip inside Shift */
 const eras = [
-  { name: "Mainframes", years: "1960s", note: "Compute was scarce and centralized." },
-  { name: "Client Server", years: "1980s", note: "Software moved to the desk." },
-  { name: "Web", years: "1990s", note: "Distribution became free." },
-  { name: "Cloud", years: "2006", note: "Infrastructure became rented." },
-  { name: "Mobile", years: "2007", note: "Software became ambient." },
-  { name: "AI", years: "Now", note: "Software begins to write itself." },
+  { name: "Mainframes", years: "1960s" },
+  { name: "Client Server", years: "1980s" },
+  { name: "Web", years: "1990s" },
+  { name: "Cloud", years: "2006" },
+  { name: "Mobile", years: "2007" },
+  { name: "AI", years: "Now" },
 ];
 
-export function WhyNow() {
+function EraStrip() {
   const { ref, visible } = useReveal<HTMLDivElement>();
   return (
-    <Section id="why-now" kicker="Why now">
-      <Reveal>
-        <h2 className="display max-w-4xl text-4xl md:text-7xl">
-          Every platform shift changes how software gets built.
-          <span className="text-muted-foreground"> AI is creating the next one.</span>
-        </h2>
-      </Reveal>
-      <div ref={ref} className="mt-20 md:mt-28">
-        <div className="relative">
-          <div
-            className="absolute left-0 top-6 h-px bg-signal transition-[width] duration-[2000ms] ease-out"
-            style={{ width: visible ? "100%" : "0%" }}
-          />
-          <div className="grid grid-cols-2 gap-y-14 md:grid-cols-6 md:gap-y-0">
-            {eras.map((e, i) => (
-              <div key={e.name} className="relative pr-6">
-                <span
-                  className="block h-3 w-3 -translate-y-1 rounded-full border border-signal bg-background transition-opacity duration-700"
-                  style={{
-                    opacity: visible ? 1 : 0,
-                    transitionDelay: `${300 + i * 260}ms`,
-                    marginTop: "1.25rem",
-                  }}
-                />
-                <p
-                  className="mt-6 text-lg transition-all duration-700 md:text-xl"
-                  style={{
-                    opacity: visible ? 1 : 0,
-                    transform: visible ? "none" : "translateY(10px)",
-                    transitionDelay: `${420 + i * 260}ms`,
-                  }}
-                >
-                  {e.name}
-                </p>
-                <p className="kicker mt-2">{e.years}</p>
-                <p className="mt-3 max-w-[16rem] text-sm text-muted-foreground">{e.note}</p>
-              </div>
-            ))}
+    <div ref={ref} className="relative mt-4">
+      <div
+        className="absolute left-0 top-1.5 h-px bg-signal transition-[width] duration-[1600ms] ease-out"
+        style={{ width: visible ? "100%" : "0%" }}
+      />
+      <div className="grid grid-cols-3 gap-y-8 md:grid-cols-6">
+        {eras.map((e, i) => (
+          <div key={e.name} className="relative pr-4">
+            <span
+              className="block h-3 w-3 rounded-full border border-signal bg-background transition-opacity duration-500"
+              style={{ opacity: visible ? 1 : 0, transitionDelay: `${200 + i * 180}ms` }}
+            />
+            <p className="mt-4 text-sm md:text-base">{e.name}</p>
+            <p className="kicker mt-1">{e.years}</p>
           </div>
-        </div>
+        ))}
       </div>
-    </Section>
+    </div>
   );
 }
+
 
 /* SECTION 2 — Signals */
 const signals = [
