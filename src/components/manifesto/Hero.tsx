@@ -105,24 +105,22 @@ export function Hero() {
         </div>
 
         {/* Main headline */}
-        <h1 className="max-w-5xl text-[clamp(2.5rem,8.5vw,7rem)] font-black leading-[0.86] tracking-[-0.045em] text-foreground opacity-0 animate-[fade-up_1.1s_ease-out_0.5s_forwards]">
-          The best infrastructure is the infrastructure{" "}
-          <span className="inline-block">
-            developers{" "}
-            <span className="relative inline-block font-serif italic font-normal text-transparent bg-clip-text bg-gradient-to-br from-foreground via-foreground to-foreground/55">
-              never have to think about.
-              <span
-                className="pointer-events-none absolute -inset-x-2 -inset-y-1 -z-10 rounded-full opacity-40 blur-2xl"
-                style={{ background: "linear-gradient(90deg, var(--signal-soft), var(--cool-soft))" }}
-                aria-hidden="true"
-              />
-            </span>
+        <h1 className="max-w-5xl text-[clamp(2rem,7vw,6rem)] font-black leading-[0.92] tracking-[-0.04em] text-foreground opacity-0 animate-[fade-up_1.1s_ease-out_0.5s_forwards]">
+          First, developers owned the servers.{" "}
+          <span className="block">Then they rented them.</span>{" "}
+          <span className="relative inline-block font-serif italic font-normal text-transparent bg-clip-text bg-gradient-to-br from-foreground via-foreground to-foreground/55">
+            Now, they shouldn't have to think about them at all.
+            <span
+              className="pointer-events-none absolute -inset-x-4 -inset-y-2 -z-10 rounded-full opacity-35 blur-3xl"
+              style={{ background: "linear-gradient(90deg, var(--signal-soft), var(--cool-soft))" }}
+              aria-hidden="true"
+            />
           </span>
         </h1>
 
         {/* Body hierarchy */}
-        <p className="lede mt-12 text-base text-balance text-muted-foreground opacity-0 animate-[fade-up_1s_ease-out_0.9s_forwards] md:text-lg">
-          We believe in Cloud Independence as the next step in cloud computing. A future where developers describe what they want to build, and the platform handles the complexity of getting it into production.
+        <p className="lede mt-12 max-w-3xl text-base text-balance text-muted-foreground opacity-0 animate-[fade-up_1s_ease-out_0.9s_forwards] md:text-xl">
+          Cloud Independence is the next era of cloud computing — a future where developers describe what they want to build, and the platform takes care of everything else.
         </p>
       </div>
     </header>
