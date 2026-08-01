@@ -89,6 +89,7 @@ function Index() {
       <Rule />
       <WhyZoho />
       <Rule />
+      <Vision />
       <Rule />
       <FAQ />
       <Manifesto />
