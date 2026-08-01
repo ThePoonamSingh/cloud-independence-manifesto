@@ -195,9 +195,9 @@ export function WhyZoho() {
     { t: "Own Business Applications", d: "Real production workloads running on the same stack." },
   ];
   return (
-    <Section id="why-zoho" kicker="Credibility">
+    <Section id="why-catalyst" kicker="Why Catalyst">
       <Reveal>
-        <h2 className="display max-w-3xl text-4xl md:text-6xl">Why Zoho.</h2>
+        <h2 className="display max-w-3xl text-4xl md:text-6xl">Why Catalyst.</h2>
       </Reveal>
       <div className="mt-16 grid gap-px border border-border bg-border md:grid-cols-2">
         {layers.map((l, i) => (
