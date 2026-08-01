@@ -56,11 +56,16 @@ export function Vision() {
               </ThesisQuote>
             </Reveal>
             <Reveal delay={120}>
-              <figcaption className="mt-8 flex items-center gap-4">
-                <span className="h-px w-12 bg-signal" />
-                <span className="kicker">
-                  Mani Vembu, Chief Executive Officer, Zoho
-                </span>
+              <figcaption className="mt-10 flex items-baseline gap-4">
+                <span className="h-px w-8 bg-signal" aria-hidden="true" />
+                <div className="flex flex-col">
+                  <span className="font-sans text-base font-medium tracking-tight text-background">
+                    Mani Vembu
+                  </span>
+                  <span className="text-sm text-background/55">
+                    Chief Executive Officer, Zoho
+                  </span>
+                </div>
               </figcaption>
             </Reveal>
             <Reveal delay={240}>
