@@ -65,6 +65,8 @@ function Index() {
       <Rule />
       <Frankenstack />
       <Rule />
+      <Provocation />
+      <Rule />
       <Vision />
       <Rule />
       <Independence />
