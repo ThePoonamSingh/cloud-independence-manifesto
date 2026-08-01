@@ -38,45 +38,52 @@ export function TwoBuilders() {
         </h2>
       </Reveal>
       <Reveal delay={150}>
-        <div className="mt-6 max-w-2xl space-y-4 text-lg text-muted-foreground">
-          <p>
-            The same serverless platform serves two kinds of builders: humans who write intent, and
-            agents who turn intent into running systems.
-          </p>
-          <p>
-            Instead of developers and AI using separate toolchains, Catalyst exposes one unified
-            surface — SDKs, CLI, MCP and a serverless runtime — that both can understand and
-            operate. The human brings intent, the agent brings execution, and the platform handles
-            the infrastructure for both.
-          </p>
-        </div>
+        <p className="mt-6 max-w-2xl text-lg text-muted-foreground">
+          The same serverless platform serves two kinds of builders: humans who write intent, and
+          agents who turn intent into running systems.
+        </p>
       </Reveal>
-      <div className="mt-20 grid gap-px border border-border bg-border md:grid-cols-2">
-        {[
-          { t: "Human developer", items: ["Intent", "IDE", "Console"], accent: "signal" },
-          { t: "AI agent", items: ["Planning", "Agent Skills", "Execution"], accent: "cool" },
-        ].map((c) => (
-          <Reveal key={c.t}>
-            <div className="group relative h-full bg-background p-8 md:p-12">
-              <span
-                className={`absolute left-0 top-0 h-px w-0 transition-[width] duration-700 group-hover:w-full ${
-                  c.accent === "cool" ? "bg-cool" : "bg-signal"
-                }`}
-              />
-              <p className={`kicker ${c.accent === "cool" ? "text-cool" : "text-signal"}`}>
-                {c.t}
-              </p>
-              <ul className="mt-8 space-y-4">
-                {c.items.map((i) => (
-                  <li key={i} className="text-2xl md:text-3xl">
-                    {i}
-                  </li>
-                ))}
-              </ul>
+
+      <div className="mt-20 flex flex-col items-stretch gap-6 md:flex-row md:items-center">
+        {/* Human */}
+        <Reveal className="flex-1">
+          <div className="relative h-full overflow-hidden rounded-2xl border border-border bg-gradient-to-br from-background to-muted/40 p-8 md:p-12">
+            <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-signal/50 to-transparent" />
+            <span className="kicker">Human</span>
+            <p className="mt-6 font-sans text-4xl font-medium md:text-5xl">Developer</p>
+            <p className="mt-4 text-lg text-muted-foreground">
+              Judgment. Taste. Direction.
+            </p>
+          </div>
+        </Reveal>
+
+        {/* One Cloud */}
+        <Reveal delay={120} className="shrink-0">
+          <div className="flex flex-col items-center justify-center gap-4 px-4">
+            <div className="grid h-14 w-14 place-items-center rounded-full border border-border bg-background">
+              <span className="text-2xl text-foreground">+</span>
             </div>
-          </Reveal>
-        ))}
+            <span className="kicker text-center">One Cloud</span>
+          </div>
+        </Reveal>
+
+        {/* Machine */}
+        <Reveal delay={200} className="flex-1">
+          <div className="relative h-full overflow-hidden rounded-2xl bg-gradient-to-r from-cool to-signal p-8 md:p-12">
+            <div className="absolute inset-0 bg-gradient-to-br from-foreground/5 to-transparent" />
+            <div className="relative">
+              <span className="kicker text-foreground/80">Machine</span>
+              <p className="mt-6 font-sans text-4xl font-medium text-foreground md:text-5xl">
+                AI Agent
+              </p>
+              <p className="mt-4 text-lg text-foreground/80">
+                Planning. Skills. Execution.
+              </p>
+            </div>
+          </div>
+        </Reveal>
       </div>
+
       <Reveal>
         <div className="mt-12 border border-border p-8 md:p-12">
           <p className="kicker">Shared interfaces</p>
