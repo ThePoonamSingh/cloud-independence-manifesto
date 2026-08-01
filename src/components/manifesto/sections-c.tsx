@@ -48,9 +48,9 @@ export function Vision() {
   return (
     <div className="bg-foreground text-background [&_.kicker]:text-background/60">
       <Section id="vision" kicker="Vision: Cloud Independence">
-        <div className="relative grid items-center gap-10 lg:grid-cols-12 lg:gap-6">
+        <div className="relative grid items-center gap-10 lg:grid-cols-12 lg:gap-8">
           {/* Quote column */}
-          <div className="relative z-10 lg:col-span-7">
+          <div className="relative z-10 min-w-0 lg:col-span-7">
             <Reveal>
               <div className="relative">
                 {/* Oversized decorative quote mark */}
