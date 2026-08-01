@@ -162,44 +162,45 @@ export function Shift() {
 }
 
 /* SECTION 5 — Patchwork Stack */
-const COLS = [86, 240, 394, 548, 702];
-const ROWS = [70, 190, 310, 430];
+const C0 = 86, C1 = 240, C2 = 394, C3 = 548, C4 = 702;
+const R0 = 70, R1 = 190, R2 = 310, R3 = 430;
 
 /* Snake routing: one request dragged left→right→left through every vendor */
 const mazeNodes: { name: string; x: number; y: number; stress?: boolean }[] = [
-  { name: "request", x: COLS[0], y: ROWS[0] },
-  { name: "Cloudflare", x: COLS[1], y: ROWS[0] },
-  { name: "Auth0", x: COLS[2], y: ROWS[0], stress: true },
-  { name: "AWS", x: COLS[3], y: ROWS[0] },
-  { name: "Datadog", x: COLS[4], y: ROWS[0], stress: true },
-  { name: "Vercel", x: COLS[4], y: ROWS[1] },
-  { name: "Stripe", x: COLS[3], y: ROWS[1] },
-  { name: "MongoDB", x: COLS[2], y: ROWS[1] },
-  { name: "Kafka", x: COLS[1], y: ROWS[1], stress: true },
-  { name: "PagerDuty", x: COLS[0], y: ROWS[1] },
-  { name: "GitHub", x: COLS[0], y: ROWS[2] },
-  { name: "Terraform", x: COLS[1], y: ROWS[2] },
-  { name: "OpenAI", x: COLS[2], y: ROWS[2] },
-  { name: "Pinecone", x: COLS[3], y: ROWS[2] },
-  { name: "Snowflake", x: COLS[4], y: ROWS[2] },
-  { name: "Azure", x: COLS[4], y: ROWS[3] },
-  { name: "Supabase", x: COLS[3], y: ROWS[3] },
-  { name: "GCP", x: COLS[2], y: ROWS[3] },
-  { name: "…", x: COLS[1], y: ROWS[3] },
-  { name: "user", x: COLS[0], y: ROWS[3] },
+  { name: "request", x: C0, y: R0 },
+  { name: "Cloudflare", x: C1, y: R0 },
+  { name: "Auth0", x: C2, y: R0, stress: true },
+  { name: "AWS", x: C3, y: R0 },
+  { name: "Datadog", x: C4, y: R0, stress: true },
+  { name: "Vercel", x: C4, y: R1 },
+  { name: "Stripe", x: C3, y: R1 },
+  { name: "MongoDB", x: C2, y: R1 },
+  { name: "Kafka", x: C1, y: R1, stress: true },
+  { name: "PagerDuty", x: C0, y: R1 },
+  { name: "GitHub", x: C0, y: R2 },
+  { name: "Terraform", x: C1, y: R2 },
+  { name: "OpenAI", x: C2, y: R2 },
+  { name: "Pinecone", x: C3, y: R2 },
+  { name: "Snowflake", x: C4, y: R2 },
+  { name: "Azure", x: C4, y: R3 },
+  { name: "Supabase", x: C3, y: R3 },
+  { name: "GCP", x: C2, y: R3 },
+  { name: "…", x: C1, y: R3 },
+  { name: "user", x: C0, y: R3 },
 ];
 
-const MAZE_PATH = `M ${COLS[0]},${ROWS[0]} H ${COLS[4]} V ${ROWS[1]} H ${COLS[0]} V ${ROWS[2]} H ${COLS[4]} V ${ROWS[3]} H ${COLS[0]}`;
-const MAZE_LEN = (COLS[4] - COLS[0]) * 4 + (ROWS[3] - ROWS[0]);
+const MAZE_PATH = `M ${C0},${R0} H ${C4} V ${R1} H ${C0} V ${R2} H ${C4} V ${R3} H ${C0}`;
+const MAZE_LEN = (C4 - C0) * 4 + (R3 - R0);
 
 /* Dead ends and retries branching off the main route */
 const deadEnds = [
-  `M ${COLS[1]},${ROWS[0]} V ${ROWS[0] + 46} H ${COLS[1] + 58}`,
-  `M ${COLS[3]},${ROWS[1]} V ${ROWS[1] - 44} H ${COLS[3] - 64}`,
-  `M ${COLS[2]},${ROWS[2]} V ${ROWS[2] + 42} H ${COLS[2] + 70}`,
-  `M ${COLS[4]},${ROWS[2]} V ${ROWS[2] - 40} H ${COLS[4] - 52}`,
-  `M ${COLS[1]},${ROWS[3]} V ${ROWS[3] - 48} H ${COLS[1] - 40}`,
+  `M ${C1},${R0} V ${R0 + 46} H ${C1 + 58}`,
+  `M ${C3},${R1} V ${R1 - 44} H ${C3 - 64}`,
+  `M ${C2},${R2} V ${R2 + 42} H ${C2 + 70}`,
+  `M ${C4},${R2} V ${R2 - 40} H ${C4 - 52}`,
+  `M ${C1},${R3} V ${R3 - 48} H ${C1 - 40}`,
 ];
+
 
 
 export function Frankenstack() {
