@@ -75,21 +75,6 @@ export function Vision() {
               </figcaption>
             </Reveal>
 
-            <Reveal delay={280}>
-              <p className="mt-10 max-w-xl text-lg leading-relaxed text-background/75 md:text-xl">
-                That is the standard Catalyst 3.0 is built for: infrastructure that gets out of the way so developers and AI agents can ship.
-              </p>
-            </Reveal>
-
-            <Reveal delay={420}>
-              <a
-                href="#declaration"
-                className="group mt-8 inline-flex items-center gap-3 border border-background/25 px-6 py-3 text-sm font-medium text-background transition-colors hover:bg-background hover:text-foreground"
-              >
-                <span>Declare Cloud Independence</span>
-                <span className="transition-transform group-hover:translate-x-1">→</span>
-              </a>
-            </Reveal>
           </div>
 
           <Reveal delay={200}>
