@@ -212,9 +212,14 @@ export function TeachingAI() {
   }, [visible]);
 
   return (
-    <Section id="teaching" kicker="Go from prompt to production, without becoming a cloud expert.">
+    <Section id="teaching">
       <Reveal>
-        <div className="mt-6 max-w-3xl space-y-6 text-lg leading-relaxed text-muted-foreground md:text-2xl md:leading-[1.5]">
+        <h2 className="display max-w-4xl text-4xl leading-[1.05] md:text-6xl">
+          Go from prompt to production, without becoming a cloud expert.
+        </h2>
+      </Reveal>
+      <Reveal delay={120}>
+        <div className="mt-8 max-w-3xl space-y-6 text-lg leading-relaxed text-muted-foreground md:text-2xl md:leading-[1.5]">
           <p>
             AI can already generate code. Building production software is the harder problem. The gap
             between a generated application and a production-ready system is everything AI doesn't
