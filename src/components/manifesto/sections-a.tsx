@@ -172,28 +172,71 @@ const mazeNodes: {
   x: number;
   y: number;
   stress?: boolean;
+  does: string;
+  why: string;
 }[] = [
-  { task: "write code", vendor: "local", x: C0, y: R0 },
-  { task: "commit + review", vendor: "GitHub", x: C1, y: R0 },
-  { task: "run CI", vendor: "Actions", x: C2, y: R0 },
-  { task: "build image", vendor: "Docker", x: C3, y: R0 },
-  { task: "push artifact", vendor: "Registry", x: C3, y: R1 },
-  { task: "provision infra", vendor: "Terraform", x: C2, y: R1, stress: true },
-  { task: "store secrets", vendor: "Vault", x: C1, y: R1, stress: true },
-  { task: "wire IAM roles", vendor: "AWS", x: C0, y: R1, stress: true },
-  { task: "deploy", vendor: "Vercel", x: C0, y: R2 },
-  { task: "route + DNS", vendor: "Cloudflare", x: C1, y: R2 },
-  { task: "sign users in", vendor: "Auth0", x: C2, y: R2 },
-  { task: "persist data", vendor: "MongoDB", x: C3, y: R2 },
-  { task: "cache reads", vendor: "Redis", x: C3, y: R3 },
-  { task: "queue jobs", vendor: "Kafka", x: C2, y: R3 },
-  { task: "take payment", vendor: "Stripe", x: C1, y: R3 },
-  { task: "call the model", vendor: "OpenAI", x: C0, y: R3 },
-  { task: "store embeddings", vendor: "Pinecone", x: C0, y: R4 },
-  { task: "ship logs", vendor: "Datadog", x: C1, y: R4 },
-  { task: "page on-call", vendor: "PagerDuty", x: C2, y: R4, stress: true },
-  { task: "report usage", vendor: "Snowflake", x: C3, y: R4 },
+  { task: "write code", vendor: "local", x: C0, y: R0,
+    does: "`npm run dev` against a half-mocked local stack — queues stubbed, auth faked.",
+    why: "Local never matches production, so the first honest test happens after deploy." },
+  { task: "commit + review", vendor: "GitHub", x: C1, y: R0,
+    does: "Open the PR, wait on two approvals, rebase after main moves.",
+    why: "Review latency, not code, sets your cycle time." },
+  { task: "run CI", vendor: "Actions", x: C2, y: R0,
+    does: "14-minute matrix build; re-run job #3 because the flaky e2e timed out again.",
+    why: "Every re-run is a context switch you never planned for." },
+  { task: "build image", vendor: "Docker", x: C3, y: R0,
+    does: "Rebuild layers because a base image bumped a transitive CVE patch.",
+    why: "You maintain a build system you never wanted to own." },
+  { task: "push artifact", vendor: "Registry", x: C3, y: R1,
+    does: "Tag `v1.42.3`, push 900MB, prune old tags before the quota alarm fires.",
+    why: "Artifact hygiene is unpaid work with a monthly bill attached." },
+  { task: "provision infra", vendor: "Terraform", x: C2, y: R1, stress: true,
+    does: "`terraform plan` shows 3 changes you didn't make — someone hotfixed in the console.",
+    why: "State drift means the plan output can no longer be trusted at a glance." },
+  { task: "store secrets", vendor: "Vault", x: C1, y: R1, stress: true,
+    does: "Rotate the DB credential, then update it in CI, the runtime, and one forgotten cron.",
+    why: "Secrets live in four places, so rotation is a mini-outage waiting to happen." },
+  { task: "wire IAM roles", vendor: "AWS", x: C0, y: R1, stress: true,
+    does: "Add `s3:GetObject` to one prefix; policy denied; file a ticket with platform team.",
+    why: "A permission change becomes a two-day dependency on another human." },
+  { task: "deploy", vendor: "Vercel", x: C0, y: R2,
+    does: "Promote the build, watch the canary, roll back by re-promoting the previous deploy.",
+    why: "Rollback is fast for the frontend and manual for everything behind it." },
+  { task: "route + DNS", vendor: "Cloudflare", x: C1, y: R2,
+    does: "Add the new path to the WAF rules and purge the cache so users see the change.",
+    why: "The edge has its own config, its own cache, and its own way to fail." },
+  { task: "sign users in", vendor: "Auth0", x: C2, y: R2,
+    does: "Add a role claim, update the rule script, re-issue tokens for existing sessions.",
+    why: "Identity lives outside your codebase, so authz drifts from the app it protects." },
+  { task: "persist data", vendor: "MongoDB", x: C3, y: R2,
+    does: "Ship the migration, backfill 4M docs in batches, add the index during low traffic.",
+    why: "Schema change is a scheduling problem, not a code problem." },
+  { task: "cache reads", vendor: "Redis", x: C3, y: R3,
+    does: "Invalidate keys on write, discover a stale key path only after support pings you.",
+    why: "Cache correctness is invisible until it's a customer-facing bug." },
+  { task: "queue jobs", vendor: "Kafka", x: C2, y: R3,
+    does: "Consumer lag spikes; replay the DLQ and hope the handler is actually idempotent.",
+    why: "Async failure modes need their own runbook and their own on-call knowledge." },
+  { task: "take payment", vendor: "Stripe", x: C1, y: R3,
+    does: "Verify the webhook signature, dedupe retries, reconcile against your own ledger.",
+    why: "Money paths demand exactly-once behaviour on an at-least-once transport." },
+  { task: "call the model", vendor: "OpenAI", x: C0, y: R3,
+    does: "429 at peak; add backoff, a fallback model, and a per-tenant token budget.",
+    why: "Rate limits turn a product feature into a capacity-planning exercise." },
+  { task: "store embeddings", vendor: "Pinecone", x: C0, y: R4,
+    does: "Re-embed the corpus after a model change and keep two indexes live during cutover.",
+    why: "Every model upgrade is a data migration in disguise." },
+  { task: "ship logs", vendor: "Datadog", x: C1, y: R4,
+    does: "Add trace IDs, then trim log volume when ingest costs jump mid-month.",
+    why: "You end up rationing the observability you need most during incidents." },
+  { task: "page on-call", vendor: "PagerDuty", x: C2, y: R4, stress: true,
+    does: "2:14am page for a threshold that fires on a known noisy dependency.",
+    why: "Alert noise trains teams to ignore the alerts that actually matter." },
+  { task: "report usage", vendor: "Snowflake", x: C3, y: R4,
+    does: "Stitch billing events from five vendors to answer 'what did this feature cost?'",
+    why: "Nobody can attribute cost per feature without a bespoke pipeline." },
 ];
+
 
 const MAZE_PATH = `M ${C0},${R0} H ${C3} V ${R1} H ${C0} V ${R2} H ${C3} V ${R3} H ${C0} V ${R4} H ${C3}`;
 const MAZE_LEN = (C3 - C0) * 5 + (R4 - R0);
@@ -212,6 +255,8 @@ const deadEnds: { d: string; label: string }[] = [
 
 export function Frankenstack() {
   const { ref, visible } = useReveal<HTMLDivElement>();
+  const [activeHop, setActiveHop] = useState<number | null>(null);
+  const hop = activeHop === null ? null : (mazeNodes[activeHop] ?? null);
   const painCards = [
     {
       title: "More\nVendors.",
@@ -340,13 +385,26 @@ export function Frankenstack() {
             {/* task → vendor nodes */}
             {mazeNodes.map((n, i) => {
               const w = Math.max(112, Math.max(n.task.length, n.vendor.length) * 6.6 + 26);
+              const isActive = activeHop === i;
               return (
                 <g
                   key={n.vendor + n.task}
+                  role="button"
+                  tabIndex={0}
+                  aria-label={`${n.task} — ${n.vendor}`}
+                  onClick={() => setActiveHop(isActive ? null : i)}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter" || e.key === " ") {
+                      e.preventDefault();
+                      setActiveHop(isActive ? null : i);
+                    }
+                  }}
                   style={{
-                    opacity: visible ? 1 : 0,
-                    transition: "opacity 600ms ease",
-                    transitionDelay: `${i * 70}ms`,
+                    cursor: "pointer",
+                    outline: "none",
+                    opacity: visible ? (activeHop === null || isActive ? 1 : 0.4) : 0,
+                    transition: "opacity 400ms ease",
+                    transitionDelay: visible && activeHop === null ? `${i * 70}ms` : "0ms",
                   }}
                 >
                   <rect
@@ -354,16 +412,20 @@ export function Frankenstack() {
                     y={n.y - 21}
                     width={w}
                     height={42}
-                    fill="var(--color-background)"
+                    fill={isActive ? "var(--color-card)" : "var(--color-background)"}
                     stroke={
-                      n.stress
-                        ? "color-mix(in oklab, var(--color-signal) 55%, transparent)"
-                        : "var(--color-border)"
+                      isActive
+                        ? "var(--color-signal)"
+                        : n.stress
+                          ? "color-mix(in oklab, var(--color-signal) 55%, transparent)"
+                          : "var(--color-border)"
                     }
-                    strokeWidth="1"
+                    strokeWidth={isActive ? 1.6 : 1}
                     style={
-                      n.stress
-                        ? { filter: "drop-shadow(0 0 12px color-mix(in oklab, var(--color-signal) 22%, transparent))" }
+                      isActive || n.stress
+                        ? {
+                            filter: `drop-shadow(0 0 ${isActive ? 16 : 12}px color-mix(in oklab, var(--color-signal) ${isActive ? 45 : 22}%, transparent))`,
+                          }
                         : undefined
                     }
                   />
@@ -371,7 +433,7 @@ export function Frankenstack() {
                     x={n.x}
                     y={n.y - 5}
                     textAnchor="middle"
-                    className="font-mono"
+                    className="pointer-events-none font-mono"
                     fontSize="9"
                     letterSpacing="0.12em"
                     fill="var(--color-muted-foreground)"
@@ -383,10 +445,10 @@ export function Frankenstack() {
                     x={n.x}
                     y={n.y + 12}
                     textAnchor="middle"
-                    className="font-mono"
+                    className="pointer-events-none font-mono"
                     fontSize="12"
                     fill={
-                      n.stress
+                      isActive || n.stress
                         ? "color-mix(in oklab, var(--color-signal) 85%, white)"
                         : "var(--color-foreground)"
                     }
@@ -398,10 +460,54 @@ export function Frankenstack() {
             })}
           </svg>
 
-          <div className="pointer-events-none absolute bottom-4 left-5 right-5 flex flex-wrap items-end justify-between gap-2 font-mono text-[10px] uppercase tracking-[0.25em] text-muted-foreground md:text-[11px]">
-            <span>ship one feature</span>
-            <span className="text-signal">20 systems · 20 dashboards · 20 bills</span>
-          </div>
+          {hop === null || activeHop === null ? (
+            <div className="pointer-events-none absolute bottom-4 left-5 right-5 flex flex-wrap items-end justify-between gap-2 font-mono text-[10px] uppercase tracking-[0.25em] text-muted-foreground md:text-[11px]">
+              <span>click any hop · ship one feature</span>
+              <span className="text-signal">20 systems · 20 dashboards · 20 bills</span>
+            </div>
+          ) : (
+            <div className="absolute bottom-0 left-0 right-0 animate-fade-in border-t border-border bg-card/95 p-5 backdrop-blur md:p-6">
+              <div className="flex items-start justify-between gap-6">
+                <div className="max-w-2xl">
+                  <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-signal">
+                    hop {String(activeHop + 1).padStart(2, "0")} ·{" "}
+                    {hop.task} · {hop.vendor}
+                  </p>
+                  <p className="prose-body mt-3 text-sm text-foreground md:text-base">
+                    {hop.does}
+                  </p>
+                  <p className="prose-body mt-2 text-sm text-muted-foreground">
+                    <span className="text-pain">Why it matters — </span>
+                    {hop.why}
+                  </p>
+                </div>
+                <div className="flex shrink-0 items-center gap-1">
+                  <button
+                    aria-label="Previous hop"
+                    onClick={() => setActiveHop((h) => ((h ?? 0) - 1 + mazeNodes.length) % mazeNodes.length)}
+                    className="border border-border px-2.5 py-1 font-mono text-xs text-muted-foreground transition-colors hover:border-signal hover:text-signal"
+                  >
+                    ←
+                  </button>
+                  <button
+                    aria-label="Next hop"
+                    onClick={() => setActiveHop((h) => ((h ?? 0) + 1) % mazeNodes.length)}
+                    className="border border-border px-2.5 py-1 font-mono text-xs text-muted-foreground transition-colors hover:border-signal hover:text-signal"
+                  >
+                    →
+                  </button>
+                  <button
+                    aria-label="Close hop detail"
+                    onClick={() => setActiveHop(null)}
+                    className="ml-1 border border-border px-2.5 py-1 font-mono text-xs text-muted-foreground transition-colors hover:border-signal hover:text-signal"
+                  >
+                    ✕
+                  </button>
+                </div>
+              </div>
+            </div>
+          )}
+
 
         </div>
 
