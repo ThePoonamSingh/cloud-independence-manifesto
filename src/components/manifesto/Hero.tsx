@@ -99,7 +99,7 @@ export function Hero() {
         <div className="mb-12 flex items-center gap-5 opacity-0 animate-[fade-in_1s_ease-out_0.2s_forwards]">
           <span className="h-px w-14 bg-gradient-to-r from-transparent via-signal/70 to-signal" aria-hidden="true" />
           <span className="text-[11px] font-semibold uppercase tracking-[0.35em] text-muted-foreground">
-            Catalyst 3.0 Manifesto
+            Cloud Independence
           </span>
           <span className="h-px w-14 bg-gradient-to-l from-transparent via-cool/70 to-cool" aria-hidden="true" />
         </div>
