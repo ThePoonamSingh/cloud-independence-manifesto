@@ -154,3 +154,57 @@
     opacity: 1;
   }
 }
+
+@keyframes vendor-glow {
+  0%,
+  100% {
+    border-color: var(--color-border);
+    color: var(--muted-foreground);
+    box-shadow: 0 0 0 transparent;
+    transform: scale(1);
+  }
+  25% {
+    border-color: color-mix(in oklab, var(--color-signal) 60%, var(--color-border));
+    color: var(--color-foreground);
+    box-shadow: 0 0 18px color-mix(in oklab, var(--color-signal) 30%, transparent);
+    transform: scale(1.06);
+  }
+  50% {
+    border-color: color-mix(in oklab, var(--color-signal) 80%, var(--color-border));
+    color: var(--color-foreground);
+    box-shadow: 0 0 24px color-mix(in oklab, var(--color-signal) 45%, transparent);
+    transform: scale(1.08);
+  }
+  75% {
+    border-color: color-mix(in oklab, var(--color-signal) 60%, var(--color-border));
+    color: var(--color-foreground);
+    box-shadow: 0 0 18px color-mix(in oklab, var(--color-signal) 30%, transparent);
+    transform: scale(1.06);
+  }
+}
+
+@keyframes packet-travel {
+  0% {
+    offset-distance: 0%;
+    opacity: 0;
+  }
+  5% {
+    opacity: 1;
+  }
+  95% {
+    opacity: 1;
+  }
+  100% {
+    offset-distance: 100%;
+    opacity: 0;
+  }
+}
+
+@keyframes route-draw {
+  0% {
+    stroke-dashoffset: 1200;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
