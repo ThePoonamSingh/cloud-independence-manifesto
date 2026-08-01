@@ -24,17 +24,16 @@ export function Vision() {
             </Reveal>
             <Reveal delay={240}>
               <p className="mt-10 max-w-xl text-lg leading-relaxed text-background/70 md:text-xl">
-                That is the standard Catalyst 3.0 was built to meet. One platform that
-                takes the infrastructure problem off the developer’s plate — and off
-                the AI’s too.
+                That ideal is still far from how most teams work. Here is the gap —
+                and why it is widening.
               </p>
             </Reveal>
             <Reveal delay={360}>
               <a
-                href="#catalyst"
+                href="#signals"
                 className="group mt-8 inline-flex items-center gap-3 border border-background/25 px-6 py-3 text-sm font-medium text-background transition-colors hover:bg-background hover:text-foreground"
               >
-                <span>See how Catalyst 3.0 delivers it</span>
+                <span>See the evidence</span>
                 <span className="transition-transform group-hover:translate-x-1">→</span>
               </a>
             </Reveal>
