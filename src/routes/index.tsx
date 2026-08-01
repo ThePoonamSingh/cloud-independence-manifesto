@@ -5,6 +5,7 @@ import { Rule } from "@/components/manifesto/primitives";
 import {
   Shift,
   Frankenstack,
+  Provocation,
   Independence,
 } from "@/components/manifesto/sections-a";
 import {
