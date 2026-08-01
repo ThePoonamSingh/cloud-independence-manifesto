@@ -1,33 +1,40 @@
 import { useEffect, useRef, useState } from "react";
 import { Reveal, Section, useReveal } from "./primitives";
 
-/* Platform eras — rendered as a compact strip inside Shift */
+/* Platform eras — each moved infrastructure further out of the developer's way */
 const eras = [
-  { name: "Mainframes", years: "1960s" },
-  { name: "Client Server", years: "1980s" },
-  { name: "Web", years: "1990s" },
-  { name: "Cloud", years: "2006" },
-  { name: "Mobile", years: "2007" },
-  { name: "AI", years: "Now" },
+  { name: "Mainframes", years: "1960s", shift: "You owned the machine." },
+  { name: "Client Server", years: "1980s", shift: "You shared the machine." },
+  { name: "Web", years: "1990s", shift: "You rented the machine." },
+  { name: "Cloud", years: "2006", shift: "You rented by the hour." },
+  { name: "Mobile", years: "2007", shift: "You shipped to every device." },
+  { name: "Catalyst 3.0", years: "Now", shift: "You stop thinking about machines.", final: true },
 ];
 
 function EraStrip() {
   const { ref, visible } = useReveal<HTMLDivElement>();
   return (
-    <div ref={ref} className="relative mt-4">
+    <div ref={ref} className="relative mt-10">
       <div
         className="absolute left-0 top-1.5 h-px bg-signal transition-[width] duration-[1600ms] ease-out"
         style={{ width: visible ? "100%" : "0%" }}
       />
-      <div className="grid grid-cols-3 gap-y-8 md:grid-cols-6">
+      <div className="grid grid-cols-3 gap-y-10 md:grid-cols-6">
         {eras.map((e, i) => (
           <div key={e.name} className="relative pr-4">
             <span
-              className="block h-3 w-3 rounded-full border border-signal bg-background transition-opacity duration-500"
+              className={`block h-3 w-3 rounded-full border transition-opacity duration-500 ${
+                e.final
+                  ? "border-cool bg-cool shadow-[0_0_12px_color-mix(in_oklab,var(--color-cool)_70%,transparent)]"
+                  : "border-signal bg-background"
+              }`}
               style={{ opacity: visible ? 1 : 0, transitionDelay: `${200 + i * 180}ms` }}
             />
-            <p className="mt-4 text-sm md:text-base">{e.name}</p>
+            <p className={`mt-4 text-sm md:text-base ${e.final ? "text-cool" : ""}`}>{e.name}</p>
             <p className="kicker mt-1">{e.years}</p>
+            <p className="mt-2 max-w-[10ch] text-[11px] leading-snug text-muted-foreground">
+              {e.shift}
+            </p>
           </div>
         ))}
       </div>
@@ -35,20 +42,22 @@ function EraStrip() {
   );
 }
 
-
-
 /* SECTION 3 — Yesterday / Today / Tomorrow */
 const states = [
-  { t: "Yesterday", h: "Developers wrote code.", d: "Craft measured in keystrokes and commits." },
+  {
+    t: "Yesterday",
+    h: "Developers wrote code and operated the machine.",
+    d: "Craft meant keystrokes, commits, and racking servers.",
+  },
   {
     t: "Today",
-    h: "Developers describe intent.",
-    d: "Prompt, review, refine. The compiler moved up a level.",
+    h: "Developers rent cloud but still stitch it together.",
+    d: "Identity, deployment, secrets, scaling, and observability are still their job.",
   },
   {
     t: "Tomorrow",
-    h: "Developers supervise software creation.",
-    d: "Humans set direction and constraints. Machines do the assembly.",
+    h: "Developers describe intent. The platform handles infrastructure.",
+    d: "Cloud Independence: the machine disappears behind the work it enables.",
   },
 ];
 
@@ -65,10 +74,12 @@ export function Shift() {
     <Section id="shift">
       <Reveal>
         <h2 className="display max-w-4xl text-4xl md:text-7xl">
-          Every platform shift changed how software gets built. AI is creating the next one.
+          Every platform shift moved complexity out of the developer's way. Cloud Independence is
+          the next one.
         </h2>
         <p className="lede mt-8 text-base text-muted-foreground md:text-lg">
-          The compiler moved up a level. The next platform must move infrastructure out of the way.
+          First we owned the servers. Then we rented them. Now the platform should make them
+          invisible.
         </p>
         <EraStrip />
       </Reveal>
@@ -107,6 +118,7 @@ export function Shift() {
     </Section>
   );
 }
+
 
 /* SECTION 5 — Patchwork Stack */
 const C0 = 108, C1 = 305, C2 = 502, C3 = 692;
