@@ -275,6 +275,27 @@ export function WhyZoho() {
           decade.
         </p>
       </Reveal>
+      <div className="mt-12 grid gap-px border border-border bg-border sm:grid-cols-3">
+        {[
+          { k: "Since 1996", d: "Privately held, no outside funding — decisions made on decade horizons, not funding cycles." },
+          { k: "Own data centres", d: "Compute, network and runtime operated in-house across multiple regions." },
+          { k: "100M+ users served", d: "Zoho's own business applications run on the same infrastructure Catalyst exposes to developers." },
+        ].map((f) => (
+          <Reveal key={f.k}>
+            <div className="h-full bg-background p-8">
+              <p className="kicker text-signal">{f.k}</p>
+              <p className="mt-4 text-sm text-muted-foreground">{f.d}</p>
+            </div>
+          </Reveal>
+        ))}
+      </div>
+      <Reveal>
+        <p className="mt-10 max-w-2xl border-l-2 border-signal pl-5 text-sm text-muted-foreground">
+          Proof point: Catalyst is not a greenfield product looking for its first workload. Zoho
+          teams ship production applications on it, which means the platform absorbs the same
+          operational burden it asks developers to hand over.
+        </p>
+      </Reveal>
     </Section>
   );
 }
