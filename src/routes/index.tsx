@@ -15,7 +15,7 @@ import {
   TeachingAI,
 } from "@/components/manifesto/sections-b";
 import { Vision } from "@/components/manifesto/sections-c";
-import { Declaration, Closing } from "@/components/manifesto/sections-d";
+import { Declaration } from "@/components/manifesto/sections-d";
 
 const TITLE = "Catalyst 3.0 — Cloud Independence";
 const DESCRIPTION =
@@ -80,7 +80,6 @@ function Index() {
       <TeachingAI />
       <Rule />
       <Declaration />
-      <Closing />
     </main>
   );
 }
