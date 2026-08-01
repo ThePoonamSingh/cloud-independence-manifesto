@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Reveal, Section } from "./primitives";
-import maniVembuAsset from "@/assets/mani-vembu.png.asset.json";
+import maniVembuAsset from "@/assets/mani-vembu-lineart.png.asset.json";
 
 /* SECTION 13 — Vision */
 export function Vision() {
@@ -42,11 +42,11 @@ export function Vision() {
           <figure className="relative overflow-hidden border border-border bg-muted/30">
             <img
               src={maniVembuAsset.url}
-              alt="Illustrated portrait of Mani Vembu"
+              alt="Line-art portrait illustration of Mani Vembu"
               width={1024}
               height={1024}
               loading="lazy"
-              className="w-full"
+              className="w-full opacity-90 invert"
             />
           </figure>
         </Reveal>
