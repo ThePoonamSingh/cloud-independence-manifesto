@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { Reveal, Section, PullQuote, useReveal } from "./primitives";
+import { Reveal, Section, useReveal } from "./primitives";
 
 /* Platform eras — rendered as a compact strip inside Shift */
 const eras = [
@@ -146,69 +146,6 @@ export function Shift() {
             <p className="mt-5 text-sm text-muted-foreground">{s.d}</p>
           </button>
         ))}
-      </div>
-    </Section>
-  );
-}
-
-/* SECTION 4 — New customer */
-const aiNeeds = [
-  "Discover services",
-  "Understand APIs",
-  "Provision infrastructure",
-  "Deploy",
-  "Monitor",
-  "Troubleshoot",
-];
-
-function Chain({ items, dim = false }: { items: string[]; dim?: boolean }) {
-  return (
-    <div className="flex flex-col items-start gap-3">
-      {items.map((it, i) => (
-        <div key={it} className="flex flex-col items-start gap-3">
-          <span
-            className={`border px-4 py-2 font-mono text-sm ${
-              dim ? "border-border text-muted-foreground" : "border-signal/50 text-foreground"
-            }`}
-          >
-            {it}
-          </span>
-          {i < items.length - 1 && <span className="pl-4 text-muted-foreground">↓</span>}
-        </div>
-      ))}
-    </div>
-  );
-}
-
-export function NewCustomer() {
-  return (
-    <Section id="new-customer" kicker="The cloud has a new customer">
-      <Reveal>
-        <h2 className="display max-w-4xl text-4xl md:text-6xl">
-          Today's cloud was designed for humans. Tomorrow's cloud must be understandable by
-          machines.
-        </h2>
-      </Reveal>
-      <div className="mt-20 grid gap-16 md:grid-cols-3">
-        <Reveal>
-          <p className="kicker mb-8">Traditional</p>
-          <Chain items={["Developer", "Cloud"]} dim />
-        </Reveal>
-        <Reveal delay={120}>
-          <p className="kicker mb-8 text-signal">New</p>
-          <Chain items={["Developer", "AI", "Cloud"]} />
-        </Reveal>
-        <Reveal delay={240}>
-          <p className="kicker mb-8">AI needs to</p>
-          <ul className="space-y-4">
-            {aiNeeds.map((n) => (
-              <li key={n} className="flex items-baseline gap-3 text-base">
-                <span className="text-signal">✓</span>
-                {n}
-              </li>
-            ))}
-          </ul>
-        </Reveal>
       </div>
     </Section>
   );
@@ -530,42 +467,5 @@ function NeverTouchTags() {
         ))}
       </div>
     </div>
-  );
-}
-
-
-/* SECTION 7 — Thesis */
-export function Thesis() {
-  const traits = ["Machine-readable", "Discoverable", "Agent-friendly", "Composable"];
-  const ref = useRef<HTMLDivElement>(null);
-  return (
-    <Section id="thesis" kicker="The thesis">
-      <Reveal>
-        <PullQuote text="Infrastructure has become knowledge." />
-      </Reveal>
-      <div ref={ref} className="mt-20 grid gap-12 md:grid-cols-2">
-        <Reveal>
-          <div className="border border-border p-8 md:p-10">
-            <p className="kicker">Yesterday</p>
-            <p className="display mt-4 text-3xl md:text-4xl">Cloud executed code.</p>
-          </div>
-        </Reveal>
-        <Reveal delay={120}>
-          <div className="border border-signal/40 bg-signal-soft p-8 md:p-10">
-            <p className="kicker text-signal">Tomorrow</p>
-            <p className="display mt-4 text-3xl md:text-4xl">Cloud teaches AI how to build.</p>
-          </div>
-        </Reveal>
-      </div>
-      <div className="mt-12 flex flex-wrap gap-3">
-        {traits.map((t, i) => (
-          <Reveal key={t} delay={i * 80}>
-            <span className="border border-border px-5 py-2 font-mono text-xs tracking-wide text-muted-foreground">
-              {t}
-            </span>
-          </Reveal>
-        ))}
-      </div>
-    </Section>
   );
 }

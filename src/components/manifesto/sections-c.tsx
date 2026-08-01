@@ -161,30 +161,3 @@ export function FAQ() {
 }
 
 /* SECTION 15 — Manifesto */
-const lines = [
-  "Software should outlive infrastructure.",
-  "Infrastructure should disappear.",
-  "Developers should create.",
-  "AI should operate safely.",
-  "Cloud should understand machines.",
-  "Build software. Not infrastructure.",
-];
-
-export function Manifesto() {
-  return (
-    <section id="manifesto" className="relative border-y border-border veil">
-      <div className="mx-auto max-w-6xl px-6 py-24 md:px-10 md:py-32">
-        <p className="kicker text-signal">The Manifesto</p>
-        <Reveal>
-          <div className="mt-12 space-y-6">
-            {lines.map((l) => (
-              <p key={l} className="display text-[clamp(1.75rem,4vw,3.25rem)] leading-[1.15]">
-                {l}
-              </p>
-            ))}
-          </div>
-        </Reveal>
-      </div>
-    </section>
-  );
-}
