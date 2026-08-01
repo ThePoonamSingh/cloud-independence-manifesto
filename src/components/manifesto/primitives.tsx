@@ -73,38 +73,3 @@ export function Section({
 export function Rule() {
   return <div className="rule mx-auto w-full max-w-6xl" />;
 }
-
-export function PullQuote({ text }: { text: string }) {
-  const [copied, setCopied] = useState(false);
-  const share = (network: "x" | "li") => {
-    const url = typeof window !== "undefined" ? window.location.href : "";
-    const href =
-      network === "x"
-        ? `https://twitter.com/intent/tweet?text=${encodeURIComponent(`"${text}"`)}&url=${encodeURIComponent(url)}`
-        : `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`;
-    window.open(href, "_blank", "noopener,noreferrer");
-  };
-  return (
-    <figure className="group relative border-l border-signal/50 pl-6 md:pl-10">
-      <blockquote className="display text-3xl md:text-5xl">{text}</blockquote>
-      <figcaption className="mt-5 flex flex-wrap gap-3 text-xs opacity-60 transition-opacity group-hover:opacity-100">
-        <button
-          className="kicker transition-colors hover:text-signal"
-          onClick={() => {
-            navigator.clipboard?.writeText(text);
-            setCopied(true);
-            setTimeout(() => setCopied(false), 1600);
-          }}
-        >
-          {copied ? "Copied" : "Copy quote"}
-        </button>
-        <button className="kicker transition-colors hover:text-signal" onClick={() => share("x")}>
-          Tweet this
-        </button>
-        <button className="kicker transition-colors hover:text-signal" onClick={() => share("li")}>
-          Share on LinkedIn
-        </button>
-      </figcaption>
-    </figure>
-  );
-}

@@ -105,7 +105,7 @@ const faqs = [
   },
   {
     q: "What is an Agent-Ready Cloud?",
-    a: "A cloud platform designed for both developers and AI agents, where infrastructure, services and platform knowledge are understandable by machines — enabling AI to build, deploy and operate production systems with minimal human intervention.",
+    a: "A serverless cloud platform designed for both developers and AI agents, where infrastructure, services and platform knowledge are understandable by machines — enabling AI to build, deploy and operate production systems with minimal human intervention.",
   },
   {
     q: "How is this different from AWS or Azure?",

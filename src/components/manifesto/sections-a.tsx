@@ -314,7 +314,7 @@ export function Frankenstack() {
 const freedoms = [
   {
     title: "Freedom from infrastructure complexity.",
-    body: "You write the application. The platform absorbs the servers, config, security, deploys, and operations. Your ideas ship instead of sitting in configuration queues.",
+    body: "You write the application. The serverless platform absorbs the servers, config, security, deploys, and operations. Your ideas ship instead of sitting in configuration queues.",
   },
   {
     title: "Freedom from vendor sprawl.",
@@ -403,8 +403,8 @@ export function Independence() {
           <div className="bg-signal-soft p-8 md:p-10">
             <p className="kicker text-signal">It is freedom from infrastructure</p>
             <p className="mt-5 text-base text-muted-foreground">
-              A single platform takes the infrastructure problem off the developer's plate — and off
-              the AI's too.
+              A single serverless platform takes the infrastructure problem off the developer's
+              plate — and off the AI's too.
             </p>
           </div>
         </div>
