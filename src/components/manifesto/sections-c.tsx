@@ -23,7 +23,7 @@ function ThesisQuote({ children }: { children: string }) {
   return (
     <blockquote
       ref={ref}
-      className="font-display italic text-[clamp(2.5rem,6vw,5rem)] leading-[1.1]"
+      className="font-display italic text-[clamp(1.5rem,3.5vw,3rem)] leading-[1.14]"
       aria-label={children}
       data-visible={visible}
     >
@@ -48,23 +48,33 @@ export function Vision() {
   return (
     <div className="bg-foreground text-background [&_.kicker]:text-background/60">
       <Section id="vision" kicker="Vision: Cloud Independence">
-        <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
-          <div>
+        <div className="relative grid items-center gap-10 lg:grid-cols-12 lg:gap-8">
+          {/* Quote column */}
+          <div className="relative z-10 min-w-0 lg:col-span-7">
             <Reveal>
-              <ThesisQuote>
-                Cloud Independence is when developers stop adapting to the cloud, and the cloud starts adapting to how software is built. Developers should build software. The platform should take care of everything else. That's the future we're building with Catalyst.
-              </ThesisQuote>
+              <div className="relative">
+                {/* Oversized decorative quote mark */}
+                <span
+                  className="pointer-events-none absolute -left-4 -top-10 select-none font-display text-[8rem] leading-none text-background/[0.06] md:-left-8 md:-top-16 md:text-[12rem]"
+                  aria-hidden="true"
+                >
+                  “
+                </span>
+                <ThesisQuote>
+                  Cloud Independence is when developers stop adapting to the cloud, and the cloud starts adapting to how software is built. Developers should build software. The platform should take care of everything else. That's the future we're building with Catalyst.
+                </ThesisQuote>
+              </div>
             </Reveal>
 
-            <Reveal delay={140}>
-              <figcaption className="mt-10 md:mt-12">
+            <Reveal delay={160}>
+              <figcaption className="mt-10 md:mt-14">
                 <div className="flex items-start gap-5">
                   <span
-                    className="mt-3 h-12 w-1 shrink-0 rounded-full bg-signal"
+                    className="mt-2 h-14 w-1 shrink-0 rounded-full bg-signal"
                     aria-hidden="true"
                   />
                   <div className="flex flex-col">
-                    <span className="font-sans text-lg font-semibold tracking-tight text-background md:text-xl">
+                    <span className="font-sans text-xl font-semibold tracking-tight text-background md:text-2xl">
                       Mani Vembu
                     </span>
                     <span className="mt-1 text-sm font-medium uppercase tracking-widest text-background/50">
@@ -74,22 +84,34 @@ export function Vision() {
                 </div>
               </figcaption>
             </Reveal>
-
           </div>
 
-          <Reveal delay={200}>
-            <figure className="relative overflow-hidden">
+          {/* Portrait column */}
+          <Reveal delay={220} className="min-w-0 lg:col-span-5">
+            <figure className="relative mx-auto aspect-square w-full max-w-md lg:max-w-none">
+              {/* Soft circular backdrop */}
+              <div
+                className="absolute inset-0 rounded-full bg-background/[0.04]"
+                aria-hidden="true"
+              />
+              <div
+                className="absolute inset-[8%] rounded-full bg-gradient-to-br from-signal/10 via-transparent to-cool/10 blur-2xl"
+                aria-hidden="true"
+              />
               <img
                 src={maniVembuAsset.url}
                 alt="Line-art portrait illustration of Mani Vembu"
                 width={1024}
                 height={1024}
                 loading="lazy"
-                className="w-full mix-blend-multiply"
+                className="relative z-10 h-full w-full object-contain p-6"
               />
             </figure>
           </Reveal>
         </div>
+
+        {/* Bottom editorial accent line */}
+        <div className="pointer-events-none mt-16 h-px w-32 bg-gradient-to-r from-background/30 to-transparent md:mt-20" />
       </Section>
     </div>
   );
