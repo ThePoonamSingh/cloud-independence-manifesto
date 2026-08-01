@@ -61,6 +61,8 @@
   --ring: oklch(0.55 0.02 260);
   --signal: oklch(0.78 0.16 78);
   --signal-soft: oklch(0.78 0.16 78 / 12%);
+  --pain: #e32427;
+  --cold: #216cb4;
   --gradient-veil: radial-gradient(
     ellipse 80% 60% at 50% 0%,
     oklch(0.78 0.16 78 / 12%),
