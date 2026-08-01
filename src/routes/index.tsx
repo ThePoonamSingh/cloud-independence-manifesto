@@ -88,11 +88,11 @@ function Index() {
       <Rule />
       <TeachingAI />
       <Rule />
+      <Vision />
+      <Rule />
       <Catalyst />
       <Rule />
       <WhyZoho />
-      <Rule />
-      <Vision />
       <Rule />
       <FAQ />
       <Manifesto />
