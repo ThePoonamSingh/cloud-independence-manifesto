@@ -80,7 +80,6 @@ function Index() {
       <TeachingAI />
       <Rule />
       <Declaration />
-      <Closing />
     </main>
   );
 }
