@@ -36,59 +36,6 @@ function EraStrip() {
 }
 
 
-/* SECTION 2 — Signals */
-const signals = [
-  {
-    stat: "41%",
-    claim: "of new code in AI-assisted repositories is machine-generated.",
-    detail:
-      "The authorship of software is shifting. Review, policy and runtime guarantees become the bottleneck.",
-    source: "GitHub Octoverse, 2024",
-  },
-  {
-    stat: "90%",
-    claim: "of enterprise engineers will use AI code assistants by 2028.",
-    detail:
-      "Up from less than 14% in early 2024. The role shifts from implementation to orchestration — problem solving, system design, and ensuring AI output is production-ready.",
-    source: "Gartner, 2024",
-  },
-  {
-    stat: "66%",
-    claim: "of developers say their top frustration is AI output that is almost right, but not quite.",
-    detail:
-      "The follow-on cost lands on debugging, environments and operations — the work that was never the product.",
-    source: "Stack Overflow Developer Survey, 2025",
-  },
-];
-
-export function Signals() {
-  return (
-    <Section id="signals">
-      <Reveal>
-        <p className="kicker mb-6 text-signal">Why now?</p>
-        <h2 className="display max-w-4xl text-4xl md:text-6xl">
-          The old contract between developers and infrastructure is breaking.
-        </h2>
-      </Reveal>
-      <div className="mt-16 grid gap-px border border-border bg-border md:grid-cols-3">
-        {signals.map((s, i) => (
-          <Reveal key={s.stat} delay={i * 60}>
-            <article className="group h-full bg-background p-8 transition-colors duration-500 hover:bg-card md:p-10">
-              <p className="display text-6xl text-signal md:text-7xl">{s.stat}</p>
-              <p className="prose-body mt-6 text-base">{s.claim}</p>
-              <div className="grid grid-rows-[0fr] transition-all duration-500 group-hover:grid-rows-[1fr]">
-                <div className="overflow-hidden">
-                  <p className="prose-body pt-4 text-sm text-muted-foreground">{s.detail}</p>
-                </div>
-              </div>
-              <p className="kicker mt-6">Source · {s.source}</p>
-            </article>
-          </Reveal>
-        ))}
-      </div>
-    </Section>
-  );
-}
 
 /* SECTION 3 — Yesterday / Today / Tomorrow */
 const states = [

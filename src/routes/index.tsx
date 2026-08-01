@@ -3,7 +3,6 @@ import { Nav } from "@/components/manifesto/Nav";
 import { Hero } from "@/components/manifesto/Hero";
 import { Rule } from "@/components/manifesto/primitives";
 import {
-  Signals,
   Shift,
   Frankenstack,
   Independence,
@@ -60,8 +59,6 @@ function Index() {
     <main id="top">
       <Nav />
       <Hero />
-      <Rule />
-      <Signals />
       <Rule />
       <Shift />
       <Rule />
