@@ -46,6 +46,13 @@ const signals = [
     source: "GitHub Octoverse, 2024",
   },
   {
+    stat: "90%",
+    claim: "of enterprise engineers will use AI code assistants by 2028.",
+    detail:
+      "Up from less than 14% in early 2024. The role shifts from implementation to orchestration — problem solving, system design, and ensuring AI output is production-ready.",
+    source: "Gartner, 2024",
+  },
+  {
     stat: "65%",
     claim: "of developer time is spent on work that is not the product.",
     detail: "Pipelines, environments, glue code, upgrades, incidents. The tax nobody budgeted for.",
