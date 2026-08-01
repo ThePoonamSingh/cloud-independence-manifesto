@@ -52,7 +52,7 @@ export function Vision() {
           <div>
             <Reveal>
               <ThesisQuote>
-                The best infrastructure is the infrastructure developers never have to think about.
+                Cloud Independence is when developers stop adapting to the cloud, and the cloud starts adapting to how developers—and AI—build software.
               </ThesisQuote>
             </Reveal>
 
