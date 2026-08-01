@@ -31,15 +31,15 @@ export function StartBuilding() {
             <ul className="mt-10 space-y-3 font-mono text-sm uppercase tracking-widest text-background/60 sm:text-base">
               <li className="flex items-center gap-3">
                 <span className="h-px w-6 bg-signal" aria-hidden="true" />
-                No infrastructure to provision.
+                No infrastructure to provision. Just features to ship.
               </li>
               <li className="flex items-center gap-3">
                 <span className="h-px w-6 bg-cool" aria-hidden="true" />
-                No cloud services to stitch together.
+                No cloud services to stitch together. Just one platform to build on.
               </li>
               <li className="flex items-center gap-3">
                 <span className="h-px w-6 bg-signal" aria-hidden="true" />
-                No deployment complexity to manage.
+                No deployment complexity to manage. Just one step to production.
               </li>
             </ul>
           </Reveal>
