@@ -1,12 +1,5 @@
 import { useEffect, useState } from "react";
 
-const links = [
-  { href: "#why-now", label: "Why now" },
-  { href: "#signals", label: "Evidence" },
-  { href: "#category", label: "Agent-Ready Cloud" },
-  { href: "#declaration", label: "Declare" },
-];
-
 export function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [progress, setProgress] = useState(0);
@@ -32,17 +25,6 @@ export function Nav() {
         <a href="#top" className="kicker text-foreground">
           Catalyst 3.0
         </a>
-        <div className="hidden items-center gap-8 lg:flex">
-          {links.map((l) => (
-            <a
-              key={l.href}
-              href={l.href}
-              className="text-sm text-muted-foreground transition-colors hover:text-foreground"
-            >
-              {l.label}
-            </a>
-          ))}
-        </div>
       </div>
       <div className="h-px w-full bg-transparent">
         <div
