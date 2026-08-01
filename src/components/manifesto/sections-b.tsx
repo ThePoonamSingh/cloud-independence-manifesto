@@ -1,12 +1,15 @@
 import { useEffect, useState } from "react";
-import { Reveal, Section, useReveal } from "./primitives";
+import { PullQuote, Reveal, Section, useReveal } from "./primitives";
 
 /* SECTION 8 — Category */
 export function Category() {
   return (
     <Section id="category" kicker="Introducing a new category">
       <Reveal>
-        <h2 className="display text-[clamp(3rem,10vw,9rem)]">Agent-Ready Cloud</h2>
+        <PullQuote text="Infrastructure has become knowledge." />
+      </Reveal>
+      <Reveal delay={100}>
+        <h2 className="display mt-20 text-[clamp(3rem,10vw,9rem)]">Agent-Ready Cloud</h2>
       </Reveal>
       <Reveal delay={200}>
         <p className="mt-16 max-w-3xl text-xl leading-relaxed text-muted-foreground md:mt-24 md:text-3xl md:leading-[1.5]">
