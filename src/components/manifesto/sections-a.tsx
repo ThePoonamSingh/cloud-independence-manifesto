@@ -104,11 +104,6 @@ export function Shift() {
           ))}
         </div>
       </div>
-      <Reveal delay={200}>
-        <p className="lede mx-auto mt-16 max-w-3xl text-center text-lg text-muted-foreground md:text-xl">
-          The next platform is the agent-ready, full-stack serverless cloud.
-        </p>
-      </Reveal>
     </Section>
   );
 }
@@ -481,11 +476,6 @@ export function Frankenstack() {
           ))}
         </div>
       </div>
-      <Reveal delay={200}>
-        <p className="lede mx-auto mt-16 max-w-3xl text-center text-lg text-muted-foreground md:text-xl">
-          Cloud Independence replaces this maze with an agent-ready, full-stack serverless cloud.
-        </p>
-      </Reveal>
     </Section>
   );
 }
@@ -513,11 +503,6 @@ export function Provocation() {
             >
               every layer of infrastructure?
             </span>
-          </p>
-        </Reveal>
-        <Reveal delay={200}>
-          <p className="lede mx-auto mt-10 max-w-3xl text-center text-base text-muted-foreground md:text-lg">
-            The answer is an agent-ready, full-stack serverless cloud.
           </p>
         </Reveal>
       </div>
