@@ -48,27 +48,61 @@ export function Vision() {
   return (
     <div className="bg-foreground text-background [&_.kicker]:text-background/60">
       <Section id="vision" kicker="Vision: Cloud Independence">
-        <div className="mx-auto max-w-5xl text-center">
-          <Reveal>
-            <ThesisQuote>
-              Cloud Independence is when developers stop adapting to the cloud, and the cloud starts adapting to how software is built. Developers should build software. The platform should take care of everything else. That's the future we're building with Catalyst.
-            </ThesisQuote>
-          </Reveal>
+        <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
+          <div>
+            <Reveal>
+              <ThesisQuote>
+                Cloud Independence is when developers stop adapting to the cloud, and the cloud starts adapting to how software is built. Developers should build software. The platform should take care of everything else. That's the future we're building with Catalyst.
+              </ThesisQuote>
+            </Reveal>
 
-          <Reveal delay={280}>
-            <p className="mx-auto mt-10 max-w-2xl text-lg leading-relaxed text-background/75 md:text-xl">
-              That is the standard Catalyst 3.0 is built for: infrastructure that gets out of the way so developers and AI agents can ship.
-            </p>
-          </Reveal>
+            <Reveal delay={140}>
+              <figcaption className="mt-10 md:mt-12">
+                <div className="flex items-start gap-5">
+                  <span
+                    className="mt-3 h-12 w-1 shrink-0 rounded-full bg-signal"
+                    aria-hidden="true"
+                  />
+                  <div className="flex flex-col">
+                    <span className="font-sans text-lg font-semibold tracking-tight text-background md:text-xl">
+                      Mani Vembu
+                    </span>
+                    <span className="mt-1 text-sm font-medium uppercase tracking-widest text-background/50">
+                      Chief Executive Officer, Zoho
+                    </span>
+                  </div>
+                </div>
+              </figcaption>
+            </Reveal>
 
-          <Reveal delay={420}>
-            <a
-              href="#declaration"
-              className="group mt-8 inline-flex items-center gap-3 border border-background/25 px-6 py-3 text-sm font-medium text-background transition-colors hover:bg-background hover:text-foreground"
-            >
-              <span>Declare Cloud Independence</span>
-              <span className="transition-transform group-hover:translate-x-1">→</span>
-            </a>
+            <Reveal delay={280}>
+              <p className="mt-10 max-w-xl text-lg leading-relaxed text-background/75 md:text-xl">
+                That is the standard Catalyst 3.0 is built for: infrastructure that gets out of the way so developers and AI agents can ship.
+              </p>
+            </Reveal>
+
+            <Reveal delay={420}>
+              <a
+                href="#declaration"
+                className="group mt-8 inline-flex items-center gap-3 border border-background/25 px-6 py-3 text-sm font-medium text-background transition-colors hover:bg-background hover:text-foreground"
+              >
+                <span>Declare Cloud Independence</span>
+                <span className="transition-transform group-hover:translate-x-1">→</span>
+              </a>
+            </Reveal>
+          </div>
+
+          <Reveal delay={200}>
+            <figure className="relative overflow-hidden">
+              <img
+                src={maniVembuAsset.url}
+                alt="Line-art portrait illustration of Mani Vembu"
+                width={1024}
+                height={1024}
+                loading="lazy"
+                className="w-full mix-blend-multiply"
+              />
+            </figure>
           </Reveal>
         </div>
       </Section>
