@@ -39,8 +39,8 @@ export function TwoBuilders() {
       </Reveal>
       <Reveal delay={150}>
         <p className="mt-6 max-w-2xl text-lg text-muted-foreground">
-          The same platform serves two kinds of builders: humans who write intent, and agents who
-          turn intent into running systems.
+          The same serverless platform serves two kinds of builders: humans who write intent, and
+          agents who turn intent into running systems.
         </p>
       </Reveal>
       <div className="mt-20 grid gap-px border border-border bg-border md:grid-cols-2">
@@ -95,7 +95,7 @@ const flow = [
   { t: "Uses MCP", d: "A typed protocol replaces screen-scraping and guesswork." },
   { t: "Reads AI-ready docs", d: "Documentation written to be parsed, not just read." },
   { t: "Generates application", d: "Code, schema, policies and configuration together." },
-  { t: "Deploys", d: "Environments, secrets and rollout handled by the platform." },
+  { t: "Deploys", d: "Environments, secrets and rollout handled by the serverless platform." },
   { t: "Operates production", d: "Observes, scales, remediates — inside guardrails." },
 ];
 
@@ -222,7 +222,7 @@ export function Catalyst() {
       <div className="mt-24 border-t border-border pt-16">
         <Reveal>
           <p className="kicker text-signal">— What's new in Catalyst 3.0</p>
-          <h3 className="display mt-6 text-3xl md:text-5xl">The platform takes over.</h3>
+          <h3 className="display mt-6 text-3xl md:text-5xl">The serverless platform takes over.</h3>
           <p className="mt-6 max-w-xl text-muted-foreground">
             New capabilities make it easier to build, connect, deploy, and operate intelligent
             applications — without adding a single extra system to manage.
