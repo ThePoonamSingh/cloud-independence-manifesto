@@ -331,29 +331,25 @@ export function Frankenstack() {
         <div className="mt-16 grid gap-px border-t border-border bg-border md:grid-cols-3">
           {[
             {
-              num: "01",
               title: "More\nVendors.",
               body: "Fragmented identity, billing, and permissions across a dozen isolated consoles.",
             },
             {
-              num: "02",
               title: "More\nComplexity.",
               body: "Proprietary APIs and brittle abstractions that break with every update.",
             },
             {
-              num: "03",
               title: "More\nDebt.",
               body: "Engineering teams spend half their sprint cycles on keep-the-lights-on glue code.",
             },
-          ].map((item) => (
+          ].map((item, i) => (
             <div
-              key={item.num}
+              key={i}
               className="group bg-background p-8 transition-colors duration-500 hover:bg-card md:p-10"
             >
-              <div className="font-mono text-xs text-pain">[{item.num}]</div>
-              <h3 className="display mt-4 text-3xl uppercase leading-none tracking-tight transition-colors group-hover:text-pain md:text-4xl">
-                {item.title.split("\n").map((line, i) => (
-                  <span key={i} className="block">
+              <h3 className="display text-3xl uppercase leading-none tracking-tight transition-colors group-hover:text-pain md:text-4xl">
+                {item.title.split("\n").map((line, j) => (
+                  <span key={j} className="block">
                     {line}
                   </span>
                 ))}
@@ -361,14 +357,6 @@ export function Frankenstack() {
               <p className="mt-5 text-sm leading-relaxed text-muted-foreground">{item.body}</p>
             </div>
           ))}
-        </div>
-      </Reveal>
-
-      <Reveal>
-        <div className="mt-8 flex items-center justify-between font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
-          <span>Status: High friction</span>
-          <div className="mx-4 h-px flex-grow bg-border" />
-          <span>Catalyst 3.0 / Manifesto</span>
         </div>
       </Reveal>
     </Section>
