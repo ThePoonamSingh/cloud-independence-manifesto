@@ -40,6 +40,7 @@
   --color-cool-soft: var(--cool-soft);
   --font-display: "Zoho Puvi", "Work Sans", system-ui, sans-serif;
   --font-sans: "Zoho Puvi", "Work Sans", system-ui, sans-serif;
+  --font-handwritten: "Caveat", "Nothing You Could Do", cursive;
   --font-mono: "JetBrains Mono", ui-monospace, monospace;
 }
 
