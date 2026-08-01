@@ -67,11 +67,6 @@ export function StartBuilding() {
             </a>
           </Reveal>
 
-          <Reveal delay={540}>
-            <p className="mt-8 font-mono text-xs uppercase tracking-widest text-background/40">
-              Cloud Independence starts with a single deployment.
-            </p>
-          </Reveal>
         </div>
       </Section>
     </div>
