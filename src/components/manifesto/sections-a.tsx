@@ -256,7 +256,7 @@ const deadEnds: { d: string; label: string }[] = [
 export function Frankenstack() {
   const { ref, visible } = useReveal<HTMLDivElement>();
   const [activeHop, setActiveHop] = useState<number | null>(null);
-  const hop = activeHop === null ? null : mazeNodes[activeHop];
+  const hop = activeHop === null ? null : (mazeNodes[activeHop] ?? null);
   const painCards = [
     {
       title: "More\nVendors.",
