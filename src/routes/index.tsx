@@ -5,6 +5,7 @@ import { Rule } from "@/components/manifesto/primitives";
 import {
   Shift,
   Frankenstack,
+  Provocation,
   Independence,
 } from "@/components/manifesto/sections-a";
 import {
@@ -63,6 +64,8 @@ function Index() {
       <Shift />
       <Rule />
       <Frankenstack />
+      <Rule />
+      <Provocation />
       <Rule />
       <Vision />
       <Rule />

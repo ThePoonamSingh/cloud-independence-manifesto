@@ -481,6 +481,36 @@ export function Frankenstack() {
   );
 }
 
+/* SECTION 5.5 — Provocation */
+export function Provocation() {
+  return (
+    <Section id="provocation" className="border-t border-border">
+      <div className="mx-auto max-w-5xl py-16 text-center md:py-24">
+        <Reveal>
+          <p className="display text-[clamp(1.85rem,5.2vw,4.25rem)] leading-[1.08]">
+            Developers stopped writing every line of code.
+          </p>
+        </Reveal>
+        <Reveal delay={160}>
+          <p className="display mt-5 text-[clamp(1.85rem,5.2vw,4.25rem)] leading-[1.08]">
+            Why should they still manage{" "}
+            <span
+              className="italic"
+              style={{
+                background: "linear-gradient(100deg, var(--signal) 0%, var(--cool) 100%)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+              }}
+            >
+              every layer of infrastructure?
+            </span>
+          </p>
+        </Reveal>
+      </div>
+    </Section>
+  );
+}
+
 /* SECTION 6 — Cloud Independence */
 const freedoms = [
   {
