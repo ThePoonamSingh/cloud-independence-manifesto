@@ -526,7 +526,7 @@ const freedoms = [
   },
   {
     title: "Freedom for AI to build safely.",
-    body: "Machine-readable, policy-guarded infrastructure lets autonomous agents provision, deploy, and observe without guessing — or breaking production.",
+    body: "Machine-readable, policy-guarded infrastructure lets coding agents provision, deploy, and observe without guessing or breaking production.",
   },
 ];
 
