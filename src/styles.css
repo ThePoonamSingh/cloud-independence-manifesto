@@ -246,6 +246,45 @@
   }
 }
 
+@keyframes tag-drift {
+  0%,
+  100% {
+    transform: translate(0, 0) rotate(var(--rot-start, 0deg));
+  }
+  50% {
+    transform: translate(var(--drift-x, 0px), var(--drift-y, 0px)) rotate(var(--rot-end, 0deg));
+  }
+}
+
+@keyframes line-pulse {
+  0% {
+    stroke-dashoffset: 20;
+    opacity: 0.35;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 0.35;
+  }
+}
+
+@keyframes stress-jitter {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  10%,
+  90% {
+    transform: translate(-0.5px, 0.5px);
+  }
+  30%,
+  70% {
+    transform: translate(0.5px, -0.5px);
+  }
+}
+
 @utility cool-veil {
   background-image: radial-gradient(
     ellipse 65% 60% at 50% 0%,
