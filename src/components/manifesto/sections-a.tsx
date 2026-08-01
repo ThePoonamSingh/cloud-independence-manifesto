@@ -46,13 +46,6 @@ const signals = [
     source: "GitHub Octoverse, 2024",
   },
   {
-    stat: "723B",
-    claim: "projected global cloud spend, in USD, for the coming year.",
-    detail:
-      "Spend keeps compounding while developer time spent on undifferentiated infrastructure stays flat.",
-    source: "Gartner Public Cloud Forecast, 2025",
-  },
-  {
     stat: "65%",
     claim: "of developer time is spent on work that is not the product.",
     detail: "Pipelines, environments, glue code, upgrades, incidents. The tax nobody budgeted for.",
