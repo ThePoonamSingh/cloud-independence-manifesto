@@ -23,7 +23,7 @@ function ThesisQuote({ children }: { children: string }) {
   return (
     <blockquote
       ref={ref}
-      className="handwritten-quote text-[clamp(2.5rem,6vw,5rem)] leading-[1.1]"
+      className="font-display italic text-[clamp(2.5rem,6vw,5rem)] leading-[1.1]"
       aria-label={children}
       data-visible={visible}
     >
