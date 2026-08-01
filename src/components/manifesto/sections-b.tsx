@@ -48,12 +48,19 @@ export function TwoBuilders() {
       </Reveal>
       <div className="mt-20 grid gap-px border border-border bg-border md:grid-cols-2">
         {[
-          { t: "Human developer", items: ["Intent", "IDE", "Console"] },
-          { t: "AI agent", items: ["Planning", "Agent Skills", "Execution"] },
+          { t: "Human developer", items: ["Intent", "IDE", "Console"], accent: "signal" },
+          { t: "AI agent", items: ["Planning", "Agent Skills", "Execution"], accent: "cool" },
         ].map((c) => (
           <Reveal key={c.t}>
-            <div className="h-full bg-background p-8 md:p-12">
-              <p className="kicker text-signal">{c.t}</p>
+            <div className="group relative h-full bg-background p-8 md:p-12">
+              <span
+                className={`absolute left-0 top-0 h-px w-0 transition-[width] duration-700 group-hover:w-full ${
+                  c.accent === "cool" ? "bg-cool" : "bg-signal"
+                }`}
+              />
+              <p className={`kicker ${c.accent === "cool" ? "text-cool" : "text-signal"}`}>
+                {c.t}
+              </p>
               <ul className="mt-8 space-y-4">
                 {c.items.map((i) => (
                   <li key={i} className="text-2xl md:text-3xl">
