@@ -43,12 +43,6 @@ export function Nav() {
             </a>
           ))}
         </div>
-        <a
-          href="#media"
-          className="border border-border px-4 py-2 text-xs tracking-wide text-foreground transition-colors hover:border-signal hover:text-signal"
-        >
-          Media Resources
-        </a>
       </div>
       <div className="h-px w-full bg-transparent">
         <div

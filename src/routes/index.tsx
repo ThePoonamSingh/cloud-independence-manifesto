@@ -18,7 +18,7 @@ import {
   Catalyst,
   WhyZoho,
 } from "@/components/manifesto/sections-b";
-import { MediaCenter, FAQ, Manifesto } from "@/components/manifesto/sections-c";
+import { FAQ, Manifesto } from "@/components/manifesto/sections-c";
 import { Declaration, Closing } from "@/components/manifesto/sections-d";
 
 const TITLE = "The Cloud Independence Manifesto — Catalyst 3.0";
@@ -89,7 +89,6 @@ function Index() {
       <Rule />
       <WhyZoho />
       <Rule />
-      <MediaCenter />
       <Rule />
       <FAQ />
       <Manifesto />
