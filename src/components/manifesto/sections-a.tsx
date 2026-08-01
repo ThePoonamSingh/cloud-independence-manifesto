@@ -75,10 +75,10 @@ export function Signals() {
           <Reveal key={s.stat} delay={i * 60}>
             <article className="group h-full bg-background p-8 transition-colors duration-500 hover:bg-card md:p-10">
               <p className="display text-6xl text-signal md:text-7xl">{s.stat}</p>
-              <p className="mt-6 text-base leading-relaxed">{s.claim}</p>
+              <p className="prose-body mt-6 text-base">{s.claim}</p>
               <div className="grid grid-rows-[0fr] transition-all duration-500 group-hover:grid-rows-[1fr]">
                 <div className="overflow-hidden">
-                  <p className="pt-4 text-sm leading-relaxed text-muted-foreground">{s.detail}</p>
+                  <p className="prose-body pt-4 text-sm text-muted-foreground">{s.detail}</p>
                 </div>
               </div>
               <p className="kicker mt-6">Source · {s.source}</p>
@@ -120,7 +120,7 @@ export function Shift() {
         <h2 className="display max-w-4xl text-4xl md:text-7xl">
           Every platform shift changed how software gets built. AI is creating the next one.
         </h2>
-        <p className="mt-8 max-w-2xl text-muted-foreground">
+        <p className="lede mt-8 text-base text-muted-foreground md:text-lg">
           The compiler moved up a level. The next platform must move infrastructure out of the way.
         </p>
         <EraStrip />
@@ -152,7 +152,7 @@ export function Shift() {
               >
                 {s.h}
               </p>
-              <p className="mt-5 text-sm text-muted-foreground">{s.d}</p>
+              <p className="prose-body mt-5 text-sm text-muted-foreground">{s.d}</p>
             </button>
           ))}
         </div>
@@ -214,7 +214,7 @@ export function Frankenstack() {
         </h2>
       </Reveal>
       <Reveal delay={100}>
-        <p className="mt-6 max-w-2xl text-lg text-muted-foreground md:text-xl">
+        <p className="lede mt-7 text-lg text-muted-foreground md:text-xl">
           Every feature already travels through a dozen vendors, a dozen dashboards, and a dozen
           bills before it reaches a user — and someone on the team has to hold all of it in their
           head.
@@ -303,7 +303,7 @@ export function Frankenstack() {
                   </span>
                 ))}
               </h3>
-              <p className="mt-4 text-sm leading-relaxed text-muted-foreground">{item.body}</p>
+              <p className="prose-body mt-4 text-sm text-muted-foreground">{item.body}</p>
             </div>
           ))}
         </div>
@@ -369,7 +369,7 @@ function FreedomRow({
           transitionDelay: `${base + 140}ms`,
         }}
       >
-        <p className="max-w-xl text-base leading-relaxed text-muted-foreground transition-colors duration-500 group-hover:text-foreground md:text-lg">
+        <p className="prose-body text-base text-muted-foreground transition-colors duration-500 group-hover:text-foreground md:text-lg">
           {item.body}
         </p>
       </div>

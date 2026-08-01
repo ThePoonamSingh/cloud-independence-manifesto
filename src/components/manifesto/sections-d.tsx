@@ -22,7 +22,7 @@ export function StartBuilding() {
           </Reveal>
 
           <Reveal delay={120}>
-            <p className="mt-8 max-w-2xl text-lg leading-relaxed text-background/70 sm:text-xl md:text-2xl">
+            <p className="lede mt-8 text-lg text-background/70 sm:text-xl md:text-2xl">
               The future belongs to developers who build—not those who manage infrastructure.
             </p>
           </Reveal>

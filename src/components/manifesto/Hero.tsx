@@ -121,7 +121,7 @@ export function Hero() {
         </h1>
 
         {/* Body hierarchy */}
-        <p className="mt-12 max-w-xl text-base font-light leading-[1.7] tracking-wide text-balance text-muted-foreground opacity-0 animate-[fade-up_1s_ease-out_0.9s_forwards] md:text-lg">
+        <p className="lede mt-12 text-base text-balance text-muted-foreground opacity-0 animate-[fade-up_1s_ease-out_0.9s_forwards] md:text-lg">
           We believe in Cloud Independence as the next step in cloud computing. A future where developers describe what they want to build, and the platform handles the complexity of getting it into production.
         </p>
       </div>
