@@ -18,7 +18,7 @@ import {
   Catalyst,
   WhyZoho,
 } from "@/components/manifesto/sections-b";
-import { FAQ, Manifesto } from "@/components/manifesto/sections-c";
+import { Vision, FAQ, Manifesto } from "@/components/manifesto/sections-c";
 import { Declaration, Closing } from "@/components/manifesto/sections-d";
 
 const TITLE = "The Cloud Independence Manifesto — Catalyst 3.0";
