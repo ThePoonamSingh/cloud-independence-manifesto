@@ -87,8 +87,8 @@ export function Vision() {
           </div>
 
           {/* Portrait column */}
-          <Reveal delay={220}>
-            <figure className="relative mx-auto aspect-square w-full max-w-md lg:col-span-5 lg:max-w-none">
+          <Reveal delay={220} className="min-w-0 lg:col-span-5">
+            <figure className="relative mx-auto aspect-square w-full max-w-md lg:max-w-none">
               {/* Soft circular backdrop */}
               <div
                 className="absolute inset-0 rounded-full bg-background/[0.04]"
