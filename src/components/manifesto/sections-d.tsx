@@ -305,7 +305,7 @@ export function Declaration() {
             className="mt-6 w-full max-w-sm border border-border bg-transparent px-4 py-3 text-sm outline-none placeholder:text-muted-foreground focus:border-signal"
           />
           <p className="mt-4 font-mono text-xs text-muted-foreground">
-            {selected.length} selected{selected.length > 10 ? " · first 10 appear on the card" : ""}
+            {selected.length} selected{selected.length > 12 ? " · first 12 appear on the card" : ""}
           </p>
           <div className="mt-6 flex flex-wrap gap-3">
             <button
