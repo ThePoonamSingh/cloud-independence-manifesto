@@ -1,60 +1,6 @@
 import { useState } from "react";
 import { Reveal, Section } from "./primitives";
 
-/* SECTION 13 — Media Center */
-const kit = [
-  { t: "Press Kit", d: "Complete archive, 24 MB", f: "catalyst-3-press-kit.zip" },
-  { t: "Executive Brief", d: "8-page PDF", f: "cloud-independence-executive-brief.pdf" },
-  { t: "Media Deck", d: "18 slides, PDF", f: "catalyst-3-media-deck.pdf" },
-  { t: "High-resolution Logos", d: "SVG + PNG", f: "catalyst-logos.zip" },
-  { t: "Brand Assets", d: "Colour, type, usage", f: "catalyst-brand-assets.zip" },
-  { t: "Executive Photos", d: "Print resolution", f: "catalyst-executive-photos.zip" },
-  { t: "Product Screenshots", d: "Console and IDE", f: "catalyst-screenshots.zip" },
-  { t: "Architecture Diagrams", d: "Agent-Ready Cloud", f: "agent-ready-cloud-diagrams.zip" },
-  { t: "Press Release", d: "Full text, PDF", f: "catalyst-3-press-release.pdf" },
-  { t: "Journalist FAQ", d: "Definitions and framing", f: "journalist-faq.pdf" },
-  { t: "The Manifesto (PDF)", d: "Print-ready", f: "cloud-independence-manifesto.pdf" },
-];
-
-export function MediaCenter() {
-  return (
-    <Section id="media" kicker="Media centre">
-      <Reveal>
-        <h2 className="display max-w-3xl text-4xl md:text-6xl">
-          Everything a newsroom needs, without an email.
-        </h2>
-      </Reveal>
-      <div className="mt-16 grid gap-px border border-border bg-border sm:grid-cols-2 lg:grid-cols-3">
-        {kit.map((k, i) => (
-          <Reveal key={k.t} delay={i * 40}>
-            <a
-              href={`/media/${k.f}`}
-              download
-              className="group flex h-full items-start justify-between gap-6 bg-background p-7 transition-colors hover:bg-card"
-            >
-              <span>
-                <span className="block text-lg">{k.t}</span>
-                <span className="kicker mt-2 block">{k.d}</span>
-              </span>
-              <span className="text-muted-foreground transition-transform group-hover:translate-y-0.5 group-hover:text-signal">
-                ↓
-              </span>
-            </a>
-          </Reveal>
-        ))}
-      </div>
-      <Reveal>
-        <a
-          href="mailto:press@catalyst.example"
-          className="mt-10 inline-flex border border-border px-6 py-3 text-sm transition-colors hover:border-signal hover:text-signal"
-        >
-          Contact PR
-        </a>
-      </Reveal>
-    </Section>
-  );
-}
-
 /* SECTION 14 — Journalist FAQ */
 const faqs = [
   {

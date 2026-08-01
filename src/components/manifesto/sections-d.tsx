@@ -171,18 +171,6 @@ export function Closing() {
       <footer className="border-t border-border bg-black">
         <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-6 py-10 md:px-10">
           <p className="kicker">Catalyst 3.0 · The Cloud Independence Manifesto</p>
-          <div className="flex gap-6">
-            <a href="#media" className="kicker transition-colors hover:text-signal">
-              Media resources
-            </a>
-            <a
-              href="/media/cloud-independence-manifesto.pdf"
-              download
-              className="kicker transition-colors hover:text-signal"
-            >
-              Download PDF
-            </a>
-          </div>
         </div>
       </footer>
     </section>
