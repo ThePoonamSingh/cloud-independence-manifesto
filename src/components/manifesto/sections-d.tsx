@@ -231,7 +231,7 @@ export function Closing() {
       <div className="h-[45vh] bg-gradient-to-b from-transparent to-black" />
       <footer className="border-t border-border bg-black">
         <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-6 py-10 md:px-10">
-          <p className="kicker">Catalyst 3.0 · The Cloud Independence Manifesto</p>
+          <p className="kicker">Catalyst 3.0</p>
         </div>
       </footer>
     </section>

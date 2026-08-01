@@ -75,7 +75,6 @@ export function Hero() {
     <header className="gradient-hero relative flex min-h-screen items-center overflow-hidden">
       <InfrastructureGraph />
       <div className="relative mx-auto w-full max-w-6xl px-6 pt-32 pb-24 md:px-10">
-        <p className="kicker">The Cloud Independence Manifesto</p>
         <h1 className="display mt-8 text-[clamp(3.5rem,13vw,11rem)]">Cloud Independence</h1>
         <p className="mt-8 max-w-2xl text-lg text-muted-foreground md:text-2xl">
           A movement for developers who build software, not infrastructure.
