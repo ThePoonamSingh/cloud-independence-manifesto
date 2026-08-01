@@ -8,6 +8,18 @@ const options = [
   "Vendor sprawl",
   "Manual deployments",
   "Infrastructure glue",
+  "Proprietary cloud APIs",
+  "Egress pricing surprises",
+  "IAM role roulette",
+  "YAML archaeology",
+  "Works on my machine",
+  "15-minute deploy cycles",
+  "Alert fatigue",
+  "Console tab overload",
+  "AI-unreadable architecture",
+  "Tribal knowledge as docs",
+  "Least-privilege drift",
+  "Staging that costs like prod",
 ];
 
 function drawDeclaration(selected: string[], name: string) {
