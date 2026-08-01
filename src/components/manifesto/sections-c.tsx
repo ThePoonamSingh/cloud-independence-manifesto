@@ -74,7 +74,7 @@ export function Vision() {
                   “
                 </span>
                 <ThesisQuote>
-                  parameterName="children">Cloud Independence is when developers stop adapting to the cloud, and the cloud starts adapting to how software is built. Developers should build software. The platform should take care of everything else.
+                  Cloud Independence is when developers stop adapting to the cloud, and the cloud starts adapting to how software is built. Developers should build software. The platform should take care of everything else.
                 </ThesisQuote>
 
               </div>
