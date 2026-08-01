@@ -81,24 +81,6 @@ export function Hero() {
         <p className="mt-8 max-w-2xl text-lg text-muted-foreground md:text-2xl">
           We believe in Cloud Independence as the next step in cloud computing. A future where developers describe what they want to build, and the platform handles the complexity of getting it into production.
         </p>
-        <div className="mt-14 flex flex-wrap items-center gap-4">
-          <a
-            href="#declaration"
-            className="group inline-flex items-center gap-3 border border-foreground bg-foreground px-6 py-3 text-sm font-medium text-background transition-colors hover:bg-transparent hover:text-foreground"
-          >
-            Read the Manifesto
-            <span className="transition-transform group-hover:translate-y-0.5">↓</span>
-          </a>
-          <a
-            href="https://catalyst.zoho.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-3 border border-border px-6 py-3 text-sm text-muted-foreground transition-colors hover:border-foreground hover:text-foreground"
-          >
-            Explore Catalyst 3.0
-            <span className="text-xs">↗</span>
-          </a>
-        </div>
       </div>
     </header>
   );
