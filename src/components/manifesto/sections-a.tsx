@@ -394,14 +394,14 @@ export function Independence() {
       <Reveal>
         <div className="mt-12 grid gap-px border border-border bg-border md:grid-cols-2">
           <div className="bg-background p-8 md:p-10">
-            <p className="kicker">Not vendor switching</p>
+            <p className="kicker">Cloud Independence does not mean vendor switching</p>
             <p className="mt-5 text-base text-muted-foreground">
-              It is not about moving from one cloud provider to another. That just trades one vendor
-              for another — and keeps the same infrastructure burden on your shoulders.
+              Moving from one cloud provider to another trades one vendor for another — and keeps
+              the same infrastructure burden on your shoulders.
             </p>
           </div>
           <div className="bg-signal-soft p-8 md:p-10">
-            <p className="kicker text-signal">It is freedom from infrastructure</p>
+            <p className="kicker text-signal">Cloud Independence means freedom from infrastructure</p>
             <p className="mt-5 text-base text-muted-foreground">
               A single serverless platform takes the infrastructure problem off the developer's
               plate — and off the AI's too.

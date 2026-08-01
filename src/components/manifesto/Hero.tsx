@@ -77,8 +77,7 @@ export function Hero() {
       <div className="relative mx-auto w-full max-w-6xl px-6 pt-32 pb-24 md:px-10">
         <h1 className="display mt-8 text-[clamp(3.5rem,13vw,11rem)]">Cloud Independence</h1>
         <p className="mt-8 max-w-2xl text-lg text-muted-foreground md:text-2xl">
-          Cloud Independence is the movement for developers who build software, not operate
-          infrastructure.
+          Cloud Independence means building software, not operating infrastructure.
         </p>
         <div className="mt-14 flex flex-wrap items-center gap-4">
           <a
