@@ -207,6 +207,49 @@
   background-image: var(--gradient-rule);
 }
 
+/* Scroll choreography: each section settles in, then recedes as the next arrives */
+@utility section-stage {
+  --enter: 1;
+  --exit: 0;
+  opacity: calc(0.55 + 0.45 * var(--enter) - 0.3 * var(--exit));
+  transform: translate3d(
+      0,
+      calc((1 - var(--enter)) * 26px - var(--exit) * 18px),
+      0
+    )
+    scale(calc(1 - var(--exit) * 0.012));
+  will-change: transform, opacity;
+}
+
+/* Hairline between sections draws itself as the handoff happens */
+@utility rule-draw {
+  transform: scaleX(0.12);
+  transform-origin: center;
+  opacity: 0;
+  transition:
+    transform 1200ms cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 700ms ease-out;
+
+  &[data-visible="true"] {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .section-stage {
+    opacity: 1;
+    transform: none;
+  }
+
+  .rule-draw {
+    transform: none;
+    opacity: 1;
+    transition: none;
+  }
+}
+
+
 @utility kicker {
   font-family: var(--font-mono);
   font-size: 0.6875rem;
