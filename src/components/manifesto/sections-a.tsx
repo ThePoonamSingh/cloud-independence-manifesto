@@ -250,6 +250,8 @@ const vendors = [
 
 export function Frankenstack() {
   const { ref, visible } = useReveal<HTMLDivElement>();
+  const routePath =
+    "M 40,80 C 120,80 140,40 220,40 S 320,120 400,120 S 500,60 580,60 S 680,130 760,130";
   return (
     <Section id="patchwork-stack" kicker="The problem">
       <Reveal>
@@ -265,10 +267,9 @@ export function Frankenstack() {
         </p>
       </Reveal>
 
-
       <div
         ref={ref}
-        className="relative mt-16 flex h-72 items-center justify-center overflow-hidden md:h-80"
+        className="relative mt-16 flex h-80 items-center justify-center overflow-hidden md:h-96"
       >
         <div
           className="absolute inset-0"
@@ -284,6 +285,37 @@ export function Frankenstack() {
             WebkitMaskImage: "radial-gradient(circle, white, transparent 70%)",
           }}
         />
+
+        <svg
+          className="pointer-events-none absolute inset-0 h-full w-full"
+          viewBox="0 0 800 180"
+          preserveAspectRatio="xMidYMid meet"
+          fill="none"
+        >
+          <path
+            d={routePath}
+            stroke="color-mix(in oklab, var(--color-signal) 25%, transparent)"
+            strokeWidth="1"
+            strokeDasharray="8 8"
+            className="opacity-0 transition-opacity duration-700"
+            style={{ opacity: visible ? 1 : 0 }}
+          />
+          <path
+            d={routePath}
+            stroke="var(--color-signal)"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeDasharray="1200"
+            strokeDashoffset="1200"
+            className="opacity-0"
+            style={{
+              opacity: visible ? 1 : 0,
+              animation: visible ? "route-draw 3.2s cubic-bezier(0.16, 1, 0.3, 1) forwards" : "none",
+              animationDelay: visible ? "0.6s" : "0s",
+            }}
+          />
+        </svg>
+
         <div className="relative flex max-w-3xl flex-wrap justify-center gap-2 px-4">
           {vendors.map((v, i) => (
             <span
@@ -293,11 +325,26 @@ export function Frankenstack() {
                 opacity: visible ? 1 : 0,
                 transform: visible ? undefined : "translateY(12px)",
                 transitionDelay: `${i * 60}ms`,
+                animation: visible
+                  ? `vendor-glow 2.4s cubic-bezier(0.16, 1, 0.3, 1) ${0.8 + i * 0.16}s`
+                  : "none",
               }}
             >
               {v.name}
             </span>
           ))}
+
+          <div
+            className="absolute left-0 top-0 h-3 w-3 rounded-full bg-signal shadow-[0_0_18px_var(--color-signal)]"
+            style={{
+              opacity: visible ? 1 : 0,
+              offsetPath: `path('${routePath}')`,
+              offsetRotate: "auto",
+              animation: visible
+                ? "packet-travel 3.2s cubic-bezier(0.16, 1, 0.3, 1) 0.6s forwards"
+                : "none",
+            }}
+          />
         </div>
       </div>
 
