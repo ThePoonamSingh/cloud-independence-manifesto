@@ -395,19 +395,7 @@ export function Independence() {
 
       <div className="mt-16 space-y-px border-t border-border bg-border">
         {freedoms.map((item, i) => (
-          <Reveal key={item.title} delay={i * 80}>
-            <div className="grid gap-8 bg-background p-8 md:grid-cols-2 md:gap-16 md:p-12 lg:p-16">
-              <div className="flex items-start gap-4">
-                <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-signal" />
-                <h3 className="display text-2xl md:text-4xl lg:text-5xl">{item.title}</h3>
-              </div>
-              <div className="flex items-center">
-                <p className="max-w-xl text-base leading-relaxed text-muted-foreground md:text-lg">
-                  {item.body}
-                </p>
-              </div>
-            </div>
-          </Reveal>
+          <FreedomRow key={item.title} item={item} index={i} />
         ))}
       </div>
 
