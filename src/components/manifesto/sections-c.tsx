@@ -104,7 +104,7 @@ export function Vision() {
                 width={1024}
                 height={1024}
                 loading="lazy"
-                className="relative z-10 h-full w-full object-contain p-6 invert"
+                className="relative z-10 h-full w-full object-contain p-6 mix-blend-multiply"
               />
             </figure>
           </Reveal>
