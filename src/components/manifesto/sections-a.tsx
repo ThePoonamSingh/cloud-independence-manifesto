@@ -227,9 +227,8 @@ export function Frankenstack() {
       </Reveal>
       <Reveal delay={100}>
         <p className="lede mt-7 text-lg text-muted-foreground md:text-xl">
-          Every feature already travels through a dozen vendors, a dozen dashboards, and a dozen
-          bills before it reaches a user — and someone on the team has to hold all of it in their
-          head.
+          Every feature passes through a maze of vendors, services, dashboards, identities, and
+          deployment pipelines before it reaches production.
         </p>
       </Reveal>
 
