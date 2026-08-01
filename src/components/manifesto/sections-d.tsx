@@ -172,22 +172,22 @@ export function Declaration() {
               onClick={generate}
               className="border border-foreground bg-foreground px-6 py-3 text-sm font-medium text-background transition-colors hover:bg-transparent hover:text-foreground"
             >
-              Generate my declaration
+              Sign my declaration
             </button>
             {preview && (
               <a
                 href={preview}
-                download="cloud-independence-declaration.png"
+                download="i-declare-cloud-independence.png"
                 className="border border-border px-6 py-3 text-sm transition-colors hover:border-signal hover:text-signal"
               >
-                Download image
+                Download for LinkedIn
               </a>
             )}
           </div>
         </Reveal>
 
         <Reveal delay={120}>
-          <div className="aspect-[1200/630] w-full border border-border bg-card">
+          <div className="aspect-[1200/627] w-full border border-border bg-card">
             {preview ? (
               <img
                 src={preview}
@@ -196,7 +196,7 @@ export function Declaration() {
               />
             ) : (
               <div className="flex h-full items-center justify-center p-8 text-center text-sm text-muted-foreground">
-                Your declaration card will appear here.
+                Your signed declaration will appear here.
               </div>
             )}
           </div>
