@@ -227,7 +227,7 @@ export function Frankenstack() {
     },
   ];
   return (
-    <Section id="patchwork-stack" kicker="The problem">
+    <Section id="patchwork-stack">
       <Reveal>
         <h2 className="display max-w-4xl text-4xl md:text-7xl">
           This is what dependence looks like.
