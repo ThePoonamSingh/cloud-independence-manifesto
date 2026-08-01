@@ -4,7 +4,7 @@ import { Reveal, Section, useReveal } from "./primitives";
 /* SECTION 8 — Category */
 export function Category() {
   return (
-    <Section id="category" index="08" kicker="Introducing a new category">
+    <Section id="category" kicker="Introducing a new category">
       <Reveal>
         <h2 className="display text-[clamp(3rem,10vw,9rem)]">Agent-Ready Cloud</h2>
       </Reveal>
@@ -22,7 +22,7 @@ export function Category() {
 /* SECTION 9 — One system, two builders */
 export function TwoBuilders() {
   return (
-    <Section id="two-builders" index="09" kicker="One system">
+    <Section id="two-builders" kicker="One system">
       <Reveal>
         <h2 className="display max-w-3xl text-4xl md:text-7xl">
           One system. Two kinds of builders.
@@ -87,7 +87,7 @@ export function TeachingAI() {
   }, [visible]);
 
   return (
-    <Section id="teaching" index="10" kicker="Teaching AI how to build">
+    <Section id="teaching" kicker="Teaching AI how to build">
       <Reveal>
         <h2 className="display max-w-3xl text-4xl md:text-6xl">
           The platform becomes the teacher.
@@ -130,7 +130,7 @@ const workflow = ["Idea", "Prompt", "Build", "Deploy", "Scale", "Observe", "Oper
 export function Catalyst() {
   const { ref, visible } = useReveal<HTMLDivElement>();
   return (
-    <Section id="catalyst" index="11" kicker="Catalyst 3.0">
+    <Section id="catalyst" kicker="Catalyst 3.0">
       <Reveal>
         <h2 className="display max-w-3xl text-4xl md:text-7xl">
           Everything from prompt to production.
@@ -168,7 +168,7 @@ export function WhyZoho() {
     { t: "Own Business Applications", d: "Real production workloads running on the same stack." },
   ];
   return (
-    <Section id="why-zoho" index="12" kicker="Credibility">
+    <Section id="why-zoho" kicker="Credibility">
       <Reveal>
         <h2 className="display max-w-3xl text-4xl md:text-6xl">Why Zoho.</h2>
       </Reveal>
