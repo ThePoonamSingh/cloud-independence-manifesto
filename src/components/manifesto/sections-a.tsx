@@ -209,7 +209,7 @@ export function Frankenstack() {
     <Section id="patchwork-stack" kicker="The problem">
       <Reveal>
         <h2 className="display max-w-4xl text-4xl md:text-7xl">
-          This is the patchwork stack developers ship on today: more vendors, more complexity, more debt.
+          This is the patchwork stack.
         </h2>
       </Reveal>
       <Reveal delay={100}>
