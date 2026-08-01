@@ -4,24 +4,86 @@ import { Reveal, Section, useReveal } from "./primitives";
 /* SECTION 8 — Category */
 export function Category() {
   return (
-    <Section id="category" kicker="Introducing a new category" className="gradient-section">
+    <Section id="category" className="relative overflow-hidden">
+      {/* Kinetic nebula background */}
+      <div className="pointer-events-none absolute inset-0">
+        <div
+          className="absolute top-1/2 left-1/2 h-[800px] w-[800px] -translate-x-1/2 -translate-y-1/2 rounded-full blur-[160px]"
+          style={{
+            background: "radial-gradient(circle, var(--cool-soft) 0%, transparent 70%)",
+            animation: "nebula-drift 18s ease-in-out infinite, nebula-breathe 10s ease-in-out infinite",
+          }}
+        />
+        <div
+          className="absolute top-1/4 right-1/4 h-[400px] w-[400px] rounded-full blur-[120px]"
+          style={{
+            background: "radial-gradient(circle, var(--signal-soft) 0%, transparent 70%)",
+            animation: "nebula-drift 22s ease-in-out infinite reverse, nebula-breathe 12s ease-in-out infinite",
+          }}
+        />
+        <div
+          className="absolute bottom-1/4 left-1/4 h-[500px] w-[500px] rounded-full blur-[140px]"
+          style={{
+            background:
+              "radial-gradient(circle, color-mix(in oklab, var(--brand-blue) 18%, transparent) 0%, transparent 70%)",
+            animation: "nebula-drift 20s ease-in-out infinite, nebula-breathe 14s ease-in-out infinite",
+          }}
+        />
+        {/* Subtle grid */}
+        <div
+          className="absolute inset-0 opacity-[0.04]"
+          style={{
+            backgroundImage:
+              "linear-gradient(to right, var(--foreground) 1px, transparent 1px), linear-gradient(to bottom, var(--foreground) 1px, transparent 1px)",
+            backgroundSize: "64px 64px",
+            maskImage: "radial-gradient(ellipse 60% 50% at 50% 50%, #000 70%, transparent 100%)",
+          }}
+        />
+      </div>
+
+      {/* Kicker with pulse */}
+      <Reveal>
+        <div className="relative z-10 mb-10 md:mb-16">
+          <span className="kicker inline-flex items-center gap-2 rounded-full border border-border/60 bg-background/40 px-3 py-1.5 backdrop-blur-md">
+            <span className="relative flex h-2 w-2">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-signal opacity-75" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-signal" />
+            </span>
+            Introducing a new category
+          </span>
+        </div>
+      </Reveal>
+
       <Reveal delay={100}>
-        <h2 className="display text-[clamp(3rem,10vw,9rem)]">Agent-Ready Cloud</h2>
+        <h2 className="display relative z-10 text-[clamp(3rem,10vw,9rem)] leading-[0.95]">
+          Agent-Ready{" "}
+          <span
+            className="block"
+            style={{
+              background: "linear-gradient(90deg, var(--foreground) 0%, var(--cool) 50%, var(--signal) 100%)",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+            }}
+          >
+            Cloud
+          </span>
+        </h2>
       </Reveal>
       <Reveal delay={200}>
-        <p className="mt-16 max-w-3xl text-xl leading-relaxed text-muted-foreground md:mt-24 md:text-3xl md:leading-[1.5]">
-          A serverless cloud platform designed for both developers and AI agents, where
-          infrastructure, services and platform knowledge are understandable by machines — enabling
-          AI to build, deploy and operate production systems with minimal human intervention.
+        <p className="relative z-10 mt-16 max-w-3xl text-xl leading-relaxed text-muted-foreground md:mt-24 md:text-3xl md:leading-[1.5]">
+          A serverless cloud platform designed for both developers and AI agents, where infrastructure,
+          services and platform knowledge are understandable by machines — enabling AI to build,
+          deploy and operate production systems with minimal human intervention.
         </p>
         <a
           href="https://catalystagentstack.onslate.in/"
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-8 inline-flex items-center gap-3 border border-signal/40 bg-signal-soft px-5 py-3 text-sm font-medium text-foreground transition-colors hover:bg-signal hover:text-foreground"
+          className="group relative z-10 mt-8 inline-flex items-center gap-3 overflow-hidden border border-signal/40 bg-signal-soft px-5 py-3 text-sm font-medium text-foreground transition-colors hover:bg-signal hover:text-foreground"
         >
-          See the Catalyst Agent Stack
-          <span className="text-xs">↗</span>
+          <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
+          <span className="relative">See the Catalyst Agent Stack</span>
+          <span className="relative text-xs transition-transform duration-300 group-hover:translate-x-0.5">↗</span>
         </a>
       </Reveal>
     </Section>
