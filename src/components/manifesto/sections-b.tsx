@@ -1,21 +1,18 @@
 import { useEffect, useState } from "react";
-import { PullQuote, Reveal, Section, useReveal } from "./primitives";
+import { Reveal, Section, useReveal } from "./primitives";
 
 /* SECTION 8 — Category */
 export function Category() {
   return (
     <Section id="category" kicker="Introducing a new category">
-      <Reveal>
-        <PullQuote text="Infrastructure has become knowledge." />
-      </Reveal>
       <Reveal delay={100}>
-        <h2 className="display mt-20 text-[clamp(3rem,10vw,9rem)]">Agent-Ready Cloud</h2>
+        <h2 className="display text-[clamp(3rem,10vw,9rem)]">Agent-Ready Cloud</h2>
       </Reveal>
       <Reveal delay={200}>
         <p className="mt-16 max-w-3xl text-xl leading-relaxed text-muted-foreground md:mt-24 md:text-3xl md:leading-[1.5]">
-          A cloud platform designed for both developers and AI agents, where infrastructure,
-          services and platform knowledge are understandable by machines — enabling AI to build,
-          deploy and operate production systems with minimal human intervention.
+          A serverless cloud platform designed for both developers and AI agents, where
+          infrastructure, services and platform knowledge are understandable by machines — enabling
+          AI to build, deploy and operate production systems with minimal human intervention.
         </p>
         <a
           href="https://catalystagentstack.onslate.in/"
