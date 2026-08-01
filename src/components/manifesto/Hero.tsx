@@ -34,7 +34,7 @@ function InfrastructureGraph() {
       ref={ref}
       viewBox="0 0 1040 540"
       aria-hidden
-      className="pointer-events-none absolute inset-0 h-full w-full opacity-70 [mask-image:linear-gradient(to_bottom,black,transparent_85%)]"
+      className="pointer-events-none absolute inset-0 h-full w-full opacity-60 [mask-image:linear-gradient(to_bottom,black,transparent_85%)]"
     >
       <g stroke="currentColor" className="text-border" strokeWidth="0.6">
         {pts.map((p, i) => {
@@ -72,13 +72,48 @@ function InfrastructureGraph() {
 
 export function Hero() {
   return (
-    <header className="gradient-hero relative flex min-h-screen items-center overflow-hidden">
+    <header className="gradient-hero relative flex min-h-screen items-center justify-center overflow-hidden">
       <InfrastructureGraph />
-      <div className="relative mx-auto w-full max-w-6xl px-6 pt-32 pb-24 md:px-10">
-        <h1 className="display mt-8 text-[clamp(2.2rem,7vw,6.5rem)] leading-[0.92]">
-          The best infrastructure is the infrastructure developers never have to think about.
+
+      {/* Atmospheric brand glows */}
+      <div
+        className="pointer-events-none absolute top-0 left-1/4 h-[55%] w-[55%] rounded-full bg-signal/10 blur-[120px]"
+        aria-hidden="true"
+      />
+      <div
+        className="pointer-events-none absolute right-1/4 bottom-0 h-[55%] w-[55%] rounded-full bg-cool/10 blur-[120px]"
+        aria-hidden="true"
+      />
+
+      {/* Subtle grain overlay */}
+      <div
+        className="pointer-events-none absolute inset-0 opacity-[0.03]"
+        style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")`,
+        }}
+        aria-hidden="true"
+      />
+
+      <div className="relative z-10 mx-auto flex w-full max-w-5xl flex-col items-center px-6 pt-32 pb-24 text-center md:px-10">
+        {/* Kicker */}
+        <div className="mb-10 flex items-center gap-4">
+          <span className="h-px w-12 bg-gradient-to-r from-transparent to-signal" aria-hidden="true" />
+          <span className="text-[10px] font-medium uppercase tracking-[0.4em] text-muted-foreground">
+            Catalyst 3.0 Manifesto
+          </span>
+          <span className="h-px w-12 bg-gradient-to-l from-transparent to-cool" aria-hidden="true" />
+        </div>
+
+        {/* Main headline */}
+        <h1 className="text-[clamp(2.75rem,9vw,7.5rem)] font-black leading-[0.88] tracking-[-0.04em] text-foreground">
+          The best infrastructure is the infrastructure developers{" "}
+          <span className="font-serif italic font-normal text-transparent bg-clip-text bg-gradient-to-b from-foreground via-foreground to-foreground/50">
+            never have to think about.
+          </span>
         </h1>
-        <p className="mt-8 max-w-2xl text-lg text-muted-foreground md:text-2xl">
+
+        {/* Body hierarchy */}
+        <p className="mt-10 max-w-2xl text-lg font-light leading-relaxed tracking-tight text-balance text-muted-foreground md:text-2xl">
           We believe in Cloud Independence as the next step in cloud computing. A future where developers describe what they want to build, and the platform handles the complexity of getting it into production.
         </p>
       </div>

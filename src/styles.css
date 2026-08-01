@@ -38,8 +38,9 @@
   --color-cool: var(--cool);
   --color-brand-blue: var(--brand-blue);
   --color-cool-soft: var(--cool-soft);
-  --font-display: "Zoho Puvi", "Work Sans", system-ui, sans-serif;
-  --font-sans: "Zoho Puvi", "Work Sans", system-ui, sans-serif;
+  --font-display: "Inter", "Zoho Puvi", "Work Sans", system-ui, sans-serif;
+  --font-sans: "Inter", "Zoho Puvi", "Work Sans", system-ui, sans-serif;
+  --font-serif: "Instrument Serif", Georgia, serif;
   --font-handwritten: "Caveat", "Nothing You Could Do", cursive;
   --font-mono: "JetBrains Mono", ui-monospace, monospace;
 }
