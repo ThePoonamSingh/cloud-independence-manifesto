@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { Reveal, Section } from "./primitives";
 import maniVembuAsset from "@/assets/mani-vembu-lineart.png.asset.json";
 
-function ThesisQuote({ children }: { children: string }) {
+function ThesisQuote({ children }: { children: React.ReactNode }) {
   const ref = useRef<HTMLQuoteElement | null>(null);
   const [visible, setVisible] = useState(false);
 
