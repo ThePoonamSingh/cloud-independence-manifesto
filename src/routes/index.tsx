@@ -10,6 +10,7 @@ import {
 } from "@/components/manifesto/sections-a";
 import {
   Category,
+  WhatsNew,
   TwoBuilders,
   TeachingAI,
   Catalyst,
@@ -73,6 +74,8 @@ function Index() {
       <Independence />
       <Rule />
       <Category />
+      <Rule />
+      <WhatsNew />
       <Rule />
       <TwoBuilders />
       <Rule />
