@@ -75,10 +75,8 @@ export function Hero() {
     <header className="gradient-hero relative flex min-h-screen items-center overflow-hidden">
       <InfrastructureGraph />
       <div className="relative mx-auto w-full max-w-6xl px-6 pt-32 pb-24 md:px-10">
-        <h1 className="display mt-8 text-[clamp(3rem,10vw,8.5rem)] leading-[0.92]">
-          You didn't become a developer
-          <br className="hidden md:block" />
-          to become a cloud engineer.
+        <h1 className="display mt-8 text-[clamp(2.2rem,7vw,6.5rem)] leading-[0.92]">
+          Thebestinfrastructureistheinfrastructuredevelopersneverhavetothinkabout.
         </h1>
         <p className="mt-8 max-w-2xl text-lg text-muted-foreground md:text-2xl">
           Cloud Independence means building software, not operating infrastructure.
