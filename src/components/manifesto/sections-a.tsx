@@ -53,10 +53,11 @@ const signals = [
     source: "Gartner, 2024",
   },
   {
-    stat: "65%",
-    claim: "of developer time is spent on work that is not the product.",
-    detail: "Pipelines, environments, glue code, upgrades, incidents. The tax nobody budgeted for.",
-    source: "Stack Overflow Developer Survey, 2024",
+    stat: "66%",
+    claim: "of developers say their top frustration is AI output that is almost right, but not quite.",
+    detail:
+      "The follow-on cost lands on debugging, environments and operations — the work that was never the product.",
+    source: "Stack Overflow Developer Survey, 2025",
   },
 ];
 
