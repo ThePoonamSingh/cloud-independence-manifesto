@@ -8,7 +8,7 @@ import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 
 export default defineConfig({
   tanstackStart: {
-    // Client-side rendering only: the server emits a static shell, React renders in the browser.
-    spa: { enabled: true },
+    // Redirect TanStack Start's bundled server entry to src/server.ts (our error wrapper).
+    server: { entry: "server" },
   },
 });

@@ -25,5 +25,7 @@ const csrfMiddleware = createCsrfMiddleware({
 });
 
 export const startInstance = createStart(() => ({
+  // Client-side rendering only: routes render in the browser, no SSR of route content.
+  defaultSsr: false,
   requestMiddleware: [errorMiddleware, csrfMiddleware],
 }));
