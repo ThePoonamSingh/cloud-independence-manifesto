@@ -64,7 +64,7 @@ export function Signals() {
   return (
     <Section id="signals" kicker="The ground has already moved">
       <Reveal>
-        <h2 className="display max-w-3xl text-4xl md:text-6xl">Five independent signals.</h2>
+        <h2 className="display max-w-3xl text-4xl md:text-6xl">Three independent signals.</h2>
       </Reveal>
       <div className="mt-16 grid gap-px border border-border bg-border md:grid-cols-3">
         {signals.map((s, i) => (
