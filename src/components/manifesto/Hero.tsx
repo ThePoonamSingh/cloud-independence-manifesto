@@ -80,6 +80,10 @@ export function Hero() {
         <p className="mt-8 max-w-2xl text-lg text-muted-foreground md:text-2xl">
           A movement for developers who build software, not infrastructure.
         </p>
+        <p className="mt-6 max-w-2xl border-l-2 border-signal pl-4 text-sm text-muted-foreground">
+          Published alongside the launch of Catalyst 3.0, Zoho's serverless platform for developers
+          and AI agents.
+        </p>
         <div className="mt-14 flex flex-wrap items-center gap-4">
           <a
             href="#declaration"
