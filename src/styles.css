@@ -36,6 +36,7 @@
   --color-brand: var(--brand);
   --color-brand-soft: var(--brand-soft);
   --color-cool: var(--cool);
+  --color-brand-blue: var(--brand-blue);
   --color-cool-soft: var(--cool-soft);
   --font-display: "Instrument Serif", Georgia, serif;
   --font-sans: "Work Sans", system-ui, sans-serif;
@@ -66,13 +67,14 @@
   /* Brand — red #e32427, blue #216cb4 */
   --brand: oklch(0.573 0.222 27.6);
   --brand-soft: oklch(0.573 0.222 27.6 / 12%);
-  --cool: oklch(0.526 0.145 251);
-  --cool-soft: oklch(0.526 0.145 251 / 14%);
+  --brand-blue: oklch(0.526 0.145 251);
+  --cool: oklch(0.68 0.135 249);
+  --cool-soft: oklch(0.68 0.135 249 / 14%);
   /* Signal = brand red, lifted for legibility on dark */
   --signal: oklch(0.66 0.205 27.6);
   --signal-soft: oklch(0.66 0.205 27.6 / 12%);
   --pain: var(--brand);
-  --cold: var(--cool);
+  --cold: var(--brand-blue);
   --gradient-veil:
     radial-gradient(ellipse 70% 55% at 25% 0%, oklch(0.66 0.205 27.6 / 13%), transparent 70%),
     radial-gradient(ellipse 70% 60% at 85% 10%, oklch(0.526 0.145 251 / 14%), transparent 72%);
