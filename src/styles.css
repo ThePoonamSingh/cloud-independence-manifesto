@@ -31,6 +31,8 @@
   --color-ring: var(--ring);
   --color-signal: var(--signal);
   --color-signal-soft: var(--signal-soft);
+  --color-pain: var(--pain);
+  --color-cold: var(--cold);
   --font-display: "Instrument Serif", Georgia, serif;
   --font-sans: "Work Sans", system-ui, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, monospace;
