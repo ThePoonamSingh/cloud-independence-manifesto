@@ -71,7 +71,7 @@ export function Category() {
         </h2>
       </Reveal>
       <Reveal delay={200}>
-        <p className="relative z-10 mt-16 max-w-3xl text-xl leading-relaxed text-muted-foreground md:mt-24 md:text-3xl md:leading-[1.5]">
+        <p className="lede relative z-10 mt-16 text-xl text-muted-foreground md:mt-24 md:text-3xl">
           A serverless cloud platform designed for both developers and AI agents, where infrastructure,
           services and platform knowledge are understandable by machines — enabling AI to build,
           deploy and operate production systems with minimal human intervention.
@@ -119,7 +119,7 @@ export function TwoBuilders() {
             </h2>
           </Reveal>
           <Reveal delay={220}>
-            <p className="mt-8 text-lg leading-relaxed text-muted-foreground md:text-xl">
+            <p className="lede mt-8 text-lg text-muted-foreground md:text-xl">
               Developers and AI agents use the same platform through the same interfaces, with the
               same permissions and the same audit trail. Not a separate AI sandbox bolted onto a human
               product.
@@ -266,7 +266,7 @@ export function TeachingAI() {
         <div className="border border-border p-8 md:p-12">
           <p className="kicker text-cool">Step {String(active + 1).padStart(2, "0")}</p>
           <p className="display mt-6 text-3xl md:text-5xl">{flow[active]?.t}</p>
-          <p className="mt-6 text-muted-foreground">{flow[active]?.d}</p>
+          <p className="prose-body mt-6 text-muted-foreground">{flow[active]?.d}</p>
         </div>
       </div>
     </Section>
@@ -308,12 +308,12 @@ export function WhatsNew() {
         <h2 className="display max-w-3xl text-4xl md:text-7xl">
           How we built the cloud for the AI era.
         </h2>
-        <p className="mt-6 max-w-2xl text-muted-foreground">
+        <p className="prose-body mt-6 text-muted-foreground">
           Because Zoho builds every layer of the application stack—from cloud infrastructure to
           developer tools and business applications—Catalyst is designed as one integrated system
           that helps developers and AI move from prompt to production without managing infrastructure.
         </p>
-        <p className="mt-4 max-w-2xl text-muted-foreground">
+        <p className="prose-body mt-4 text-muted-foreground">
           Catalyst 3.0 introduces an Agent-Ready Full-Stack Cloud — combining AI-native developer
           experience, an integrated platform, serverless infrastructure and an open ecosystem.
         </p>
@@ -331,7 +331,7 @@ export function WhatsNew() {
                 {p.kicker}
               </p>
               <p className="display mt-5 text-xl md:text-2xl">{p.headline}</p>
-              <p className="mt-4 text-sm text-muted-foreground">{p.body}</p>
+              <p className="prose-body mt-4 text-sm text-muted-foreground">{p.body}</p>
             </div>
           </Reveal>
         ))}

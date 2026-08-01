@@ -147,13 +147,43 @@
     background-color: var(--color-background);
     color: var(--color-foreground);
     font-family: var(--font-sans);
+    font-weight: 350;
+    line-height: 1.65;
+    letter-spacing: 0.004em;
     -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
   }
 
   ::selection {
     background: var(--signal);
     color: oklch(0.98 0 0);
   }
+}
+
+@utility measure {
+  max-width: 66ch;
+}
+
+@utility measure-tight {
+  max-width: 54ch;
+}
+
+/* Long-form editorial paragraph rhythm */
+@utility lede {
+  max-width: 60ch;
+  font-weight: 300;
+  line-height: 1.55;
+  letter-spacing: -0.008em;
+  text-wrap: pretty;
+}
+
+@utility prose-body {
+  max-width: 66ch;
+  font-weight: 350;
+  line-height: 1.7;
+  letter-spacing: 0.004em;
+  text-wrap: pretty;
 }
 
 @utility veil {
