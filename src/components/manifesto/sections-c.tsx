@@ -24,7 +24,7 @@ function ThesisQuote({ children }: { children: string }) {
   return (
     <blockquote
       ref={ref}
-      className="font-display font-light italic text-[clamp(1.15rem,2.2vw,1.85rem)] leading-[1.26] tracking-[-0.01em]"
+      className="font-display font-light text-[clamp(1.6rem,3.2vw,2.75rem)] leading-[1.28] tracking-[-0.022em] text-balance"
       aria-label={children}
       data-visible={visible}
     >
@@ -33,7 +33,7 @@ function ThesisQuote({ children }: { children: string }) {
         const words = paragraph.split(/\s+/);
         const isLast = pIdx === paragraphs.length - 1;
         return (
-          <span key={pIdx} className={pIdx > 0 ? "block mt-4" : undefined}>
+          <span key={pIdx} className={pIdx > 0 ? "block mt-5 md:mt-7" : undefined}>
             {words.map((word) => {
               const i = wordIndex++;
               return (
@@ -41,7 +41,7 @@ function ThesisQuote({ children }: { children: string }) {
                   key={i}
                   className="thesis-word"
                   data-visible={visible}
-                  style={{ transitionDelay: `${120 + i * 55}ms` }}
+                  style={{ transitionDelay: `${120 + i * 45}ms` }}
                 >
                   {word}
                 </span>
