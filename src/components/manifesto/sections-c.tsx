@@ -55,12 +55,7 @@ export function Vision() {
                 The best infrastructure is the infrastructure developers never have to think about.
               </ThesisQuote>
             </Reveal>
-            <Reveal delay={240}>
-              <p className="mt-8 max-w-2xl text-xl leading-relaxed text-background/80 md:text-2xl">
-                Because Zoho builds every layer of the application stack—from cloud infrastructure to developer tools and business applications—Catalyst is designed as one integrated system that helps developers and AI move from prompt to production without managing infrastructure.
-              </p>
-            </Reveal>
-            <Reveal delay={360}>
+            <Reveal delay={120}>
               <figcaption className="mt-10 flex items-baseline gap-4">
                 <span className="h-px w-8 bg-signal" aria-hidden="true" />
                 <div className="flex flex-col">
@@ -73,7 +68,7 @@ export function Vision() {
                 </div>
               </figcaption>
             </Reveal>
-            <Reveal delay={480}>
+            <Reveal delay={240}>
               <p className="mt-10 max-w-xl text-lg leading-relaxed text-background/70 md:text-xl">
                 That ideal is still far from how most teams work. Catalyst 3.0 is built to close that gap.
               </p>
