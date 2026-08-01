@@ -21,7 +21,7 @@ export function Category() {
           href="https://catalystagentstack.onslate.in/"
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-8 inline-flex items-center gap-3 border border-signal/40 bg-signal-soft px-5 py-3 text-sm font-medium text-foreground transition-colors hover:bg-signal hover:text-background"
+          className="mt-8 inline-flex items-center gap-3 border border-signal/40 bg-signal-soft px-5 py-3 text-sm font-medium text-foreground transition-colors hover:bg-signal hover:text-foreground"
         >
           See the Catalyst Agent Stack
           <span className="text-xs">↗</span>
@@ -48,12 +48,19 @@ export function TwoBuilders() {
       </Reveal>
       <div className="mt-20 grid gap-px border border-border bg-border md:grid-cols-2">
         {[
-          { t: "Human developer", items: ["Intent", "IDE", "Console"] },
-          { t: "AI agent", items: ["Planning", "Agent Skills", "Execution"] },
+          { t: "Human developer", items: ["Intent", "IDE", "Console"], accent: "signal" },
+          { t: "AI agent", items: ["Planning", "Agent Skills", "Execution"], accent: "cool" },
         ].map((c) => (
           <Reveal key={c.t}>
-            <div className="h-full bg-background p-8 md:p-12">
-              <p className="kicker text-signal">{c.t}</p>
+            <div className="group relative h-full bg-background p-8 md:p-12">
+              <span
+                className={`absolute left-0 top-0 h-px w-0 transition-[width] duration-700 group-hover:w-full ${
+                  c.accent === "cool" ? "bg-cool" : "bg-signal"
+                }`}
+              />
+              <p className={`kicker ${c.accent === "cool" ? "text-cool" : "text-signal"}`}>
+                {c.t}
+              </p>
               <ul className="mt-8 space-y-4">
                 {c.items.map((i) => (
                   <li key={i} className="text-2xl md:text-3xl">
@@ -114,7 +121,7 @@ export function TeachingAI() {
           href="https://catalystagentstack.onslate.in/"
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-6 inline-flex items-center gap-3 text-sm text-muted-foreground transition-colors hover:text-signal"
+          className="mt-6 inline-flex items-center gap-3 text-sm text-muted-foreground transition-colors hover:text-cool"
         >
           Explore the Catalyst Agent Stack
           <span className="text-xs">↗</span>
@@ -129,7 +136,7 @@ export function TeachingAI() {
                 onClick={() => setActive(i)}
                 className={`relative -ml-px block w-full border-l py-4 pl-6 text-left transition-colors duration-300 ${
                   active === i
-                    ? "border-signal text-foreground"
+                    ? "border-cool text-foreground"
                     : "border-transparent text-muted-foreground hover:text-foreground"
                 }`}
               >
@@ -142,7 +149,7 @@ export function TeachingAI() {
           ))}
         </ol>
         <div className="border border-border p-8 md:p-12">
-          <p className="kicker text-signal">Step {String(active + 1).padStart(2, "0")}</p>
+          <p className="kicker text-cool">Step {String(active + 1).padStart(2, "0")}</p>
           <p className="display mt-6 text-3xl md:text-5xl">{flow[active]?.t}</p>
           <p className="mt-6 text-muted-foreground">{flow[active]?.d}</p>
         </div>
