@@ -100,11 +100,6 @@ export function Vision() {
               </figcaption>
             </Reveal>
 
-            <Reveal delay={240}>
-              <p className="mt-8 max-w-2xl text-base leading-relaxed text-background/70 md:text-lg">
-                That is the standard Catalyst 3.0 is built for: infrastructure that gets out of the way so developers and AI agents can ship.
-              </p>
-            </Reveal>
 
             <Reveal delay={320}>
               <a
