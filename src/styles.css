@@ -123,6 +123,18 @@
   background-image: var(--gradient-veil);
 }
 
+@utility gradient-hero {
+  background-image: var(--gradient-hero);
+}
+
+@utility gradient-section {
+  background-image: var(--gradient-section);
+}
+
+@utility gradient-card {
+  background-image: var(--gradient-card);
+}
+
 @utility rule {
   height: 1px;
   background-image: var(--gradient-rule);
