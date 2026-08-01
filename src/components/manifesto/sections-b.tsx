@@ -182,9 +182,32 @@ export function Catalyst() {
           </div>
         ))}
       </div>
+
+      <div className="mt-24 border-t border-border pt-16">
+        <Reveal>
+          <p className="kicker text-signal">— What's new in Catalyst 3.0</p>
+          <h3 className="display mt-6 text-3xl md:text-5xl">The platform takes over.</h3>
+          <p className="mt-6 max-w-xl text-muted-foreground">
+            New capabilities make it easier to build, connect, deploy, and operate intelligent
+            applications — without adding a single extra system to manage.
+          </p>
+        </Reveal>
+        <div className="mt-12 grid gap-px border border-border bg-border md:grid-cols-2">
+          {whatsNew.map((c, i) => (
+            <Reveal key={c.t} delay={i * 80}>
+              <div className="h-full bg-background p-8 md:p-10">
+                <p className="kicker text-signal">{c.t}</p>
+                <p className="display mt-5 text-xl md:text-2xl">{c.h}</p>
+                <p className="mt-4 text-sm text-muted-foreground">{c.d}</p>
+              </div>
+            </Reveal>
+          ))}
+        </div>
+      </div>
     </Section>
   );
 }
+
 
 /* SECTION 12 — Why Zoho */
 export function WhyZoho() {
