@@ -33,7 +33,7 @@ export function TwoBuilders() {
   return (
     <Section id="two-builders">
       <Reveal>
-        <h2 className="display max-w-4xl text-4xl md:text-7xl">
+        <h2 className="kicker max-w-4xl text-lg leading-relaxed md:text-2xl">
           One platform for the human, the agent, and the software they build together.
         </h2>
       </Reveal>
