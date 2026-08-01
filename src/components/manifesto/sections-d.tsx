@@ -24,6 +24,35 @@ const options = [
 
 const RED = "#e32427";
 const BLUE = "#216cb4";
+const DISPLAY = '"Zoho Puvi", "Work Sans", system-ui, sans-serif';
+const MONO = 'ui-monospace, SFMono-Regular, "JetBrains Mono", monospace';
+
+function roundRect(
+  ctx: CanvasRenderingContext2D,
+  x: number,
+  y: number,
+  w: number,
+  h: number,
+  r: number,
+) {
+  ctx.beginPath();
+  ctx.moveTo(x + r, y);
+  ctx.arcTo(x + w, y, x + w, y + h, r);
+  ctx.arcTo(x + w, y + h, x, y + h, r);
+  ctx.arcTo(x, y + h, x, y, r);
+  ctx.arcTo(x, y, x + w, y, r);
+  ctx.closePath();
+}
+
+function fitText(ctx: CanvasRenderingContext2D, text: string, maxWidth: number, start: number) {
+  let size = start;
+  while (size > 12) {
+    ctx.font = `400 ${size}px ${DISPLAY}`;
+    if (ctx.measureText(text).width <= maxWidth) break;
+    size -= 1;
+  }
+  return size;
+}
 
 function drawDeclaration(selected: string[], name: string) {
   const W = 1200;
@@ -38,81 +67,163 @@ function drawDeclaration(selected: string[], name: string) {
   ctx.textBaseline = "alphabetic";
 
   // Base
-  ctx.fillStyle = "#0c0d10";
+  ctx.fillStyle = "#0a0b0e";
   ctx.fillRect(0, 0, W, H);
 
+  // Subtle grid
+  ctx.strokeStyle = "rgba(255,255,255,0.035)";
+  ctx.lineWidth = 1;
+  for (let x = 0; x <= W; x += 40) {
+    ctx.beginPath();
+    ctx.moveTo(x + 0.5, 0);
+    ctx.lineTo(x + 0.5, H);
+    ctx.stroke();
+  }
+  for (let y = 0; y <= H; y += 40) {
+    ctx.beginPath();
+    ctx.moveTo(0, y + 0.5);
+    ctx.lineTo(W, y + 0.5);
+    ctx.stroke();
+  }
+
   // Brand glows
-  const red = ctx.createRadialGradient(150, 60, 10, 150, 60, 620);
-  red.addColorStop(0, "rgba(227,36,39,0.22)");
+  const red = ctx.createRadialGradient(120, 40, 10, 120, 40, 660);
+  red.addColorStop(0, "rgba(227,36,39,0.26)");
   red.addColorStop(1, "rgba(227,36,39,0)");
   ctx.fillStyle = red;
   ctx.fillRect(0, 0, W, H);
 
-  const blue = ctx.createRadialGradient(W - 120, H, 10, W - 120, H, 640);
-  blue.addColorStop(0, "rgba(33,108,180,0.20)");
+  const blue = ctx.createRadialGradient(W - 100, H + 40, 10, W - 100, H + 40, 700);
+  blue.addColorStop(0, "rgba(33,108,180,0.26)");
   blue.addColorStop(1, "rgba(33,108,180,0)");
   ctx.fillStyle = blue;
   ctx.fillRect(0, 0, W, H);
 
-  // Hairline frame
-  ctx.strokeStyle = "rgba(255,255,255,0.10)";
-  ctx.lineWidth = 1;
-  ctx.strokeRect(44.5, 44.5, W - 89, H - 89);
+  // Vignette
+  const vign = ctx.createLinearGradient(0, H * 0.4, 0, H);
+  vign.addColorStop(0, "rgba(10,11,14,0)");
+  vign.addColorStop(1, "rgba(10,11,14,0.75)");
+  ctx.fillStyle = vign;
+  ctx.fillRect(0, 0, W, H);
 
-  const L = 84;
+  // Hairline frame
+  ctx.strokeStyle = "rgba(255,255,255,0.12)";
+  ctx.lineWidth = 1;
+  ctx.strokeRect(36.5, 36.5, W - 73, H - 73);
+
+  // Brand edge accent
+  const edge = ctx.createLinearGradient(36, 0, 36, H);
+  edge.addColorStop(0, RED);
+  edge.addColorStop(1, BLUE);
+  ctx.fillStyle = edge;
+  ctx.fillRect(36, 36, 3, H - 72);
+
+  const L = 76;
+  const R = W - 76;
 
   // Eyebrow
-  ctx.fillStyle = RED;
-  ctx.fillRect(L, 92, 34, 2);
-  ctx.fillStyle = "rgba(255,255,255,0.72)";
-  ctx.font = "500 13px ui-monospace, SFMono-Regular, monospace";
-  ctx.fillText("THE CLOUD INDEPENDENCE MANIFESTO", L + 50, 97);
+  ctx.fillStyle = "rgba(255,255,255,0.62)";
+  ctx.font = `500 12px ${MONO}`;
+  ctx.letterSpacing = "2px";
+  ctx.fillText("CLOUD INDEPENDENCE  ·  CATALYST 3.0", L, 90);
+  ctx.letterSpacing = "0px";
 
   // Headline
-  ctx.fillStyle = "#f6f6f7";
-  ctx.font = "400 62px Georgia, 'Times New Roman', serif";
-  ctx.fillText("I declare Cloud Independence.", L, 172);
+  const headline = "I declare Cloud Independence.";
+  const hSize = fitText(ctx, headline, R - L, 64);
+  ctx.fillStyle = "#f7f7f8";
+  ctx.font = `400 ${hSize}px ${DISPLAY}`;
+  ctx.fillText(headline, L, 158);
 
-  ctx.fillStyle = "rgba(255,255,255,0.52)";
-  ctx.font = "400 19px system-ui, -apple-system, sans-serif";
-  ctx.fillText("Burdens I am done carrying:", L, 208);
+  ctx.fillStyle = "rgba(255,255,255,0.50)";
+  ctx.font = `400 17px ${DISPLAY}`;
+  ctx.fillText("Infrastructure burdens I am done carrying:", L, 194);
 
-  // Two-column burden list
+  // Burden chips — two columns, vertically filling the card
   const items = (selected.length ? selected : ["Infrastructure complexity"]).slice(0, 12);
   const rows = Math.ceil(items.length / 2);
-  const colW = (W - L * 2) / 2;
-  ctx.font = "400 21px system-ui, -apple-system, sans-serif";
+  const colW = (R - L - 24) / 2;
+  const top = 224;
+  const available = H - 148 - top;
+  const rowH = Math.max(34, Math.min(56, available / rows));
+  const chipH = rowH - 10;
+
   items.forEach((s, i) => {
     const col = Math.floor(i / rows);
     const row = i % rows;
-    const x = L + col * colW;
-    const y = 254 + row * 34;
-    ctx.fillStyle = col === 0 ? RED : BLUE;
-    ctx.fillRect(x, y - 7, 14, 2);
-    ctx.fillStyle = "rgba(255,255,255,0.88)";
-    ctx.fillText(s, x + 28, y);
+    const x = L + col * (colW + 24);
+    const y = top + row * rowH;
+    const accent = col === 0 ? RED : BLUE;
+
+    roundRect(ctx, x, y, colW, chipH, 4);
+    ctx.fillStyle = "rgba(255,255,255,0.05)";
+    ctx.fill();
+    ctx.strokeStyle = "rgba(255,255,255,0.09)";
+    ctx.lineWidth = 1;
+    ctx.stroke();
+
+    ctx.fillStyle = accent;
+    ctx.fillRect(x, y, 3, chipH);
+
+    // check mark
+    const mid = y + chipH / 2;
+    ctx.strokeStyle = accent;
+    ctx.lineWidth = 2;
+    ctx.lineCap = "round";
+    ctx.beginPath();
+    ctx.moveTo(x + 18, mid);
+    ctx.lineTo(x + 22, mid + 4);
+    ctx.lineTo(x + 30, mid - 5);
+    ctx.stroke();
+
+    let size = Math.min(20, Math.round(chipH * 0.44));
+    ctx.font = `400 ${size}px ${DISPLAY}`;
+    while (size > 11 && ctx.measureText(s).width > colW - 56) {
+      size -= 1;
+      ctx.font = `400 ${size}px ${DISPLAY}`;
+    }
+    ctx.fillStyle = "rgba(255,255,255,0.92)";
+    ctx.fillText(s, x + 42, mid + size * 0.35);
   });
 
+  if (selected.length > 12) {
+    ctx.fillStyle = "rgba(255,255,255,0.42)";
+    ctx.font = `400 14px ${DISPLAY}`;
+    ctx.fillText(`+ ${selected.length - 12} more`, L, top + rows * rowH + 12);
+  }
+
+
+
   // Footer
-  ctx.strokeStyle = "rgba(255,255,255,0.10)";
+  ctx.strokeStyle = "rgba(255,255,255,0.12)";
+  ctx.lineWidth = 1;
   ctx.beginPath();
-  ctx.moveTo(L, H - 128);
-  ctx.lineTo(W - L, H - 128);
+  ctx.moveTo(L, H - 116.5);
+  ctx.lineTo(R, H - 116.5);
   ctx.stroke();
 
-  ctx.fillStyle = "#f6f6f7";
-  ctx.font = "400 24px Georgia, 'Times New Roman', serif";
-  ctx.fillText(name || "A developer who builds software, not infrastructure", L, H - 90);
+  const signer = name || "A developer who builds software, not infrastructure";
+  const sSize = fitText(ctx, signer, R - L - 220, 26);
+  ctx.fillStyle = "#f7f7f8";
+  ctx.font = `400 ${sSize}px ${DISPLAY}`;
+  ctx.fillText(signer, L, H - 78);
 
-  ctx.fillStyle = "rgba(255,255,255,0.42)";
-  ctx.font = "500 13px ui-monospace, SFMono-Regular, monospace";
-  ctx.fillText("CATALYST 3.0  ·  AGENT-READY CLOUD", L, H - 62);
+  ctx.fillStyle = "rgba(255,255,255,0.40)";
+  ctx.font = `500 12px ${MONO}`;
+  ctx.letterSpacing = "1.5px";
+  ctx.fillText("SIGNED — BUILD SOFTWARE, NOT INFRASTRUCTURE", L, H - 54);
 
   // Brand mark right
   ctx.textAlign = "right";
-  ctx.fillStyle = "rgba(255,255,255,0.42)";
-  ctx.font = "500 13px ui-monospace, SFMono-Regular, monospace";
-  ctx.fillText("catalyst.zoho.com", W - L, H - 62);
+  ctx.fillStyle = "rgba(255,255,255,0.86)";
+  ctx.font = `400 19px ${DISPLAY}`;
+  ctx.letterSpacing = "0px";
+  ctx.fillText("Catalyst 3.0", R, H - 78);
+  ctx.fillStyle = "rgba(255,255,255,0.40)";
+  ctx.font = `500 12px ${MONO}`;
+  ctx.letterSpacing = "1.5px";
+  ctx.fillText("CATALYST.ZOHO.COM", R, H - 54);
+  ctx.letterSpacing = "0px";
   ctx.textAlign = "left";
 
   return canvas.toDataURL("image/png");
@@ -122,11 +233,32 @@ export function Declaration() {
   const [selected, setSelected] = useState<string[]>([]);
   const [name, setName] = useState("");
   const [preview, setPreview] = useState<string | null>(null);
+  const [busy, setBusy] = useState(false);
 
   const toggle = (o: string) =>
     setSelected((s) => (s.includes(o) ? s.filter((x) => x !== o) : [...s, o]));
 
-  const generate = () => setPreview(drawDeclaration(selected, name.trim()));
+  const generate = async () => {
+    setBusy(true);
+    try {
+      // Ensure Zoho Puvi is available to the canvas before painting.
+      if (typeof document !== "undefined" && "fonts" in document) {
+        try {
+          await Promise.all([
+            document.fonts.load('400 64px "Zoho Puvi"'),
+            document.fonts.load('400 17px "Zoho Puvi"'),
+          ]);
+          await document.fonts.ready;
+        } catch {
+          /* fall back to system fonts */
+        }
+      }
+      setPreview(drawDeclaration(selected, name.trim()));
+    } finally {
+      setBusy(false);
+    }
+  };
+
 
   return (
     <Section id="declaration" kicker="The declaration" className="gradient-section">
@@ -167,12 +299,16 @@ export function Declaration() {
             placeholder="Your name (optional)"
             className="mt-6 w-full max-w-sm border border-border bg-transparent px-4 py-3 text-sm outline-none placeholder:text-muted-foreground focus:border-signal"
           />
+          <p className="mt-4 font-mono text-xs text-muted-foreground">
+            {selected.length} selected{selected.length > 12 ? " · first 12 appear on the card" : ""}
+          </p>
           <div className="mt-6 flex flex-wrap gap-3">
             <button
               onClick={generate}
-              className="border border-foreground bg-foreground px-6 py-3 text-sm font-medium text-background transition-colors hover:bg-transparent hover:text-foreground"
+              disabled={busy}
+              className="border border-foreground bg-foreground px-6 py-3 text-sm font-medium text-background transition-colors hover:bg-transparent hover:text-foreground disabled:opacity-60"
             >
-              Sign my declaration
+              {busy ? "Signing…" : preview ? "Update my declaration" : "Sign my declaration"}
             </button>
             {preview && (
               <a
@@ -180,10 +316,11 @@ export function Declaration() {
                 download="i-declare-cloud-independence.png"
                 className="border border-border px-6 py-3 text-sm transition-colors hover:border-signal hover:text-signal"
               >
-                Download for LinkedIn
+                Download for LinkedIn (1200×627)
               </a>
             )}
           </div>
+
         </Reveal>
 
         <Reveal delay={120}>
