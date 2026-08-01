@@ -378,7 +378,7 @@ function FreedomRow({
 
 export function Independence() {
   return (
-    <Section id="independence">
+    <Section id="independence" kicker="Cloud Independence means…">
       <div className="mt-16 space-y-px border-t border-border bg-border">
         {freedoms.map((item, i) => (
           <FreedomRow key={item.title} item={item} index={i} />
