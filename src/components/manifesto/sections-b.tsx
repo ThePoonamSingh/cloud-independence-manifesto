@@ -4,7 +4,7 @@ import { Reveal, Section, useReveal } from "./primitives";
 /* SECTION 8 — Category */
 export function Category() {
   return (
-    <Section id="category" kicker="Introducing a new category">
+    <Section id="category" kicker="Introducing a new category" className="gradient-section">
       <Reveal delay={100}>
         <h2 className="display text-[clamp(3rem,10vw,9rem)]">Agent-Ready Cloud</h2>
       </Reveal>
@@ -181,7 +181,7 @@ const whatsNew = [
 export function Catalyst() {
   const { ref, visible } = useReveal<HTMLDivElement>();
   return (
-    <Section id="catalyst" kicker="Catalyst 3.0">
+    <Section id="catalyst" kicker="Catalyst 3.0" className="gradient-section">
       <Reveal>
         <h2 className="display max-w-3xl text-4xl md:text-7xl">
           Everything from prompt to production.
