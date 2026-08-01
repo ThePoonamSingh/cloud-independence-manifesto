@@ -22,52 +22,98 @@ const options = [
   "Staging that costs like prod",
 ];
 
+const RED = "#e32427";
+const BLUE = "#216cb4";
+
 function drawDeclaration(selected: string[], name: string) {
   const W = 1200;
-  const H = 630;
+  const H = 627; // LinkedIn share image
+  const S = 2; // retina scale
   const canvas = document.createElement("canvas");
-  canvas.width = W;
-  canvas.height = H;
+  canvas.width = W * S;
+  canvas.height = H * S;
   const ctx = canvas.getContext("2d");
   if (!ctx) return null;
+  ctx.scale(S, S);
+  ctx.textBaseline = "alphabetic";
 
-  ctx.fillStyle = "#111318";
+  // Base
+  ctx.fillStyle = "#0c0d10";
   ctx.fillRect(0, 0, W, H);
 
-  const grad = ctx.createRadialGradient(W / 2, 0, 20, W / 2, 0, 700);
-  grad.addColorStop(0, "rgba(230,175,60,0.20)");
-  grad.addColorStop(1, "rgba(230,175,60,0)");
-  ctx.fillStyle = grad;
+  // Brand glows
+  const red = ctx.createRadialGradient(150, 60, 10, 150, 60, 620);
+  red.addColorStop(0, "rgba(227,36,39,0.22)");
+  red.addColorStop(1, "rgba(227,36,39,0)");
+  ctx.fillStyle = red;
   ctx.fillRect(0, 0, W, H);
 
-  ctx.strokeStyle = "rgba(255,255,255,0.12)";
-  ctx.strokeRect(40, 40, W - 80, H - 80);
+  const blue = ctx.createRadialGradient(W - 120, H, 10, W - 120, H, 640);
+  blue.addColorStop(0, "rgba(33,108,180,0.20)");
+  blue.addColorStop(1, "rgba(33,108,180,0)");
+  ctx.fillStyle = blue;
+  ctx.fillRect(0, 0, W, H);
 
-  ctx.fillStyle = "#e6af3c";
-  ctx.font = "500 16px ui-monospace, monospace";
-  ctx.fillText("THE CLOUD INDEPENDENCE MANIFESTO", 80, 100);
+  // Hairline frame
+  ctx.strokeStyle = "rgba(255,255,255,0.10)";
+  ctx.lineWidth = 1;
+  ctx.strokeRect(44.5, 44.5, W - 89, H - 89);
 
-  ctx.fillStyle = "#f5f5f7";
-  ctx.font = "400 64px Georgia, serif";
-  ctx.fillText("I declare independence from", 80, 190);
+  const L = 84;
 
-  ctx.font = "400 30px Georgia, serif";
-  let y = 260;
-  const items = selected.length ? selected : ["infrastructure complexity"];
-  items.forEach((s) => {
-    ctx.fillStyle = "#e6af3c";
-    ctx.fillText("—", 84, y);
-    ctx.fillStyle = "#f5f5f7";
-    ctx.fillText(s, 130, y);
-    y += 48;
+  // Eyebrow
+  ctx.fillStyle = RED;
+  ctx.fillRect(L, 92, 34, 2);
+  ctx.fillStyle = "rgba(255,255,255,0.72)";
+  ctx.font = "500 13px ui-monospace, SFMono-Regular, monospace";
+  ctx.fillText("THE CLOUD INDEPENDENCE MANIFESTO", L + 50, 97);
+
+  // Headline
+  ctx.fillStyle = "#f6f6f7";
+  ctx.font = "400 62px Georgia, 'Times New Roman', serif";
+  ctx.fillText("I declare Cloud Independence.", L, 172);
+
+  ctx.fillStyle = "rgba(255,255,255,0.52)";
+  ctx.font = "400 19px system-ui, -apple-system, sans-serif";
+  ctx.fillText("Burdens I am done carrying:", L, 208);
+
+  // Two-column burden list
+  const items = (selected.length ? selected : ["Infrastructure complexity"]).slice(0, 12);
+  const rows = Math.ceil(items.length / 2);
+  const colW = (W - L * 2) / 2;
+  ctx.font = "400 21px system-ui, -apple-system, sans-serif";
+  items.forEach((s, i) => {
+    const col = Math.floor(i / rows);
+    const row = i % rows;
+    const x = L + col * colW;
+    const y = 254 + row * 34;
+    ctx.fillStyle = col === 0 ? RED : BLUE;
+    ctx.fillRect(x, y - 7, 14, 2);
+    ctx.fillStyle = "rgba(255,255,255,0.88)";
+    ctx.fillText(s, x + 28, y);
   });
 
-  ctx.fillStyle = "rgba(255,255,255,0.55)";
-  ctx.font = "400 20px system-ui, sans-serif";
-  ctx.fillText(name ? `— ${name}` : "— A developer who builds software, not infrastructure", 80, H - 110);
-  ctx.fillStyle = "rgba(255,255,255,0.35)";
-  ctx.font = "500 14px ui-monospace, monospace";
-  ctx.fillText("CATALYST 3.0  ·  AGENT-READY CLOUD", 80, H - 70);
+  // Footer
+  ctx.strokeStyle = "rgba(255,255,255,0.10)";
+  ctx.beginPath();
+  ctx.moveTo(L, H - 128);
+  ctx.lineTo(W - L, H - 128);
+  ctx.stroke();
+
+  ctx.fillStyle = "#f6f6f7";
+  ctx.font = "400 24px Georgia, 'Times New Roman', serif";
+  ctx.fillText(name || "A developer who builds software, not infrastructure", L, H - 90);
+
+  ctx.fillStyle = "rgba(255,255,255,0.42)";
+  ctx.font = "500 13px ui-monospace, SFMono-Regular, monospace";
+  ctx.fillText("CATALYST 3.0  ·  AGENT-READY CLOUD", L, H - 62);
+
+  // Brand mark right
+  ctx.textAlign = "right";
+  ctx.fillStyle = "rgba(255,255,255,0.42)";
+  ctx.font = "500 13px ui-monospace, SFMono-Regular, monospace";
+  ctx.fillText("catalyst.zoho.com", W - L, H - 62);
+  ctx.textAlign = "left";
 
   return canvas.toDataURL("image/png");
 }
@@ -87,11 +133,12 @@ export function Declaration() {
       <Reveal>
         <h2 className="display max-w-3xl text-4xl md:text-6xl">I declare Cloud Independence.</h2>
         <p className="mt-6 max-w-xl text-muted-foreground">
-          From infrastructure glue to vendor lock-in, from alert fatigue to AI-unreadable
-          architecture — select every burden you are done carrying. We'll generate a card
-          built for LinkedIn.
+          Independence is not granted by a vendor. It is declared by the people who build.
+          Choose the burdens you refuse to carry into the next decade of software, sign your
+          name, and take the declaration with you.
         </p>
       </Reveal>
+
 
       <div className="mt-14 grid gap-12 md:grid-cols-2">
         <Reveal>
@@ -125,22 +172,22 @@ export function Declaration() {
               onClick={generate}
               className="border border-foreground bg-foreground px-6 py-3 text-sm font-medium text-background transition-colors hover:bg-transparent hover:text-foreground"
             >
-              Generate my declaration
+              Sign my declaration
             </button>
             {preview && (
               <a
                 href={preview}
-                download="cloud-independence-declaration.png"
+                download="i-declare-cloud-independence.png"
                 className="border border-border px-6 py-3 text-sm transition-colors hover:border-signal hover:text-signal"
               >
-                Download image
+                Download for LinkedIn
               </a>
             )}
           </div>
         </Reveal>
 
         <Reveal delay={120}>
-          <div className="aspect-[1200/630] w-full border border-border bg-card">
+          <div className="aspect-[1200/627] w-full border border-border bg-card">
             {preview ? (
               <img
                 src={preview}
@@ -149,7 +196,7 @@ export function Declaration() {
               />
             ) : (
               <div className="flex h-full items-center justify-center p-8 text-center text-sm text-muted-foreground">
-                Your declaration card will appear here.
+                Your signed declaration will appear here.
               </div>
             )}
           </div>
