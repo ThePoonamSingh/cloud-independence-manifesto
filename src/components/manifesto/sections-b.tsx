@@ -321,26 +321,6 @@ export function Catalyst() {
         ))}
       </div>
 
-      <div className="mt-24 border-t border-border pt-16">
-        <Reveal>
-          <h3 className="display text-3xl md:text-5xl">Capabilities</h3>
-          <p className="mt-6 max-w-xl text-muted-foreground">
-            New capabilities make it easier to build, connect, deploy, and operate intelligent
-            applications — without adding a single extra system to manage.
-          </p>
-        </Reveal>
-        <div className="mt-12 grid gap-px border border-border bg-border md:grid-cols-2">
-          {capabilities.map((c, i) => (
-            <Reveal key={c.t} delay={i * 80}>
-              <div className="h-full bg-background p-8 md:p-10">
-                <p className="kicker text-signal">{c.t}</p>
-                <p className="display mt-5 text-xl md:text-2xl">{c.h}</p>
-                <p className="mt-4 text-sm text-muted-foreground">{c.d}</p>
-              </div>
-            </Reveal>
-          ))}
-        </div>
-      </div>
     </Section>
   );
 }
