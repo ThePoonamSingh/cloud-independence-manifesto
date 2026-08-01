@@ -407,64 +407,7 @@ export function Independence() {
           </div>
         </div>
       </Reveal>
-
-      <NeverTouchTags />
     </Section>
   );
 }
 
-/* SECTION 6b — The list you'll never open again */
-const neverAgain = [
-  "Dockerfiles",
-  "Kubernetes manifests",
-  "Terraform modules",
-  "IAM policies",
-  "VPCs & subnets",
-  "Load balancers",
-  "TLS certificates",
-  "Autoscaling groups",
-  "Helm charts",
-  "CI/CD YAML",
-  "Secret rotation",
-  "Log pipelines",
-  "Bastion hosts",
-  "Cluster upgrades",
-  "On-call runbooks",
-];
-
-function NeverTouchTags() {
-  const { ref, visible } = useReveal<HTMLDivElement>();
-  return (
-    <div className="mt-20 grid gap-10 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.5fr)]">
-      <Reveal>
-        <p className="kicker">The list you'll never open again</p>
-        <h3 className="display mt-5 text-3xl md:text-4xl">
-          You'll never touch <em>this</em> again.
-        </h3>
-      </Reveal>
-      <div ref={ref} className="flex flex-wrap gap-3 lg:justify-end lg:content-start">
-        {neverAgain.map((item, i) => (
-          <span
-            key={item}
-            className="relative rounded-full border border-border bg-card px-5 py-2.5 font-mono text-sm text-muted-foreground transition-all duration-700"
-            style={{
-              opacity: visible ? 1 : 0,
-              transform: visible ? "none" : "translateY(8px)",
-              transitionDelay: `${i * 70}ms`,
-            }}
-          >
-            {item}
-            <span
-              aria-hidden
-              className="absolute left-3 right-3 top-1/2 h-px bg-signal transition-transform duration-500 origin-left"
-              style={{
-                transform: visible ? "scaleX(1)" : "scaleX(0)",
-                transitionDelay: `${400 + i * 70}ms`,
-              }}
-            />
-          </span>
-        ))}
-      </div>
-    </div>
-  );
-}
