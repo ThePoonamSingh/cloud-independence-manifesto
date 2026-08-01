@@ -136,6 +136,33 @@
   }
 }
 
+@utility thesis-word {
+  display: inline-block;
+  margin-right: 0.22em;
+  opacity: 0;
+  transform: translateY(14px);
+  filter: blur(4px);
+  transition:
+    opacity 1100ms cubic-bezier(0.16, 1, 0.3, 1),
+    transform 1100ms cubic-bezier(0.16, 1, 0.3, 1),
+    filter 900ms cubic-bezier(0.16, 1, 0.3, 1);
+
+  &[data-visible="true"] {
+    opacity: 1;
+    transform: none;
+    filter: blur(0px);
+  }
+}
+
+@utility thesis-quote-mark {
+  opacity: 0;
+  transition: opacity 800ms cubic-bezier(0.16, 1, 0.3, 1) 80ms;
+
+  &[data-visible="true"] {
+    opacity: 1;
+  }
+}
+
 @keyframes drift {
   from {
     stroke-dashoffset: 260;
