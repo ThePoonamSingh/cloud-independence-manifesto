@@ -1,6 +1,47 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Reveal, Section } from "./primitives";
 import maniVembuAsset from "@/assets/mani-vembu-lineart.png.asset.json";
+
+function ThesisQuote({ children }: { children: string }) {
+  const ref = useRef<HTMLQuoteElement | null>(null);
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const e of entries) if (e.isIntersecting) setVisible(true);
+      },
+      { threshold: 0.25, rootMargin: "0px 0px -10% 0px" },
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+
+  const words = children.trim().split(/\s+/);
+  return (
+    <blockquote
+      ref={ref}
+      className="display text-[clamp(2rem,5vw,4rem)] leading-[1.05]"
+      aria-label={children}
+      data-visible={visible}
+    >
+      <span className="thesis-quote-mark" data-visible={visible}>“</span>
+      {words.map((word, i) => (
+        <span
+          key={i}
+          className="thesis-word"
+          data-visible={visible}
+          style={{ transitionDelay: `${120 + i * 55}ms` }}
+        >
+          {word}
+        </span>
+      ))}
+      <span className="thesis-quote-mark" data-visible={visible}>”</span>
+    </blockquote>
+  );
+}
 
 /* SECTION 13 — Vision */
 export function Vision() {
@@ -10,9 +51,9 @@ export function Vision() {
         <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
           <div>
             <Reveal>
-              <blockquote className="display text-[clamp(2rem,5vw,4rem)] leading-[1.05]">
-                “The best infrastructure is the infrastructure developers never have to think about.”
-              </blockquote>
+              <ThesisQuote>
+                The best infrastructure is the infrastructure developers never have to think about.
+              </ThesisQuote>
             </Reveal>
             <Reveal delay={120}>
               <figcaption className="mt-8 flex items-center gap-4">
