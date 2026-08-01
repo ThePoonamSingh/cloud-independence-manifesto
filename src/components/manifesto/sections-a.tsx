@@ -258,11 +258,11 @@ export function Frankenstack() {
             ))}
           </svg>
 
-          <div className="tag-container relative h-full w-full">
+          <div className="tag-container relative h-full w-full scale-[0.74] sm:scale-[0.88] md:scale-100">
             {vendors.map((v, i) => (
               <span
                 key={v.name}
-                className={`absolute inline-block border bg-card px-3 py-1.5 font-mono text-sm transition-all duration-700 hover:-translate-y-1 hover:border-signal/60 ${
+                className={`absolute inline-block whitespace-nowrap border bg-card px-2 py-1 font-mono text-xs transition-all duration-700 hover:-translate-y-1 hover:border-signal/60 md:px-3 md:py-1.5 md:text-sm ${
                   v.stress
                     ? "border-signal/40 text-foreground shadow-[0_0_18px_color-mix(in_oklab,var(--color-signal)_20%,transparent)]"
                     : "border-border text-muted-foreground"
