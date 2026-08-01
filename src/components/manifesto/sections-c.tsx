@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from "react";
 import { Reveal, Section } from "./primitives";
-import maniVembuAsset from "@/assets/mani-vembu-lineart.png.asset.json";
 
 function ThesisQuote({ children }: { children: string }) {
   const ref = useRef<HTMLQuoteElement | null>(null);
