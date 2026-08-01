@@ -432,13 +432,6 @@ export function WhyZoho() {
           </Reveal>
         ))}
       </div>
-      <Reveal>
-        <p className="mt-10 max-w-2xl border-l-2 border-signal pl-5 text-sm text-muted-foreground">
-          Proof point: Catalyst is not a greenfield product looking for its first workload. Zoho
-          teams ship production applications on it, which means the platform absorbs the same
-          operational burden it asks developers to hand over.
-        </p>
-      </Reveal>
     </Section>
   );
 }
