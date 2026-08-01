@@ -135,6 +135,10 @@ export function Shift() {
         <h2 className="display max-w-4xl text-4xl md:text-7xl">
           AI changed software. Now software must change cloud.
         </h2>
+        <p className="mt-8 max-w-2xl text-muted-foreground">
+          Every platform shift changed how software gets built. AI is creating the next one.
+        </p>
+        <EraStrip />
       </Reveal>
       <div ref={ref} className="mt-16 grid gap-px border border-border bg-border md:grid-cols-3">
         {states.map((s, i) => (
