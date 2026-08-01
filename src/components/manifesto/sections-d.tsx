@@ -228,11 +228,32 @@ export function Declaration() {
   const [selected, setSelected] = useState<string[]>([]);
   const [name, setName] = useState("");
   const [preview, setPreview] = useState<string | null>(null);
+  const [busy, setBusy] = useState(false);
 
   const toggle = (o: string) =>
     setSelected((s) => (s.includes(o) ? s.filter((x) => x !== o) : [...s, o]));
 
-  const generate = () => setPreview(drawDeclaration(selected, name.trim()));
+  const generate = async () => {
+    setBusy(true);
+    try {
+      // Ensure Zoho Puvi is available to the canvas before painting.
+      if (typeof document !== "undefined" && "fonts" in document) {
+        try {
+          await Promise.all([
+            document.fonts.load('400 64px "Zoho Puvi"'),
+            document.fonts.load('400 17px "Zoho Puvi"'),
+          ]);
+          await document.fonts.ready;
+        } catch {
+          /* fall back to system fonts */
+        }
+      }
+      setPreview(drawDeclaration(selected, name.trim()));
+    } finally {
+      setBusy(false);
+    }
+  };
+
 
   return (
     <Section id="declaration" kicker="The declaration" className="gradient-section">
