@@ -27,7 +27,30 @@ export function StartBuilding() {
             </p>
           </Reveal>
 
-          <Reveal delay={240}>
+          <Reveal delay={180}>
+            <ul className="mt-10 space-y-3 font-mono text-sm uppercase tracking-widest text-background/60 sm:text-base">
+              <li className="flex items-center gap-3">
+                <span className="h-px w-6 bg-signal" aria-hidden="true" />
+                No infrastructure to provision.
+              </li>
+              <li className="flex items-center gap-3">
+                <span className="h-px w-6 bg-cool" aria-hidden="true" />
+                No cloud services to stitch together.
+              </li>
+              <li className="flex items-center gap-3">
+                <span className="h-px w-6 bg-signal" aria-hidden="true" />
+                No deployment complexity to manage.
+              </li>
+            </ul>
+          </Reveal>
+
+          <Reveal delay={300}>
+            <p className="mt-8 text-lg font-medium tracking-tight text-background sm:text-xl">
+              Just build.
+            </p>
+          </Reveal>
+
+          <Reveal delay={420}>
             <a
               href="https://catalyst.zoho.com/"
               target="_blank"
@@ -44,7 +67,7 @@ export function StartBuilding() {
             </a>
           </Reveal>
 
-          <Reveal delay={360}>
+          <Reveal delay={540}>
             <p className="mt-8 font-mono text-xs uppercase tracking-widest text-background/40">
               Cloud Independence starts with a single deployment.
             </p>
