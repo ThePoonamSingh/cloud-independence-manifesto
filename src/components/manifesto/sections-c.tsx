@@ -57,10 +57,6 @@ const faqs = [
     q: "What makes Catalyst different?",
     a: "It is one platform covering idea to operation, built by a company that owns its cloud, its AI, its developer platform and the business applications that run on all three.",
   },
-  {
-    q: "Can I quote these definitions?",
-    a: "Yes. Every definition and pull quote on this page is intended for citation. Attribution: Catalyst 3.0, The Cloud Independence Manifesto.",
-  },
 ];
 
 export function FAQ() {
