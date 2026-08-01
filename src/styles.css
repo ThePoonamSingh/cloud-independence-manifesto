@@ -336,6 +336,38 @@
   }
 }
 
+@keyframes nebula-drift {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(3%, -2%) scale(1.05);
+  }
+  66% {
+    transform: translate(-2%, 2%) scale(0.97);
+  }
+}
+
+@keyframes nebula-breathe {
+  0%,
+  100% {
+    opacity: 0.35;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+@keyframes shimmer-sweep {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
 @utility cool-veil {
   background-image: radial-gradient(
     ellipse 65% 60% at 50% 0%,
