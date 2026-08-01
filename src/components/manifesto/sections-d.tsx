@@ -193,11 +193,6 @@ function drawDeclaration(selected: string[], name: string) {
   }
 
 
-  if (selected.length > 10) {
-    ctx.fillStyle = "rgba(255,255,255,0.42)";
-    ctx.font = `400 14px ${DISPLAY}`;
-    ctx.fillText(`+ ${selected.length - 10} more`, L, top + rows * rowH + 14);
-  }
 
   // Footer
   ctx.strokeStyle = "rgba(255,255,255,0.12)";
