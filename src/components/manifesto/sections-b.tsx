@@ -282,28 +282,6 @@ export function WhatsNew() {
 /* SECTION 12 — Catalyst 3.0 deep dive */
 const workflow = ["Idea", "Prompt", "Build", "Deploy", "Scale", "Observe", "Operate"];
 
-const capabilities = [
-  {
-    t: "MCP support",
-    h: "Connect to any AI model or tool, on an open standard",
-    d: "Model Context Protocol support lets your applications talk to AI models and external tools through one open interface, instead of a custom integration for every provider.",
-  },
-  {
-    t: "Signals",
-    h: "React to what happens, the moment it happens",
-    d: "Signals give applications a live, event-driven nervous system across services — without deploying and managing a messaging layer of your own.",
-  },
-  {
-    t: "Stratus",
-    h: "Storage that scales without a storage team",
-    d: "Stratus is S3-compatible object storage built into the platform — upload, retrieve, and share files with signed URLs, with no bucket policy to hand-configure.",
-  },
-  {
-    t: "AI-native services",
-    h: "Intelligence, built into the platform",
-    d: "A new generation of AI-native platform services means intelligence is a capability of Catalyst itself, not a separate system you have to wire in.",
-  },
-];
 
 export function Catalyst() {
   const { ref, visible } = useReveal<HTMLDivElement>();
