@@ -55,7 +55,7 @@ export function Vision() {
               <div className="relative">
                 {/* Oversized decorative quote mark */}
                 <span
-                  className="pointer-events-none absolute -left-4 -top-10 select-none font-display text-[8rem] leading-none text-background/[0.06] md:-left-8 md:-top-16 md:text-[12rem]"
+                  className="pointer-events-none absolute -left-3 -top-8 select-none font-display text-[6rem] leading-none text-background/[0.06] md:-left-6 md:-top-12 md:text-[9rem]"
                   aria-hidden="true"
                 >
                   “
