@@ -48,32 +48,40 @@ export function Vision() {
   return (
     <div className="bg-foreground text-background [&_.kicker]:text-background/60">
       <Section id="vision" kicker="Vision: Cloud Independence">
-        <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
+        <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
           <div>
             <Reveal>
               <ThesisQuote>
                 The best infrastructure is the infrastructure developers never have to think about.
               </ThesisQuote>
             </Reveal>
-            <Reveal delay={120}>
-              <figcaption className="mt-10 flex items-baseline gap-4">
-                <span className="h-px w-8 bg-signal" aria-hidden="true" />
-                <div className="flex flex-col">
-                  <span className="font-sans text-base font-medium tracking-tight text-background">
-                    Mani Vembu
-                  </span>
-                  <span className="text-sm text-background/55">
-                    Chief Executive Officer, Zoho
-                  </span>
+
+            <Reveal delay={140}>
+              <figcaption className="mt-10 md:mt-12">
+                <div className="flex items-start gap-5">
+                  <span
+                    className="mt-3 h-12 w-1 shrink-0 rounded-full bg-signal"
+                    aria-hidden="true"
+                  />
+                  <div className="flex flex-col">
+                    <span className="font-sans text-lg font-semibold tracking-tight text-background md:text-xl">
+                      Mani Vembu
+                    </span>
+                    <span className="mt-1 text-sm font-medium uppercase tracking-widest text-background/50">
+                      Chief Executive Officer, Zoho
+                    </span>
+                  </div>
                 </div>
               </figcaption>
             </Reveal>
-            <Reveal delay={240}>
-              <p className="mt-10 max-w-xl text-lg leading-relaxed text-background/70 md:text-xl">
-                That ideal is still far from how most teams work. Catalyst 3.0 is built to close that gap.
+
+            <Reveal delay={280}>
+              <p className="mt-10 max-w-xl text-lg leading-relaxed text-background/75 md:text-xl">
+                That is the standard Catalyst 3.0 is built for: infrastructure that gets out of the way so developers and AI agents can ship.
               </p>
             </Reveal>
-            <Reveal delay={360}>
+
+            <Reveal delay={420}>
               <a
                 href="#catalyst"
                 className="group mt-8 inline-flex items-center gap-3 border border-background/25 px-6 py-3 text-sm font-medium text-background transition-colors hover:bg-background hover:text-foreground"
@@ -83,7 +91,8 @@ export function Vision() {
               </a>
             </Reveal>
           </div>
-          <Reveal delay={180}>
+
+          <Reveal delay={200}>
             <figure className="relative overflow-hidden">
               <img
                 src={maniVembuAsset.url}
