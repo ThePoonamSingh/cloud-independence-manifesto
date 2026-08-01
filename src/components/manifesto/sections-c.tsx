@@ -135,20 +135,16 @@ export function Manifesto() {
     <section id="manifesto" className="relative border-y border-border veil">
       <div className="mx-auto max-w-6xl px-6 py-24 md:px-10 md:py-32">
         <p className="kicker text-signal">The Manifesto</p>
+        <Reveal>
+          <div className="mt-12 space-y-6">
+            {lines.map((l) => (
+              <p key={l} className="display text-[clamp(1.75rem,4vw,3.25rem)] leading-[1.15]">
+                {l}
+              </p>
+            ))}
+          </div>
+        </Reveal>
       </div>
-      {lines.map((l, i) => (
-        <div
-          key={l}
-          className="mx-auto flex min-h-[70vh] max-w-6xl items-center px-6 md:min-h-screen md:px-10"
-        >
-          <Reveal>
-            <p className="display text-[clamp(2.5rem,8vw,7rem)]">{l}</p>
-            <p className="kicker mt-8">
-              {String(i + 1).padStart(2, "0")} / {String(lines.length).padStart(2, "0")}
-            </p>
-          </Reveal>
-        </div>
-      ))}
     </section>
   );
 }
