@@ -73,11 +73,3 @@ export function Section({
 export function Rule() {
   return <div className="rule mx-auto w-full max-w-6xl" />;
 }
-
-export function PullQuote({ text }: { text: string }) {
-  return (
-    <figure className="relative border-l border-signal/50 pl-6 md:pl-10">
-      <blockquote className="display text-3xl md:text-5xl">{text}</blockquote>
-    </figure>
-  );
-}
