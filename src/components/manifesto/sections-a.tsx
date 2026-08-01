@@ -323,42 +323,45 @@ export function Independence() {
           different flag on your infrastructure.
         </p>
       </Reveal>
-      <div className="mt-16 space-y-8 md:mt-24 md:space-y-12">
-        {freedoms.map((f, i) => (
-          <Reveal key={f} delay={i * 100}>
-            <p className="display text-3xl md:text-6xl">{f}</p>
-          </Reveal>
-        ))}
-      </div>
 
-      <div className="mt-24 border-t border-border pt-16">
-        <Reveal>
-          <p className="kicker">Freedom from infrastructure</p>
-          <h3 className="display mt-6 max-w-4xl text-3xl md:text-5xl">
-            The freedom to build and ship applications without having to think about the
-            infrastructure underneath them.
-          </h3>
-        </Reveal>
-        <div className="mt-12 grid gap-px border border-border bg-border md:grid-cols-2">
+      <div className="mt-16 grid gap-12 lg:grid-cols-2 lg:gap-16">
+        <div className="space-y-8 md:space-y-12">
+          {freedoms.map((f, i) => (
+            <Reveal key={f} delay={i * 100}>
+              <p className="display text-3xl md:text-5xl">{f}</p>
+            </Reveal>
+          ))}
+        </div>
+
+        <div className="lg:pt-4">
           <Reveal>
-            <div className="h-full bg-background p-8 md:p-10">
-              <p className="kicker">Not vendor switching</p>
-              <p className="mt-5 text-base text-muted-foreground">
-                It is not about moving from one cloud provider to another. That just trades one
-                vendor for another — and keeps the same infrastructure burden on your shoulders.
-              </p>
-            </div>
+            <p className="kicker">Freedom from infrastructure</p>
+            <h3 className="display mt-6 text-3xl md:text-4xl">
+              The freedom to build and ship applications without having to think about the
+              infrastructure underneath them.
+            </h3>
           </Reveal>
-          <Reveal delay={120}>
-            <div className="h-full bg-signal-soft p-8 md:p-10">
-              <p className="kicker text-signal">It is freedom from infrastructure</p>
-              <p className="mt-5 text-base text-muted-foreground">
-                You write the application. The platform absorbs the servers, config, security,
-                deploys, and operations. Your ideas ship instead of sitting in configuration
-                queues.
-              </p>
-            </div>
-          </Reveal>
+          <div className="mt-10 grid gap-px border border-border bg-border md:grid-cols-2 lg:grid-cols-1">
+            <Reveal>
+              <div className="h-full bg-background p-8 md:p-10">
+                <p className="kicker">Not vendor switching</p>
+                <p className="mt-5 text-base text-muted-foreground">
+                  It is not about moving from one cloud provider to another. That just trades one
+                  vendor for another — and keeps the same infrastructure burden on your shoulders.
+                </p>
+              </div>
+            </Reveal>
+            <Reveal delay={120}>
+              <div className="h-full bg-signal-soft p-8 md:p-10">
+                <p className="kicker text-signal">It is freedom from infrastructure</p>
+                <p className="mt-5 text-base text-muted-foreground">
+                  You write the application. The platform absorbs the servers, config, security,
+                  deploys, and operations. Your ideas ship instead of sitting in configuration
+                  queues.
+                </p>
+              </div>
+            </Reveal>
+          </div>
         </div>
       </div>
     </Section>
