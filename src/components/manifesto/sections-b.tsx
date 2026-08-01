@@ -116,8 +116,8 @@ export function TeachingAI() {
         </ol>
         <div className="border border-border p-8 md:p-12">
           <p className="kicker text-signal">Step {String(active + 1).padStart(2, "0")}</p>
-          <p className="display mt-6 text-3xl md:text-5xl">{flow[active].t}</p>
-          <p className="mt-6 text-muted-foreground">{flow[active].d}</p>
+          <p className="display mt-6 text-3xl md:text-5xl">{flow[active]?.t}</p>
+          <p className="mt-6 text-muted-foreground">{flow[active]?.d}</p>
         </div>
       </div>
     </Section>
