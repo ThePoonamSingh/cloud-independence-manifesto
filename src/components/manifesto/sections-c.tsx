@@ -21,7 +21,6 @@ function ThesisQuote({ children }: { children: string }) {
 
   const paragraphs = children.trim().split(/\n\n+/);
   let wordIndex = 0;
-  const totalWords = paragraphs.reduce((acc, p) => acc + p.split(/\s+/).length, 0);
   return (
     <blockquote
       ref={ref}
@@ -34,9 +33,8 @@ function ThesisQuote({ children }: { children: string }) {
         const isLastParagraph = pIdx === paragraphs.length - 1;
         return (
           <span key={pIdx} className={pIdx > 0 ? "block mt-5 md:mt-7" : undefined}>
-            {words.map((word, wIdx) => {
+            {words.map((word) => {
               const i = wordIndex++;
-              const isLastWord = isLastParagraph && wIdx === words.length - 1;
               return (
                 <span
                   key={i}
@@ -45,7 +43,6 @@ function ThesisQuote({ children }: { children: string }) {
                   style={{ transitionDelay: `${120 + i * 42}ms` }}
                 >
                   {word}
-                  {isLastWord && <span className="thesis-close-quote" aria-hidden="true">”</span>}
                 </span>
               );
             })}
@@ -53,11 +50,14 @@ function ThesisQuote({ children }: { children: string }) {
           </span>
         );
       })}
-      {/* Closing decorative rule */}
+      {/* Closing quote mark — positioned at end of text block */}
       <span
-        className="pointer-events-none absolute -bottom-3 left-0 h-px w-24 bg-gradient-to-r from-signal/40 to-transparent"
+        className="thesis-close-quote"
+        data-visible={visible}
         aria-hidden="true"
-      />
+      >
+        ”
+      </span>
     </blockquote>
   );
 }
