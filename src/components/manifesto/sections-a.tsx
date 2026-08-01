@@ -53,12 +53,6 @@ const signals = [
     source: "Gartner Public Cloud Forecast, 2025",
   },
   {
-    stat: "90%",
-    claim: "of enterprises will adopt a hybrid or multi-vendor posture.",
-    detail: "Multi-vendor is now the default state — and the default source of operational debt.",
-    source: "Gartner Cloud Strategy Outlook, 2025",
-  },
-  {
     stat: "65%",
     claim: "of developer time is spent on work that is not the product.",
     detail: "Pipelines, environments, glue code, upgrades, incidents. The tax nobody budgeted for.",
