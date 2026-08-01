@@ -185,6 +185,20 @@ export function Frankenstack() {
   const { ref, visible } = useReveal<HTMLDivElement>();
   const routePath =
     "M 40,80 C 120,80 140,40 220,40 S 320,120 400,120 S 500,60 580,60 S 680,130 760,130";
+  const painCards = [
+    {
+      title: "More\nVendors.",
+      body: "Fragmented identity, billing, and permissions across a dozen isolated consoles.",
+    },
+    {
+      title: "More\nComplexity.",
+      body: "Proprietary APIs and brittle abstractions that break with every update.",
+    },
+    {
+      title: "More\nDebt.",
+      body: "Engineering teams spend half their sprint cycles on keep-the-lights-on glue code.",
+    },
+  ];
   return (
     <Section id="patchwork-stack" kicker="The problem">
       <Reveal>
@@ -202,117 +216,106 @@ export function Frankenstack() {
 
       <div
         ref={ref}
-        className="relative mt-16 flex h-80 items-center justify-center overflow-hidden md:h-96"
+        className="mt-16 grid gap-px border border-border bg-border lg:grid-cols-[1.4fr_0.6fr]"
       >
-        <div
-          className="absolute inset-0"
-          style={{
-            background:
-              "radial-gradient(ellipse 60% 80% at 50% 50%, color-mix(in oklab, var(--color-cold) 12%, transparent), transparent 70%)",
-          }}
-        />
-        <div
-          className="absolute inset-0 border border-border/50"
-          style={{
-            maskImage: "radial-gradient(circle, white, transparent 70%)",
-            WebkitMaskImage: "radial-gradient(circle, white, transparent 70%)",
-          }}
-        />
-
-        <svg
-          className="pointer-events-none absolute inset-0 h-full w-full"
-          viewBox="0 0 800 180"
-          preserveAspectRatio="xMidYMid meet"
-          fill="none"
-        >
-          <path
-            d={routePath}
-            stroke="color-mix(in oklab, var(--color-signal) 25%, transparent)"
-            strokeWidth="1"
-            strokeDasharray="8 8"
-            className="opacity-0 transition-opacity duration-700"
-            style={{ opacity: visible ? 1 : 0 }}
-          />
-          <path
-            d={routePath}
-            stroke="var(--color-signal)"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeDasharray="1200"
-            strokeDashoffset="1200"
-            className="opacity-0"
+        <div className="relative flex h-80 items-center justify-center overflow-hidden bg-background md:h-96 lg:h-auto">
+          <div
+            className="absolute inset-0"
             style={{
-              opacity: visible ? 1 : 0,
-              animation: visible ? "route-draw 3.2s cubic-bezier(0.16, 1, 0.3, 1) forwards" : "none",
-              animationDelay: visible ? "0.6s" : "0s",
+              background:
+                "radial-gradient(ellipse 60% 80% at 50% 50%, color-mix(in oklab, var(--color-cold) 12%, transparent), transparent 70%)",
             }}
           />
-        </svg>
+          <div
+            className="absolute inset-0 border border-border/50"
+            style={{
+              maskImage: "radial-gradient(circle, white, transparent 70%)",
+              WebkitMaskImage: "radial-gradient(circle, white, transparent 70%)",
+            }}
+          />
 
-        <div className="relative flex max-w-3xl flex-wrap justify-center gap-2 px-4">
-          {vendors.map((v, i) => (
-            <span
-              key={v.name}
-              className={`border border-border bg-card px-3 py-1.5 font-mono text-sm text-muted-foreground transition-all duration-700 hover:-translate-y-1 ${v.twist}`}
+          <svg
+            className="pointer-events-none absolute inset-0 h-full w-full"
+            viewBox="0 0 800 180"
+            preserveAspectRatio="xMidYMid meet"
+            fill="none"
+          >
+            <path
+              d={routePath}
+              stroke="color-mix(in oklab, var(--color-signal) 25%, transparent)"
+              strokeWidth="1"
+              strokeDasharray="8 8"
+              className="opacity-0 transition-opacity duration-700"
+              style={{ opacity: visible ? 1 : 0 }}
+            />
+            <path
+              d={routePath}
+              stroke="var(--color-signal)"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeDasharray="1200"
+              strokeDashoffset="1200"
+              className="opacity-0"
               style={{
                 opacity: visible ? 1 : 0,
-                transform: visible ? undefined : "translateY(12px)",
-                transitionDelay: `${i * 60}ms`,
                 animation: visible
-                  ? `vendor-glow 2.4s cubic-bezier(0.16, 1, 0.3, 1) ${0.8 + i * 0.16}s`
+                  ? "route-draw 3.2s cubic-bezier(0.16, 1, 0.3, 1) forwards"
+                  : "none",
+                animationDelay: visible ? "0.6s" : "0s",
+              }}
+            />
+          </svg>
+
+          <div className="relative flex max-w-3xl flex-wrap justify-center gap-2 px-4">
+            {vendors.map((v, i) => (
+              <span
+                key={v.name}
+                className={`border border-border bg-card px-3 py-1.5 font-mono text-sm text-muted-foreground transition-all duration-700 hover:-translate-y-1 ${v.twist}`}
+                style={{
+                  opacity: visible ? 1 : 0,
+                  transform: visible ? undefined : "translateY(12px)",
+                  transitionDelay: `${i * 60}ms`,
+                  animation: visible
+                    ? `vendor-glow 2.4s cubic-bezier(0.16, 1, 0.3, 1) ${0.8 + i * 0.16}s`
+                    : "none",
+                }}
+              >
+                {v.name}
+              </span>
+            ))}
+
+            <div
+              className="absolute left-0 top-0 h-3 w-3 rounded-full bg-signal shadow-[0_0_18px_var(--color-signal)]"
+              style={{
+                opacity: visible ? 1 : 0,
+                offsetPath: `path('${routePath}')`,
+                offsetRotate: "auto",
+                animation: visible
+                  ? "packet-travel 3.2s cubic-bezier(0.16, 1, 0.3, 1) 0.6s forwards"
                   : "none",
               }}
-            >
-              {v.name}
-            </span>
-          ))}
-
-          <div
-            className="absolute left-0 top-0 h-3 w-3 rounded-full bg-signal shadow-[0_0_18px_var(--color-signal)]"
-            style={{
-              opacity: visible ? 1 : 0,
-              offsetPath: `path('${routePath}')`,
-              offsetRotate: "auto",
-              animation: visible
-                ? "packet-travel 3.2s cubic-bezier(0.16, 1, 0.3, 1) 0.6s forwards"
-                : "none",
-            }}
-          />
+            />
+          </div>
         </div>
-      </div>
 
-      <Reveal>
-        <div className="mt-16 grid gap-px border-t border-border bg-border md:grid-cols-3">
-          {[
-            {
-              title: "More\nVendors.",
-              body: "Fragmented identity, billing, and permissions across a dozen isolated consoles.",
-            },
-            {
-              title: "More\nComplexity.",
-              body: "Proprietary APIs and brittle abstractions that break with every update.",
-            },
-            {
-              title: "More\nDebt.",
-              body: "Engineering teams spend half their sprint cycles on keep-the-lights-on glue code.",
-            },
-          ].map((item, i) => (
+        <div className="grid gap-px bg-border">
+          {painCards.map((item, i) => (
             <div
               key={i}
-              className="group bg-background p-8 transition-colors duration-500 hover:bg-card md:p-10"
+              className="group flex flex-col justify-center bg-background p-8 transition-colors duration-500 hover:bg-card md:p-10"
             >
-              <h3 className="display text-3xl uppercase leading-none tracking-tight transition-colors group-hover:text-pain md:text-4xl">
+              <h3 className="display text-2xl uppercase leading-none tracking-tight transition-colors group-hover:text-pain md:text-3xl">
                 {item.title.split("\n").map((line, j) => (
                   <span key={j} className="block">
                     {line}
                   </span>
                 ))}
               </h3>
-              <p className="mt-5 text-sm leading-relaxed text-muted-foreground">{item.body}</p>
+              <p className="mt-4 text-sm leading-relaxed text-muted-foreground">{item.body}</p>
             </div>
           ))}
         </div>
-      </Reveal>
+      </div>
     </Section>
   );
 }
