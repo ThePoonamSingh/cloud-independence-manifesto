@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, type ReactNode } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Reveal, Section } from "./primitives";
 import maniVembuAsset from "@/assets/mani-vembu-lineart.png.asset.json";
 
@@ -25,8 +25,9 @@ function ThesisQuote({ children }: { children: string }) {
       ref={ref}
       className="display text-[clamp(2rem,5vw,4rem)] leading-[1.05]"
       aria-label={children}
+      data-visible={visible}
     >
-      <span className="thesis-quote-mark">“</span>
+      <span className="thesis-quote-mark" data-visible={visible}>“</span>
       {words.map((word, i) => (
         <span
           key={i}
@@ -37,7 +38,7 @@ function ThesisQuote({ children }: { children: string }) {
           {word}
         </span>
       ))}
-      <span className="thesis-quote-mark">”</span>
+      <span className="thesis-quote-mark" data-visible={visible}>”</span>
     </blockquote>
   );
 }
