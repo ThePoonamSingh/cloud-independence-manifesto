@@ -123,31 +123,37 @@ export function Shift() {
         </p>
         <EraStrip />
       </Reveal>
-      <div ref={ref} className="mt-16 grid gap-px border border-border bg-border md:grid-cols-3">
-        {states.map((s, i) => (
-          <button
-            key={s.t}
-            onMouseEnter={() => setActive(i)}
-            onFocus={() => setActive(i)}
-            className={`relative bg-background p-8 text-left transition-all duration-700 md:p-12 ${
-              active === i ? "bg-card" : ""
-            }`}
-          >
-            <span
-              className="absolute left-0 top-0 h-px bg-signal transition-[width] duration-700"
-              style={{ width: active === i ? "100%" : "0%" }}
-            />
-            <p className={`kicker ${active === i ? "text-signal" : ""}`}>{s.t}</p>
-            <p
-              className={`display mt-6 text-2xl transition-opacity duration-700 md:text-4xl ${
-                active === i ? "opacity-100" : "opacity-45"
+      <div ref={ref} className="relative mt-16">
+        <div
+          className="pointer-events-none absolute left-0 top-0 h-px w-1/3 bg-signal blur-[6px] transition-[left] duration-700 ease-out md:blur-[8px]"
+          style={{ left: `${(active / states.length) * 100}%` }}
+        />
+        <div className="grid gap-px border border-border bg-border md:grid-cols-3">
+          {states.map((s, i) => (
+            <button
+              key={s.t}
+              onMouseEnter={() => setActive(i)}
+              onFocus={() => setActive(i)}
+              className={`relative bg-background p-8 text-left transition-all duration-700 md:p-12 ${
+                active === i ? "bg-card" : ""
               }`}
             >
-              {s.h}
-            </p>
-            <p className="mt-5 text-sm text-muted-foreground">{s.d}</p>
-          </button>
-        ))}
+              <span
+                className="absolute left-0 top-0 h-px bg-signal transition-[width] duration-700"
+                style={{ width: active === i ? "100%" : "0%" }}
+              />
+              <p className={`kicker ${active === i ? "text-signal" : ""}`}>{s.t}</p>
+              <p
+                className={`display mt-6 text-2xl transition-opacity duration-700 md:text-4xl ${
+                  active === i ? "opacity-100" : "opacity-45"
+                }`}
+              >
+                {s.h}
+              </p>
+              <p className="mt-5 text-sm text-muted-foreground">{s.d}</p>
+            </button>
+          ))}
+        </div>
       </div>
     </Section>
   );
