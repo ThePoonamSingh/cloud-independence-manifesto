@@ -107,9 +107,6 @@ export function Signals() {
     <Section id="signals" kicker="The ground has already moved">
       <Reveal>
         <h2 className="display max-w-3xl text-4xl md:text-6xl">Six independent signals.</h2>
-        <p className="mt-6 max-w-xl text-muted-foreground">
-          Evidence, not marketing. Every figure below carries its source.
-        </p>
       </Reveal>
       <div className="mt-16 grid gap-px border border-border bg-border md:grid-cols-3">
         {signals.map((s, i) => (
@@ -277,7 +274,7 @@ export function Frankenstack() {
     <Section id="frankenstack" kicker="The problem">
       <Reveal>
         <h2 className="display max-w-3xl text-4xl md:text-7xl">
-          The era of the Frankenstack.
+          The era of the patchwork stack.
         </h2>
       </Reveal>
       <div ref={ref} className="mt-16 flex flex-wrap items-center gap-x-3 gap-y-4">
