@@ -18,6 +18,15 @@ export function Vision() {
           </span>
         </figcaption>
       </Reveal>
+      <Reveal delay={240}>
+        <a
+          href="#declaration"
+          className="group mt-12 inline-flex items-center gap-3 border border-signal bg-signal-soft px-6 py-3 text-sm font-medium text-foreground transition-colors hover:bg-signal hover:text-background"
+        >
+          <span>Declare your Cloud Independence</span>
+          <span className="transition-transform group-hover:translate-x-1">→</span>
+        </a>
+      </Reveal>
     </Section>
   );
 }
