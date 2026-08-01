@@ -300,9 +300,8 @@ export function WhatsNew() {
   return (
     <Section id="whats-new" className="gradient-section">
       <Reveal>
-        <span className="kicker">What's new in Catalyst 3.0</span>
-        <h2 className="display mt-10 max-w-3xl text-4xl md:text-7xl">
-          Four pillars for the AI era.
+        <h2 className="display max-w-3xl text-4xl md:text-7xl">
+          How we built the cloud for the AI era.
         </h2>
         <p className="mt-6 max-w-2xl text-muted-foreground">
           Catalyst 3.0 introduces an Agent-Ready Full-Stack Cloud — combining AI-native developer
