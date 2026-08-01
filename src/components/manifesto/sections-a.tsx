@@ -113,7 +113,7 @@ export function Shift() {
   }, [visible]);
 
   return (
-    <Section id="shift" kicker="The new authorship">
+    <Section id="shift">
       <Reveal>
         <h2 className="display max-w-4xl text-4xl md:text-7xl">
           Every platform shift changed how software gets built. AI is creating the next one.
