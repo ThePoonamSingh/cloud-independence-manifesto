@@ -162,33 +162,45 @@ export function Shift() {
 }
 
 /* SECTION 5 — Patchwork Stack */
-const vendors = [
-  { name: "AWS", top: "10%", left: "12%", driftX: -10, driftY: 5, rotStart: -2, rotEnd: 1, delay: 0, stress: false },
-  { name: "Azure", top: "14%", left: "28%", driftX: 8, driftY: 10, rotStart: 3, rotEnd: -2, delay: 0.4, stress: false },
-  { name: "GCP", top: "8%", left: "44%", driftX: -6, driftY: -4, rotStart: -1, rotEnd: 2, delay: 0.8, stress: false },
-  { name: "Datadog", top: "5%", left: "62%", driftX: 5, driftY: -8, rotStart: 1, rotEnd: -1, delay: 1.2, stress: true },
-  { name: "Snowflake", top: "12%", left: "78%", driftX: 12, driftY: -5, rotStart: 2, rotEnd: -3, delay: 0.2, stress: false },
-  { name: "PagerDuty", top: "34%", left: "6%", driftX: -5, driftY: -5, rotStart: -4, rotEnd: 2, delay: 0.6, stress: false },
-  { name: "Vercel", top: "30%", left: "22%", driftX: -8, driftY: 15, rotStart: -1, rotEnd: 3, delay: 1.0, stress: false },
-  { name: "MongoDB", top: "38%", left: "38%", driftX: 0, driftY: 12, rotStart: -1, rotEnd: 1, delay: 0.3, stress: false },
-  { name: "Auth0", top: "32%", left: "54%", driftX: 5, driftY: 5, rotStart: -3, rotEnd: 1, delay: 1.4, stress: true },
-  { name: "Stripe", top: "36%", left: "72%", driftX: -15, driftY: 5, rotStart: -2, rotEnd: 2, delay: 0.5, stress: false },
-  { name: "Supabase", top: "42%", left: "86%", driftX: 10, driftY: -10, rotStart: 5, rotEnd: -2, delay: 0.9, stress: false },
-  { name: "Cloudflare", top: "58%", left: "16%", driftX: -8, driftY: 15, rotStart: -1, rotEnd: 3, delay: 0.7, stress: false },
-  { name: "GitHub", top: "56%", left: "34%", driftX: 10, driftY: -10, rotStart: 5, rotEnd: -2, delay: 1.1, stress: false },
-  { name: "OpenAI", top: "62%", left: "50%", driftX: 5, driftY: 5, rotStart: -3, rotEnd: 1, delay: 0.1, stress: false },
-  { name: "Pinecone", top: "58%", left: "68%", driftX: -20, driftY: -10, rotStart: 2, rotEnd: -4, delay: 1.3, stress: false },
-  { name: "Terraform", top: "66%", left: "82%", driftX: 12, driftY: -5, rotStart: 2, rotEnd: -3, delay: 0.45, stress: false },
-  { name: "Kafka", top: "76%", left: "42%", driftX: -2, driftY: 2, rotStart: 0, rotEnd: 0, delay: 1.5, stress: true },
-  { name: "…", top: "80%", left: "64%", driftX: 8, driftY: 6, rotStart: -2, rotEnd: 2, delay: 1.6, stress: false },
+const COLS = [86, 240, 394, 548, 702];
+const ROWS = [70, 190, 310, 430];
+
+/* Snake routing: one request dragged left→right→left through every vendor */
+const mazeNodes: { name: string; x: number; y: number; stress?: boolean }[] = [
+  { name: "request", x: COLS[0], y: ROWS[0] },
+  { name: "Cloudflare", x: COLS[1], y: ROWS[0] },
+  { name: "Auth0", x: COLS[2], y: ROWS[0], stress: true },
+  { name: "AWS", x: COLS[3], y: ROWS[0] },
+  { name: "Datadog", x: COLS[4], y: ROWS[0], stress: true },
+  { name: "Vercel", x: COLS[4], y: ROWS[1] },
+  { name: "Stripe", x: COLS[3], y: ROWS[1] },
+  { name: "MongoDB", x: COLS[2], y: ROWS[1] },
+  { name: "Kafka", x: COLS[1], y: ROWS[1], stress: true },
+  { name: "PagerDuty", x: COLS[0], y: ROWS[1] },
+  { name: "GitHub", x: COLS[0], y: ROWS[2] },
+  { name: "Terraform", x: COLS[1], y: ROWS[2] },
+  { name: "OpenAI", x: COLS[2], y: ROWS[2] },
+  { name: "Pinecone", x: COLS[3], y: ROWS[2] },
+  { name: "Snowflake", x: COLS[4], y: ROWS[2] },
+  { name: "Azure", x: COLS[4], y: ROWS[3] },
+  { name: "Supabase", x: COLS[3], y: ROWS[3] },
+  { name: "GCP", x: COLS[2], y: ROWS[3] },
+  { name: "…", x: COLS[1], y: ROWS[3] },
+  { name: "user", x: COLS[0], y: ROWS[3] },
 ];
 
-const webPaths = [
-  { d: "M 80,120 Q 220,40 400,120 T 720,100", width: 1.5, dash: "6 10", duration: "4s" },
-  { d: "M 60,260 Q 240,340 420,240 T 760,300", width: 1, dash: "3 8", duration: "6s" },
-  { d: "M 120,60 C 260,160 460,260 660,160", width: 0.5, dash: "4 6", duration: "5s" },
-  { d: "M 280,40 L 420,180 L 560,320", width: 0.5, dash: "2 6", duration: "7s" },
+const MAZE_PATH = `M ${COLS[0]},${ROWS[0]} H ${COLS[4]} V ${ROWS[1]} H ${COLS[0]} V ${ROWS[2]} H ${COLS[4]} V ${ROWS[3]} H ${COLS[0]}`;
+const MAZE_LEN = (COLS[4] - COLS[0]) * 4 + (ROWS[3] - ROWS[0]);
+
+/* Dead ends and retries branching off the main route */
+const deadEnds = [
+  `M ${COLS[1]},${ROWS[0]} V ${ROWS[0] + 46} H ${COLS[1] + 58}`,
+  `M ${COLS[3]},${ROWS[1]} V ${ROWS[1] - 44} H ${COLS[3] - 64}`,
+  `M ${COLS[2]},${ROWS[2]} V ${ROWS[2] + 42} H ${COLS[2] + 70}`,
+  `M ${COLS[4]},${ROWS[2]} V ${ROWS[2] - 40} H ${COLS[4] - 52}`,
+  `M ${COLS[1]},${ROWS[3]} V ${ROWS[3] - 48} H ${COLS[1] - 40}`,
 ];
+
 
 export function Frankenstack() {
   const { ref, visible } = useReveal<HTMLDivElement>();
