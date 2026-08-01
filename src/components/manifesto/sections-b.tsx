@@ -14,6 +14,15 @@ export function Category() {
           services and platform knowledge are understandable by machines — enabling AI to build,
           deploy and operate production systems with minimal human intervention.
         </p>
+        <a
+          href="https://catalystagentstack.onslate.in/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-8 inline-flex items-center gap-3 border border-signal/40 bg-signal-soft px-5 py-3 text-sm font-medium text-foreground transition-colors hover:bg-signal hover:text-background"
+        >
+          See the Catalyst Agent Stack
+          <span className="text-xs">↗</span>
+        </a>
       </Reveal>
     </Section>
   );
@@ -92,6 +101,15 @@ export function TeachingAI() {
         <h2 className="display max-w-3xl text-4xl md:text-6xl">
           The platform becomes the teacher.
         </h2>
+        <a
+          href="https://catalystagentstack.onslate.in/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-6 inline-flex items-center gap-3 text-sm text-muted-foreground transition-colors hover:text-signal"
+        >
+          Explore the Catalyst Agent Stack
+          <span className="text-xs">↗</span>
+        </a>
       </Reveal>
       <div ref={ref} className="mt-16 grid gap-10 md:grid-cols-[1fr_1.1fr]">
         <ol className="border-l border-border">
@@ -138,6 +156,15 @@ export function Catalyst() {
         <p className="mt-6 max-w-xl text-muted-foreground">
           Not a feature list. One continuous workflow, owned end to end.
         </p>
+        <a
+          href="https://catalyst.zoho.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-8 inline-flex items-center gap-3 border border-border px-5 py-3 text-sm text-muted-foreground transition-colors hover:border-foreground hover:text-foreground"
+        >
+          Visit catalyst.zoho.com
+          <span className="text-xs">↗</span>
+        </a>
       </Reveal>
       <div ref={ref} className="mt-20 grid grid-cols-1 gap-px border border-border bg-border sm:grid-cols-2 lg:grid-cols-7">
         {workflow.map((w, i) => (

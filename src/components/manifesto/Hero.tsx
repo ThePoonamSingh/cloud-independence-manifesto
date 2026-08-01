@@ -89,10 +89,13 @@ export function Hero() {
             <span className="transition-transform group-hover:translate-y-0.5">↓</span>
           </a>
           <a
-            href="#catalyst"
+            href="https://catalyst.zoho.com/"
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex items-center gap-3 border border-border px-6 py-3 text-sm text-muted-foreground transition-colors hover:border-foreground hover:text-foreground"
           >
             Explore Catalyst 3.0
+            <span className="text-xs">↗</span>
           </a>
         </div>
       </div>
