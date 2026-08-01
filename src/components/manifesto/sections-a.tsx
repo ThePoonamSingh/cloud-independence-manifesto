@@ -77,10 +77,6 @@ export function Shift() {
           Every platform shift moved complexity out of the developer's way. Cloud Independence is
           the next one.
         </h2>
-        <p className="lede mt-8 text-base text-muted-foreground md:text-lg">
-          First we owned the servers. Then we rented them. Now the platform should make them
-          invisible.
-        </p>
         <EraStrip />
       </Reveal>
       <div ref={ref} className="relative mt-16">
