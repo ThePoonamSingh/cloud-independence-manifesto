@@ -94,26 +94,34 @@ export function Hero() {
         aria-hidden="true"
       />
 
-      <div className="relative z-10 mx-auto flex w-full max-w-5xl flex-col items-center px-6 pt-32 pb-24 text-center md:px-10">
+      <div className="relative z-10 mx-auto flex w-full max-w-6xl flex-col items-center px-6 pt-32 pb-24 text-center md:px-10">
         {/* Kicker */}
-        <div className="mb-10 flex items-center gap-4">
-          <span className="h-px w-12 bg-gradient-to-r from-transparent to-signal" aria-hidden="true" />
-          <span className="text-[10px] font-medium uppercase tracking-[0.4em] text-muted-foreground">
+        <div className="mb-12 flex items-center gap-5 opacity-0 animate-[fade-in_1s_ease-out_0.2s_forwards]">
+          <span className="h-px w-14 bg-gradient-to-r from-transparent via-signal/70 to-signal" aria-hidden="true" />
+          <span className="text-[11px] font-semibold uppercase tracking-[0.35em] text-muted-foreground">
             Catalyst 3.0 Manifesto
           </span>
-          <span className="h-px w-12 bg-gradient-to-l from-transparent to-cool" aria-hidden="true" />
+          <span className="h-px w-14 bg-gradient-to-l from-transparent via-cool/70 to-cool" aria-hidden="true" />
         </div>
 
         {/* Main headline */}
-        <h1 className="text-[clamp(2.75rem,9vw,7.5rem)] font-black leading-[0.88] tracking-[-0.04em] text-foreground">
-          The best infrastructure is the infrastructure developers{" "}
-          <span className="font-serif italic font-normal text-transparent bg-clip-text bg-gradient-to-b from-foreground via-foreground to-foreground/50">
-            never have to think about.
+        <h1 className="max-w-5xl text-[clamp(2.5rem,8.5vw,7rem)] font-black leading-[0.86] tracking-[-0.045em] text-foreground opacity-0 animate-[fade-up_1.1s_ease-out_0.5s_forwards]">
+          The best infrastructure is the infrastructure{" "}
+          <span className="inline-block">
+            developers{" "}
+            <span className="relative inline-block font-serif italic font-normal text-transparent bg-clip-text bg-gradient-to-br from-foreground via-foreground to-foreground/55">
+              never have to think about.
+              <span
+                className="pointer-events-none absolute -inset-x-2 -inset-y-1 -z-10 rounded-full opacity-40 blur-2xl"
+                style={{ background: "linear-gradient(90deg, var(--signal-soft), var(--cool-soft))" }}
+                aria-hidden="true"
+              />
+            </span>
           </span>
         </h1>
 
         {/* Body hierarchy */}
-        <p className="mt-10 max-w-2xl text-lg font-light leading-relaxed tracking-tight text-balance text-muted-foreground md:text-2xl">
+        <p className="mt-12 max-w-xl text-base font-light leading-[1.7] tracking-wide text-balance text-muted-foreground opacity-0 animate-[fade-up_1s_ease-out_0.9s_forwards] md:text-lg">
           We believe in Cloud Independence as the next step in cloud computing. A future where developers describe what they want to build, and the platform handles the complexity of getting it into production.
         </p>
       </div>
