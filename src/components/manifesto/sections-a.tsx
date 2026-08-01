@@ -65,6 +65,7 @@ export function Signals() {
   return (
     <Section id="signals">
       <Reveal>
+        <p className="kicker mb-6 text-signal">Why now?</p>
         <h2 className="display max-w-4xl text-4xl md:text-6xl">
           The old contract between developers and infrastructure is breaking.
         </h2>
