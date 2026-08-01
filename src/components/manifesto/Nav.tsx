@@ -4,7 +4,7 @@ const links = [
   { href: "#why-now", label: "Why now" },
   { href: "#signals", label: "Evidence" },
   { href: "#category", label: "Agent-Ready Cloud" },
-  { href: "#manifesto", label: "Manifesto" },
+  { href: "#declaration", label: "Declare" },
 ];
 
 export function Nav() {

@@ -82,7 +82,7 @@ export function Hero() {
         </p>
         <div className="mt-14 flex flex-wrap items-center gap-4">
           <a
-            href="#manifesto"
+            href="#declaration"
             className="group inline-flex items-center gap-3 border border-foreground bg-foreground px-6 py-3 text-sm font-medium text-background transition-colors hover:bg-transparent hover:text-foreground"
           >
             Read the Manifesto
