@@ -39,7 +39,7 @@
   --color-brand-blue: var(--brand-blue);
   --color-cool-soft: var(--cool-soft);
   --font-display: "Instrument Serif", Georgia, serif;
-  --font-sans: "Work Sans", system-ui, sans-serif;
+  --font-sans: "Zoho Puvi", "Work Sans", system-ui, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, monospace;
 }
 
@@ -98,6 +98,35 @@
 }
 
 @layer base {
+  @font-face {
+    font-family: "Zoho Puvi";
+    src: url("/__l5e/assets-v1/54850261-8ba6-4f2b-b64b-d1b0296a5d23/ZohoPuvi-Regular.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Zoho Puvi";
+    src: url("/__l5e/assets-v1/9d24f31d-c922-4f6e-bc26-504870df5c2d/ZohoPuvi-Medium.ttf") format("truetype");
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Zoho Puvi";
+    src: url("/__l5e/assets-v1/e947535d-9440-4e7a-aa72-230860315836/ZohoPuvi-Semibold.ttf") format("truetype");
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Zoho Puvi";
+    src: url("/__l5e/assets-v1/8ac013aa-e803-4100-bf3d-993c110c1753/ZohoPuvi-Bold.ttf") format("truetype");
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+  }
+
   * {
     border-color: var(--color-border);
   }
