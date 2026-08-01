@@ -24,16 +24,16 @@ export function Vision() {
             </Reveal>
             <Reveal delay={240}>
               <p className="mt-10 max-w-xl text-lg leading-relaxed text-background/70 md:text-xl">
-                That ideal is still far from how most teams work. Here is the gap —
-                and why it is widening.
+                That ideal is still far from how most teams work. Catalyst 3.0 is
+                built to close that gap.
               </p>
             </Reveal>
             <Reveal delay={360}>
               <a
-                href="#signals"
+                href="#catalyst"
                 className="group mt-8 inline-flex items-center gap-3 border border-background/25 px-6 py-3 text-sm font-medium text-background transition-colors hover:bg-background hover:text-foreground"
               >
-                <span>See the evidence</span>
+                <span>See how Catalyst 3.0 delivers it</span>
                 <span className="transition-transform group-hover:translate-x-1">→</span>
               </a>
             </Reveal>

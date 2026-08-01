@@ -64,8 +64,6 @@ function Index() {
       <Nav />
       <Hero />
       <Rule />
-      <Vision />
-      <Rule />
       <Signals />
       <Rule />
       <Shift />
@@ -87,6 +85,8 @@ function Index() {
       <Catalyst />
       <Rule />
       <WhyZoho />
+      <Rule />
+      <Vision />
       <Rule />
       <FAQ />
       <Manifesto />
