@@ -462,6 +462,8 @@ export function Independence() {
           </div>
         </div>
       </Reveal>
+
+      <NeverTouchTags />
     </Section>
   );
 }
