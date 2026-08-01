@@ -106,16 +106,26 @@ export function TeachingAI() {
   }, [visible]);
 
   return (
-    <Section id="teaching" kicker="Teaching AI how to build">
+    <Section id="teaching" kicker="Go from prompt to production, without becoming a cloud expert.">
       <Reveal>
-        <h2 className="display max-w-3xl text-4xl md:text-6xl">
-          The platform becomes the teacher.
-        </h2>
+        <div className="mt-6 max-w-3xl space-y-6 text-lg leading-relaxed text-muted-foreground md:text-2xl md:leading-[1.5]">
+          <p>
+            AI can already generate code. Building production software is the harder problem. The gap
+            between a generated application and a production-ready system is everything AI doesn't
+            automatically handle: data, authentication, workflows, deployment, observability, and
+            infrastructure. Catalyst is a full-stack cloud that closes the gap.
+          </p>
+          <p>
+            Catalyst teaches AI how to discover services, understand platform capabilities, generate
+            applications, deploy them, and safely operate them in production — turning prompts into
+            production systems through one continuous workflow.
+          </p>
+        </div>
         <a
           href="https://catalystagentstack.onslate.in/"
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-6 inline-flex items-center gap-3 text-sm text-muted-foreground transition-colors hover:text-cool"
+          className="mt-8 inline-flex items-center gap-3 text-sm text-muted-foreground transition-colors hover:text-cool"
         >
           Explore the Catalyst Agent Stack
           <span className="text-xs">↗</span>
