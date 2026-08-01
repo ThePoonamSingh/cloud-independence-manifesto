@@ -252,55 +252,115 @@ export function NewCustomer() {
   );
 }
 
-/* SECTION 5 — Frankenstack */
+/* SECTION 5 — Patchwork Stack */
 const vendors = [
-  "Vercel",
-  "Supabase",
-  "Cloudflare",
-  "GitHub",
-  "OpenAI",
-  "Stripe",
-  "Datadog",
-  "Pinecone",
-  "Auth0",
-  "Terraform",
-  "Kafka",
-  "…",
+  { name: "AWS", twist: "rotate-2" },
+  { name: "Azure", twist: "-rotate-3" },
+  { name: "GCP", twist: "rotate-6 translate-x-2" },
+  { name: "Datadog", twist: "-rotate-12 translate-y-1" },
+  { name: "Snowflake", twist: "rotate-1 translate-x-1" },
+  { name: "MongoDB", twist: "-rotate-6 translate-y-2" },
+  { name: "Auth0", twist: "rotate-12 -translate-x-2" },
+  { name: "Stripe", twist: "-rotate-2" },
+  { name: "PagerDuty", twist: "rotate-3 translate-y-1" },
+  { name: "Vercel", twist: "-rotate-8" },
+  { name: "Supabase", twist: "rotate-6 translate-x-3" },
+  { name: "Cloudflare", twist: "-rotate-3 translate-y-1" },
+  { name: "GitHub", twist: "rotate-1" },
+  { name: "OpenAI", twist: "-rotate-6 translate-x-2" },
+  { name: "Pinecone", twist: "rotate-12 -translate-y-2" },
+  { name: "Terraform", twist: "-rotate-1" },
+  { name: "Kafka", twist: "rotate-4" },
+  { name: "…", twist: "-rotate-2" },
 ];
 
 export function Frankenstack() {
   const { ref, visible } = useReveal<HTMLDivElement>();
   return (
-    <Section id="frankenstack" kicker="The problem">
+    <Section id="patchwork-stack" kicker="The problem">
       <Reveal>
         <h2 className="display max-w-3xl text-4xl md:text-7xl">
           The era of the patchwork stack.
         </h2>
       </Reveal>
-      <div ref={ref} className="mt-16 flex flex-wrap items-center gap-x-3 gap-y-4">
-        {vendors.map((v, i) => (
-          <span key={v} className="flex items-center gap-3">
+
+      <div
+        ref={ref}
+        className="relative mt-16 flex h-72 items-center justify-center overflow-hidden md:h-80"
+      >
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              "radial-gradient(ellipse 60% 80% at 50% 50%, color-mix(in oklab, var(--color-cold) 12%, transparent), transparent 70%)",
+          }}
+        />
+        <div
+          className="absolute inset-0 border border-border/50"
+          style={{
+            maskImage: "radial-gradient(circle, white, transparent 70%)",
+            WebkitMaskImage: "radial-gradient(circle, white, transparent 70%)",
+          }}
+        />
+        <div className="relative flex max-w-3xl flex-wrap justify-center gap-2 px-4">
+          {vendors.map((v, i) => (
             <span
-              className="border border-border px-4 py-2 font-mono text-sm text-muted-foreground transition-all duration-700"
+              key={v.name}
+              className={`border border-border bg-card px-3 py-1.5 font-mono text-sm text-muted-foreground transition-all duration-700 hover:-translate-y-1 ${v.twist}`}
               style={{
                 opacity: visible ? 1 : 0,
-                transform: visible ? "none" : "translateY(8px)",
-                transitionDelay: `${i * 110}ms`,
+                transform: visible ? undefined : "translateY(12px)",
+                transitionDelay: `${i * 60}ms`,
               }}
             >
-              {v}
+              {v.name}
             </span>
-            {i < vendors.length - 1 && <span className="text-border">→</span>}
-          </span>
-        ))}
-      </div>
-      <Reveal>
-        <div className="mt-16 grid gap-8 border-t border-border pt-10 md:grid-cols-3">
-          {["More vendors.", "More complexity.", "More operational debt."].map((t) => (
-            <p key={t} className="display text-2xl md:text-3xl">
-              {t}
-            </p>
           ))}
+        </div>
+      </div>
+
+      <Reveal>
+        <div className="mt-16 grid gap-px border-t border-border bg-border md:grid-cols-3">
+          {[
+            {
+              num: "01",
+              title: "More\nVendors.",
+              body: "Fragmented identity, billing, and permissions across a dozen isolated consoles.",
+            },
+            {
+              num: "02",
+              title: "More\nComplexity.",
+              body: "Proprietary APIs and brittle abstractions that break with every update.",
+            },
+            {
+              num: "03",
+              title: "More\nDebt.",
+              body: "Engineering teams spend half their sprint cycles on keep-the-lights-on glue code.",
+            },
+          ].map((item) => (
+            <div
+              key={item.num}
+              className="group bg-background p-8 transition-colors duration-500 hover:bg-card md:p-10"
+            >
+              <div className="font-mono text-xs text-pain">[{item.num}]</div>
+              <h3 className="display mt-4 text-3xl uppercase leading-none tracking-tight transition-colors group-hover:text-pain md:text-4xl">
+                {item.title.split("\n").map((line, i) => (
+                  <span key={i} className="block">
+                    {line}
+                  </span>
+                ))}
+              </h3>
+              <p className="mt-5 text-sm leading-relaxed text-muted-foreground">{item.body}</p>
+            </div>
+          ))}
+        </div>
+      </Reveal>
+
+      <Reveal>
+        <div className="mt-8 flex items-center justify-between font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
+          <span>Status: High friction</span>
+          <div className="mx-4 h-px flex-grow bg-border" />
+          <span>Catalyst 3.0 / Manifesto</span>
         </div>
       </Reveal>
     </Section>
