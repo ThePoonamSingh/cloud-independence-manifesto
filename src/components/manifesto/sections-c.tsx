@@ -19,11 +19,18 @@ export function Vision() {
         </figcaption>
       </Reveal>
       <Reveal delay={240}>
+        <p className="mt-12 max-w-2xl text-lg leading-relaxed text-muted-foreground md:text-xl">
+          That is the standard Catalyst 3.0 was built to meet. One platform that
+          takes the infrastructure problem off the developer’s plate — and off
+          the AI’s too.
+        </p>
+      </Reveal>
+      <Reveal delay={360}>
         <a
-          href="#declaration"
-          className="group mt-12 inline-flex items-center gap-3 border border-signal bg-signal-soft px-6 py-3 text-sm font-medium text-foreground transition-colors hover:bg-signal hover:text-background"
+          href="#catalyst"
+          className="group mt-8 inline-flex items-center gap-3 border border-signal bg-signal-soft px-6 py-3 text-sm font-medium text-foreground transition-colors hover:bg-signal hover:text-background"
         >
-          <span>Declare your Cloud Independence</span>
+          <span>See how Catalyst 3.0 delivers it</span>
           <span className="transition-transform group-hover:translate-x-1">→</span>
         </a>
       </Reveal>
