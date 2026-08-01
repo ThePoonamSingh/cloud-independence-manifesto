@@ -119,7 +119,7 @@ export function Shift() {
           Every platform shift changed how software gets built. AI is creating the next one.
         </h2>
         <p className="mt-8 max-w-2xl text-muted-foreground">
-          Every platform shift changed how software gets built. AI is creating the next one.
+          The compiler moved up a level. The next platform must move infrastructure out of the way.
         </p>
         <EraStrip />
       </Reveal>
