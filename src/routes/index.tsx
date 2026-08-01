@@ -13,7 +13,6 @@ import {
   WhatsNew,
   TwoBuilders,
   TeachingAI,
-  Catalyst,
   WhyZoho,
 } from "@/components/manifesto/sections-b";
 import { Vision } from "@/components/manifesto/sections-c";
@@ -80,8 +79,6 @@ function Index() {
       <TwoBuilders />
       <Rule />
       <TeachingAI />
-      <Rule />
-      <Catalyst />
       <Rule />
       <WhyZoho />
       <Rule />
