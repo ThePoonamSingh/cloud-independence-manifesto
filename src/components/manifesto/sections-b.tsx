@@ -31,10 +31,10 @@ export function Category() {
 /* SECTION 9 — One system, two builders */
 export function TwoBuilders() {
   return (
-    <Section id="two-builders" kicker="One system">
+    <Section id="two-builders">
       <Reveal>
         <h2 className="display max-w-4xl text-4xl md:text-7xl">
-          One system. Developers and AI agents.
+          One platform for developers and AI agents.
         </h2>
       </Reveal>
       <Reveal delay={150}>
