@@ -46,6 +46,13 @@ const signals = [
     source: "GitHub Octoverse, 2024",
   },
   {
+    stat: "90%",
+    claim: "of enterprise engineers will use AI code assistants by 2028.",
+    detail:
+      "Up from less than 14% in early 2024. The role shifts from implementation to orchestration — problem solving, system design, and ensuring AI output is production-ready.",
+    source: "Gartner, 2024",
+  },
+  {
     stat: "65%",
     claim: "of developer time is spent on work that is not the product.",
     detail: "Pipelines, environments, glue code, upgrades, incidents. The tax nobody budgeted for.",
@@ -61,7 +68,7 @@ export function Signals() {
           The old contract between developers and infrastructure is breaking.
         </h2>
       </Reveal>
-      <div className="mt-16 grid gap-px border border-border bg-border md:grid-cols-2">
+      <div className="mt-16 grid gap-px border border-border bg-border md:grid-cols-3">
         {signals.map((s, i) => (
           <Reveal key={s.stat} delay={i * 60}>
             <article className="group h-full bg-background p-8 transition-colors duration-500 hover:bg-card md:p-10">
