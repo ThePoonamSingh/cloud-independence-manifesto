@@ -19,7 +19,7 @@ function ThesisQuote({ children }: { children: string }) {
     return () => io.disconnect();
   }, []);
 
-  const paragraphs = children.trim().split(/\n\n+/);
+  const paragraphs = children.trim().split(/\s*\n\s*\n\s*/);
   let wordIndex = 0;
   return (
     <blockquote
