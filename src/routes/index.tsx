@@ -9,6 +9,7 @@ import {
   NewCustomer,
   Frankenstack,
   Independence,
+  NeverTouch,
   Thesis,
 } from "@/components/manifesto/sections-a";
 import {
@@ -76,6 +77,8 @@ function Index() {
       <Frankenstack />
       <Rule />
       <Independence />
+      <Rule />
+      <NeverTouch />
       <Rule />
       <Thesis />
       <Rule />
