@@ -235,12 +235,22 @@
   }
 }
 
+@utility thesis-quote {
+  position: relative;
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: clamp(1.6rem, 3.2vw, 2.75rem);
+  line-height: 1.28;
+  letter-spacing: -0.022em;
+  text-wrap: balance;
+}
+
 @utility thesis-word {
   display: inline-block;
   margin-right: 0.18em;
   opacity: 0;
-  transform: translateY(14px);
-  filter: blur(4px);
+  transform: translateY(12px);
+  filter: blur(3px);
   transition:
     opacity 1100ms cubic-bezier(0.16, 1, 0.3, 1),
     transform 1100ms cubic-bezier(0.16, 1, 0.3, 1),
@@ -253,18 +263,13 @@
   }
 }
 
-@utility thesis-quote-mark {
-  display: inline-block;
-  margin-right: 0.1em;
+@utility thesis-close-quote {
+  display: inline;
+  margin-left: 0.05em;
   font-family: var(--font-serif);
-  font-size: 1.15em;
-  line-height: 0.85;
-  opacity: 0;
-  transition: opacity 800ms cubic-bezier(0.16, 1, 0.3, 1) 80ms;
-
-  &[data-visible="true"] {
-    opacity: 0.55;
-  }
+  font-size: 1.1em;
+  line-height: 0.9;
+  opacity: 0.55;
 }
 
 @utility handwritten-quote {
@@ -280,7 +285,7 @@
       0.5px 0 0 oklch(0.85 0.004 260 / 0.25);
   }
 
-  .thesis-quote-mark {
+  .thesis-close-quote {
     font-family: var(--font-handwritten);
     font-size: 1.35em;
     line-height: 0.7;
