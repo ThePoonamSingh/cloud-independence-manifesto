@@ -238,7 +238,7 @@ export function TeachingAI() {
     <Section id="teaching">
       <Reveal>
         <h2 className="display max-w-4xl text-4xl leading-[1.05] md:text-6xl">
-          Go from prompt to production, without becoming a cloud expert.
+          Go from prompt to production.
         </h2>
       </Reveal>
       <Reveal delay={120}>
