@@ -8,7 +8,7 @@ const eras = [
   { name: "Web", years: "1990s", shift: "You rented the machine." },
   { name: "Cloud", years: "2006", shift: "You rented by the hour." },
   { name: "Mobile", years: "2007", shift: "You shipped to every device." },
-  { name: "Catalyst 3.0", years: "Now", shift: "You stop thinking about machines.", final: true },
+  { name: "AI", years: "Now", shift: "You stop thinking about machines.", final: true },
 ];
 
 function EraStrip() {
